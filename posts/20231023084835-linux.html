@@ -1,0 +1,601 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Linux | CJ's Blog</title><meta name="author" content="CJ"><meta name="copyright" content="CJ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="新建虚拟机配置网络1.配置静态 ip Linux Centos 7 操作系统手动配置 IP 地址 (qq.com) 123456# 1. 修改为静态，修改mac，配置好ip，dns。# 2. 重启服务。BOOTPROTO&#x3D;staticONBOOT&#x3D;yesvim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33  2.修改虚拟机网络方式为桥接 虚拟机 NAT 模式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux">
+<meta property="og:url" content="https://cjchn.github.io/posts/20231023084835-linux.html">
+<meta property="og:site_name" content="CJ&#39;s Blog">
+<meta property="og:description" content="新建虚拟机配置网络1.配置静态 ip Linux Centos 7 操作系统手动配置 IP 地址 (qq.com) 123456# 1. 修改为静态，修改mac，配置好ip，dns。# 2. 重启服务。BOOTPROTO&#x3D;staticONBOOT&#x3D;yesvim &#x2F;etc&#x2F;sysconfig&#x2F;network-scripts&#x2F;ifcfg-ens33  2.修改虚拟机网络方式为桥接 虚拟机 NAT 模式">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://vip.helloimg.com/images/2023/12/15/o7Lq06.jpg">
+<meta property="article:published_time" content="2023-10-23T08:48:35.000Z">
+<meta property="article:modified_time" content="2024-01-04T08:19:42.761Z">
+<meta property="article:author" content="CJ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vip.helloimg.com/images/2023/12/15/o7Lq06.jpg"><link rel="shortcut icon" href="https://imgcdn.319226.xyz/202401041503387.png"><link rel="canonical" href="https://cjchn.github.io/posts/20231023084835-linux.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"51DB2F26GB","apiKey":"1de06e184485e0844182c52de8afda82","indexName":"cjchn.github.io","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Linux',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-04 16:19:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://vip.helloimg.com/images/2023/12/15/o7Lq06.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="CJ's Blog"><span class="site-name">CJ's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Linux</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-23T08:48:35.000Z" title="发表于 2023-10-23 16:48:35">2023-10-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-04T08:19:42.761Z" title="更新于 2024-01-04 16:19:42">2024-01-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">10k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>34分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Linux"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="新建虚拟机配置网络"><a href="#新建虚拟机配置网络" class="headerlink" title="新建虚拟机配置网络"></a>新建虚拟机配置网络</h3><p>1.配置静态 ip</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/j6NuPCCzURS2aR4QhPQ0xA">Linux Centos 7 操作系统手动配置 IP 地址 (qq.com)</a></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 1. 修改为静态，修改mac，配置好ip，dns。</span></span><br><span class="line"><span class="comment"># 2. 重启服务。</span></span><br><span class="line">BOOTPROTO=static</span><br><span class="line">ONBOOT=<span class="built_in">yes</span></span><br><span class="line"></span><br><span class="line">vim /etc/sysconfig/network-scripts/ifcfg-ens33</span><br></pre></td></tr></table></figure>
+
+<p>2.修改虚拟机网络方式为桥接</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/CoderTnT/article/details/102642380">虚拟机 NAT 模式 连接网络方式_RichardGeek 的博客-CSDN 博客_虚拟机 nat 连接</a></p>
+<p>3.网络波动，昨天尝试了很多配置，没关虚拟机，今早来用很丝滑，可能需要多存在一些时间网络就稳定了</p>
+<h1 id="安装各类软件"><a href="#安装各类软件" class="headerlink" title="安装各类软件"></a>安装各类软件</h1><h3 id="Linux-安装-Maven"><a href="#Linux-安装-Maven" class="headerlink" title="Linux 安装 Maven"></a>Linux 安装 Maven</h3><p>简单的命令.. 建目录，下载，解压</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">yum -y install wget</span><br><span class="line">mkdir /usr/local/maven</span><br><span class="line">cd /usr/local/maven</span><br><span class="line">wget https://archive.apache.org/dist/maven/maven-3/3.6.3/binaries/apache-maven-3.6.3-bin.tar.gz</span><br><span class="line">tar -zxvf apache-maven-3.6.3-bin.tar.gz</span><br></pre></td></tr></table></figure>
+
+<p>配置 maven 环境变量</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vi /etc/profile</span><br><span class="line"></span><br><span class="line">export MAVEN_HOME=/usr/local/maven/apache-maven-3.6.3</span><br><span class="line">export PATH=$&#123;PATH&#125;:$&#123;MAVEN_HOME&#125;/bin</span><br></pre></td></tr></table></figure>
+
+<p>刷新文件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">source /etc/profile</span><br></pre></td></tr></table></figure>
+
+<p>验证结果</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mvn -version</span><br></pre></td></tr></table></figure>
+
+<p>创建 Maven 本地仓库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mkdir -p /usr/local/maven/repository</span><br></pre></td></tr></table></figure>
+
+<p>打开 Maven 的 settings.xml 配置文件，配置相应的仓库路径以及国内仓库地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"># 可以查看maven的路径</span><br><span class="line">echo $MAVEN_HOME</span><br><span class="line"></span><br><span class="line">vim /usr/local/maven/apache-maven-3.6.3/conf/settings.xml</span><br><span class="line"></span><br><span class="line"># &lt;localRepository&gt;标签，修改本地仓库路径为</span><br><span class="line">/usr/local/maven/repository</span><br></pre></td></tr></table></figure>
+
+<p>修改国内仓库地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;mirror&gt;</span><br><span class="line"> &lt;id&gt;alimaven&lt;/id&gt;</span><br><span class="line"> &lt;name&gt;aliyun maven&lt;/name&gt;</span><br><span class="line"> &lt;url&gt;http://maven.aliyun.com/nexus/content/groups/public/&lt;/url&gt;</span><br><span class="line"> &lt;mirrorOf&gt;central&lt;/mirrorOf&gt;</span><br><span class="line">&lt;/mirror&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="yum-安装-Docker"><a href="#yum-安装-Docker" class="headerlink" title="yum 安装 Docker"></a>yum 安装 Docker</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/m0_67390788/article/details/123830312">使用 YUM 安装 docker_普通网友的博客-CSDN 博客_yum 安装 docker</a></p>
+<h1 id="创建-root-用户"><a href="#创建-root-用户" class="headerlink" title="创建 root 用户"></a>创建 root 用户</h1><p>在 root 权限下，新建一个用户 <code>od</code>，并将 <code>/root</code> 目录权限授予给它，然后输入 su 指令切换到新用户下。</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">useradd od</span><br><span class="line">chown -R od /root</span><br><span class="line">su od</span><br></pre></td></tr></table></figure>
+
+<h1 id="linux-下各目录的大概含义"><a href="#linux-下各目录的大概含义" class="headerlink" title="linux 下各目录的大概含义"></a>linux 下各目录的大概含义</h1><p>以 centos7 为例</p>
+<p>&#x2F;：根目录，包含整个文件系统的基础目录。所有文件和目录的路径都是以根目录为起点的。</p>
+<p>&#x2F;bin：二进制可执行文件的目录，包含常用的命令和工具（如 ls、cp、mv 等）。这里存放的命令通常可以被普通用户使用。这些命令和工具的路径会被自动包含在系统的执行路径中，因此，用户可以直接在终端中输入命令名称，而无需指定完整的路径</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">/bin/cat：用于将文件内容输出到标准输出或合并文件。</span><br><span class="line">​</span><br><span class="line">/bin/chmod：用于修改文件或目录的权限。</span><br><span class="line">​</span><br><span class="line">/bin/cp：用于复制文件或目录。</span><br><span class="line">​</span><br><span class="line">/bin/date：显示系统日期和时间。</span><br><span class="line">​</span><br><span class="line">/bin/echo：将指定的字符串输出到标准输出。</span><br><span class="line">​</span><br><span class="line">/bin/grep：在文件中搜索匹配指定模式的文本行。</span><br><span class="line">​</span><br><span class="line">/bin/kill：用于终止进程或发送信号给进程。</span><br><span class="line">​</span><br><span class="line">/bin/ls：显示目录内容。</span><br><span class="line">​</span><br><span class="line">/bin/mkdir：创建新目录。</span><br><span class="line">​</span><br><span class="line">/bin/mv：用于移动或重命名文件或目录。</span><br><span class="line">​</span><br><span class="line">/bin/pwd：显示当前工作目录的路径。</span><br><span class="line">​</span><br><span class="line">/bin/rm：删除文件或目录。</span><br><span class="line">​</span><br><span class="line">/bin/rmdir：删除空目录。</span><br><span class="line">​</span><br><span class="line">/bin/touch：更新文件的访问时间和修改时间，如果文件不存在则创建空文件。</span><br><span class="line">​</span><br><span class="line">/bin/uname：显示系统信息，如内核版本、节点名等。</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;dev：设备文件目录，包含与硬件设备和外部设备的连接点，例如硬盘、USB 设备、串口等等。这里的所有文件都是虚拟的，它们提供了对实际物理设备的访问接口。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/dev/sda：硬盘设备文件，表示第一块硬盘。</span><br><span class="line">​</span><br><span class="line">/dev/tty：终端设备文件，在 Linux 中被称为控制台，用于输入和输出字符流。</span><br><span class="line">​</span><br><span class="line">/dev/null：黑洞设备文件，所有写入该设备文件的数据都会被直接丢弃。</span><br><span class="line">​</span><br><span class="line">/dev/random 和 /dev/urandom：随机数生成设备文件，用于生成随机数。</span><br><span class="line">​</span><br><span class="line">/dev/cdrom：光驱设备文件，用于读取光盘内容。</span><br><span class="line">​</span><br><span class="line">/dev/input/mice：鼠标设备文件，用于获取鼠标输入事件。</span><br><span class="line">一些用户空间程序也可以通过设备文件与硬件设备进行交互，例如 mknod 命令可以创建特殊的设备文件来代表某个硬件设备</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;home：用户主目录的基础目录，每个用户都有一个对应的子目录。例如，用户名为 john 的用户主目录就是 &#x2F;home&#x2F;john。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br></pre></td><td class="code"><pre><span class="line">/home/user1：用户 &quot;user1&quot; 的个人主目录。用户的个人文件和配置文件通常存放在这个目录下。</span><br><span class="line">​</span><br><span class="line">/home/user2：用户 &quot;user2&quot; 的个人主目录。</span><br><span class="line">​</span><br><span class="line">/home/user3：用户 &quot;user3&quot; 的个人主目录。</span><br><span class="line">​</span><br><span class="line">每个用户的个人主目录通常包含以下一些常见的子目录：</span><br><span class="line">​</span><br><span class="line">/home/user1/Documents：文档目录，用于存放用户文档文件。</span><br><span class="line">​</span><br><span class="line">/home/user1/Pictures：图片目录，用于存放用户照片和图片文件。</span><br><span class="line">​</span><br><span class="line">/home/user1/Music：音乐目录，用于存放用户音乐文件。</span><br><span class="line">​</span><br><span class="line">/home/user1/Videos：视频目录，用于存放用户视频文件。</span><br><span class="line">​</span><br><span class="line">/home/user1/Downloads：下载目录，用于存放用户下载的文件。</span><br><span class="line">​</span><br><span class="line">该目录下隐藏文件：</span><br><span class="line">​</span><br><span class="line">~/.bashrc：bash shell 的配置文件，用于定义用户登录时执行的命令和环境变量等。</span><br><span class="line">​</span><br><span class="line">~/.bash<span class="emphasis">_profile：bash shell 的登录配置文件，用于定义用户登录时执行的命令和环境变量等。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">~/.bash_</span>logout：bash shell 的注销配置文件，用于定义用户退出登录时执行的命令。</span><br><span class="line">​</span><br><span class="line">~/.profile：用于定义用户登录时执行的命令和环境变量等的配置文件。</span><br><span class="line">​</span><br><span class="line">~/.bash<span class="emphasis">_history：用户使用命令行时的历史记录文件，记录了用户过去输入的命令。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">~/.ssh/：SSH 客户端的配置目录，存放用户的 SSH 密钥和其他配置文件。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">~/.vimrc：Vim 编辑器的配置文件，用于定义用户对 Vim 的个性化设置。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">~/.gitconfig：Git 版本控制工具的配置文件，用于定义用户对 Git 的个性化设置，如用户名、邮箱等参数。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">~/.mozilla/：Mozilla 系列浏览器（如 Firefox）的用户配置目录，包含用户的书签、插件和设置文件。</span></span><br><span class="line"><span class="emphasis">/home 目录通常只有 root 用户才有写入权限。普通用户只能在自己的个人主目录下进行读写操作。这是为了保证用户之间的文件隔离和安全性。</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;lib64 目录是用于存放 64 位架构的库文件的目录。它包含了许多系统程序和库文件所需的动态链接共享库文件，这些共享库文件通常被程序在运行时动态加载。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/lib64/libc.so.6：C 语言标准库，包含标准函数和数据类型定义。</span><br><span class="line">​</span><br><span class="line">/lib64/libpthread.so.0：POSIX 线程库，提供了支持多线程的函数和数据类型。</span><br><span class="line">​</span><br><span class="line">/lib64/libm.so.6：数学函数库，提供了许多数学函数的实现。</span><br><span class="line">​</span><br><span class="line">/lib64/libdl.so.2：动态链接库接口。</span><br><span class="line">​</span><br><span class="line">/lib64/libncurses.so.5：开发文本界面应用程序所需的库文件。</span><br><span class="line">​</span><br><span class="line">/lib64/libgcc<span class="emphasis">_s.so.1：GCC 支持库，包含一些特定硬件上代码生成器使用的内部函数。</span></span><br><span class="line"><span class="emphasis">/lib64 目录下常见的库文件，还有许多其他库文件也可以在该目录下找到。此外，在 CentOS 7 中，还有一个类似的目录 /usr/lib64，用于存放系统安装的其他库文件</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;mnt：临时挂载点的目录，用于临时挂载其他文件系统或网络共享。例如我们可以将其他磁盘的分区挂载到此目录下。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">临时挂载：/mnt 目录通常用于临时挂载外部设备，例如 U 盘、移动硬盘或光盘驱动器。当插入一个可读写的设备时，可以将其挂载到 /mnt 目录中，并通过该目录访问设备上的文件。</span><br><span class="line"></span><br><span class="line">临时文件系统：有时，需要挂载一个临时的文件系统来进行临时存储或操作。例如，在某些情况下，可以将一个 RAM 磁盘挂载到 /mnt 目录以提供临时的高速存储空间。</span><br><span class="line"></span><br><span class="line">自定义挂载点：除了用于临时挂载外部设备之外，也可以根据需要创建自定义的挂载点。例如，如果有一个特定的文件系统需要挂载到特定的目录，可以将其挂载到 /mnt 目录下的子目录中。</span><br><span class="line"></span><br><span class="line">需要注意的是，/mnt 目录只是一个约定，而不是系统要求的固定目录。如果希望将文件系统挂载到不同的目录，可以根据个人偏好和实际需求选择其他目录。另外，/mnt 目录只有 root 用户有写入权限，普通用户只能在 /mnt 目录下进行读取操作。</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;proc：虚拟文件系统，包含当前运行进程和内核信息的文件。这些文件都是动态生成的，实时反映了系统状态的变化。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/proc/cpuinfo：显示系统中每个 CPU 的详细信息，如处理器型号、频率等。</span><br><span class="line">​</span><br><span class="line">/proc/meminfo：提供系统内存的详细信息，包括总内存、可用内存、缓存等。</span><br><span class="line">​</span><br><span class="line">/proc/loadavg：显示系统的负载平均值（load average），用于评估系统的负载情况。</span><br><span class="line">​</span><br><span class="line">/proc/version：包含有关当前运行的内核版本的信息。</span><br><span class="line">​</span><br><span class="line">/proc/filesystems：列出当前支持的文件系统类型。</span><br><span class="line">​</span><br><span class="line">/proc/net：包含各种网络协议的信息，如 /proc/net/tcp、/proc/net/udp 等。</span><br><span class="line">​</span><br><span class="line">/proc/sys：用于设置和查看内核参数的目录。例如，/proc/sys/kernel 目录中包含了与内核相关的参数，如 /proc/sys/kernel/hostname。</span><br><span class="line">​</span><br><span class="line">/proc/<span class="language-xml"><span class="tag">&lt;<span class="name">PID</span>&gt;</span></span>：该目录下的子目录 <span class="language-xml"><span class="tag">&lt;<span class="name">PID</span>&gt;</span></span> 是每个活动进程的代表，其中包含有关该进程的信息。例如，/proc/1234/status 提供了进程 ID 为 1234 的详细状态信息。</span><br><span class="line">/proc 目录中的文件内容都是由内核动态生成的，并且在访问时会即时反映系统的当前状态。这些文件通常以文本格式表示，并且可以使用标准的文件读取操作来访问它们。</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;run：在系统启动期间存放临时运行时数据的目录。例如 PID 文件、锁文件等等。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">/run/user/<span class="language-xml"><span class="tag">&lt;<span class="name">UID</span>&gt;</span></span>：该目录存储了每个活动用户的临时文件和套接字。每个登录的用户都有一个对应的 <span class="language-xml"><span class="tag">&lt;<span class="name">UID</span>&gt;</span></span> 子目录，其中存放了该用户相关的临时文件和套接字等。</span><br><span class="line">​</span><br><span class="line">/run/lock：该目录用于存储系统级别的锁文件。当多个进程需要共享资源时，可以使用锁文件来实现进程间的同步和互斥操作。</span><br><span class="line">​</span><br><span class="line">/run/systemd：该目录是 systemd 服务管理器使用的运行时数据存储目录。其中包含了各种服务单元（unit）和套接字文件等，用于管理和维护系统的服务。</span><br><span class="line">​</span><br><span class="line">/run/dbus：该目录用于存储 D-Bus 通信协议相关的套接字文件，用于进程间的通信和消息传递。</span><br><span class="line">​</span><br><span class="line">/run/shm：该目录是一个共享内存目录，用于存储在进程间共享的临时文件。这些文件可以被多个进程同时访问，用于高效地进行数据交换。</span><br><span class="line">/run 目录下的文件和目录都是在系统启动时动态创建的，并且在系统重新启动时自动清空。临时文件和套接字等只在当前系统运行期间存在，不会被永久保存。因此，如果需要长期存储数据，请将其放置在其他目录中，如 /var 目录。</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;srv：服务相关数据的目录，用于存放特定服务所需的数据。目录的使用方式没有严格的规定，因此它的具体用途可以根据具体的需求和配置进行灵活定义。一般来说，管理员可以根据服务的需要自行创建子目录，以组织并存储该服务的相关数据。例如 Web 服务器的网站数据、FTP 服务器的文件存储目录等。</p>
+<p>&#x2F;tmp：临时文件目录，用于存放临时文件和临时数据。这个目录下的内容通常是瞬时的，可以被任何用户访问。这些临时文件通常是一些临时性质的数据，如缓存文件、临时日志文件以及其他不需要长期保存的中间文件。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">可删除性：/tmp 目录下的文件并不保留在系统重启之间，因此任何时候系统重新启动或定期进行清理时，/tmp 目录都会被清空。这可以确保系统的稳定性和安全性，并防止临时文件占用过多的磁盘空间。</span><br><span class="line"></span><br><span class="line">共享性：/tmp 目录是一个共享的临时文件存储区域，所有用户和应用程序都可以读取和写入该目录中的文件。这使得多个进程可以方便地在同一个临时文件中进行数据交换和通信。</span><br><span class="line"></span><br><span class="line">权限设置：默认情况下，/tmp 目录的权限设置为 1777，即所有用户都具有对目录的读写访问权限，并且只有文件的所有者才能删除自己的文件。这有助于确保临时文件的安全性和隐私性。</span><br><span class="line"></span><br><span class="line">由于 /tmp 目录是一个共享的临时文件系统，因此它可能会被滥用来存储恶意软件或进行其他安全攻击。为了增加安全性，建议定期清理 /tmp 目录中的文件，并限制对该目录的访问权限。</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;var：可变数据的目录，包含日志文件、缓存数据等。例如邮件系统的邮件内容、打印任务的文档等。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/var/log：该目录包含了系统日志文件，记录了不同服务、应用程序和系统组件的日志信息。例如，/var/log/messages 记录了整体系统的消息日志，/var/log/secure 记录了安全相关的日志。</span><br><span class="line">​</span><br><span class="line">/var/spool：该目录用于存储任务队列和临时文件，比如打印队列、邮件队列等。每个子目录都与特定的服务或应用程序相关。</span><br><span class="line">​</span><br><span class="line">/var/cache：该目录用于存放缓存文件，如软件包管理器的缓存文件、字体缓存文件等。这些缓存文件可以提高系统性能并加快相关应用程序的响应速度。</span><br><span class="line">​</span><br><span class="line">/var/lib：该目录包含了与系统应用程序和服务相关的持久化数据。例如，数据库文件、邮件服务器的数据文件等都存放在此目录下。</span><br><span class="line">​</span><br><span class="line">/var/www：该目录是 Web 服务器默认的网站根目录，用于存放网站的文件和内容。</span><br><span class="line">​</span><br><span class="line">/var/run：该目录存储系统运行时的临时文件，如守护进程的 PID 文件和 socket 文件等。这些文件通常在系统启动时由相应服务或进程自动生成。</span><br><span class="line">/var 目录是 CentOS 7 中用于存储可变数据的目录。它包含了许多不断变化的文件和目录，记录了系统运行过程中的各种状态信息、日志文件等。常见的子目录包括 /var/log（日志文件）、/var/spool（任务队列和临时文件）、/var/cache（缓存文件）、/var/lib（应用程序数据文件）、/var/www（Web 服务器网站根目录）以及 /var/run（临时文件）</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;boot：启动加载器（boot loader）相关的文件目录，包括内核、initramfs 和 grub 等启动所需的文件。一般情况下，这些文件不需要手动操作。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">内核文件（vmlinuz-<span class="emphasis">_）：/boot 目录中的以 &quot;vmlinuz-&quot; 开头的文件是操作系统的内核文件。内核是操作系统的核心组件，负责管理计算机硬件和提供系统服务。当计算机启动时，GRUB 引导程序加载并执行内核文件。</span></span><br><span class="line"><span class="emphasis">初始内存文件系统（initramfs）：/boot 目录中的以 &quot;initramfs-_</span>&quot; 开头的文件是初始内存文件系统（initramfs）文件。initramfs 是一个临时的根文件系统，它包含了启动过程中所需的设备驱动程序和工具，用于在系统引导过程中加载真正的根文件系统。</span><br><span class="line">GRUB 引导程序文件：/boot 目录中的 grub 文件夹存放了 GRUB（GRand Unified Bootloader）引导程序相关的文件。GRUB 是一个引导管理器，负责加载操作系统和其他引导选项。GRUB 的配置文件 grub.cfg 通常位于 /boot/grub2/grub.cfg 或 /boot/efi/EFI/centos/grub.cfg。</span><br><span class="line">System.map 文件：/boot 目录中的 System.map 文件是内核符号表，提供了内核的符号和地址之间的映射关系。它在调试和内核开发过程中非常有用。</span><br><span class="line">initramfs-tools 目录：/boot 目录中的 initramfs-tools 目录是一些工具和脚本的存放位置，用于创建和处理 initramfs。</span><br><span class="line">/boot 目录是 CentOS 7 中存放启动相关文件的目录。它包含了操作系统的内核文件、initramfs 文件、GRUB 引导程序文件以及其他与启动过程相关的文件和目录。这些文件和目录是操作系统启动的重要组成部分，对于系统的正常引导和运行至关重要</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;etc：系统配置文件目录，包含各种系统和应用程序的配置文件。例如网络配置文件、系统服务配置文件、用户帐户信息等等。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br></pre></td><td class="code"><pre><span class="line">/etc/passwd：这个文件包含了系统上的用户账户信息，如用户名、密码加密方式、用户 ID、用户家目录等。</span><br><span class="line">​</span><br><span class="line">/etc/group：这个文件包含了系统上的用户组信息，如组名和组 ID，以及属于每个组的用户列表。</span><br><span class="line">​</span><br><span class="line">/etc/shadow：这个文件用于存储用户账户的加密密码。只有特权用户（如 root）可以访问该文件。</span><br><span class="line">​</span><br><span class="line">/etc/hosts：这个文件用于设置主机名与 IP 地址的映射关系。可以在此文件中手动添加静态的主机名解析。</span><br><span class="line">​</span><br><span class="line">/etc/resolv.conf：这个文件包含了 DNS 解析器的配置信息，指定了域名解析所使用的 DNS 服务器。</span><br><span class="line">​</span><br><span class="line">/etc/network/interfaces 或 /etc/sysconfig/network-scripts/ifcfg-<span class="language-xml"><span class="tag">&lt;<span class="name">interface</span>&gt;</span></span>：这些文件用于配置网络接口的设置，比如 IP 地址、子网掩码、网关等。</span><br><span class="line">​</span><br><span class="line">/etc/fstab：这个文件包含了存储设备的挂载信息，定义了系统启动时需要自动挂载的文件系统。</span><br><span class="line">​</span><br><span class="line">/etc/ssh/sshd<span class="emphasis">_config：这个文件包含了 SSH 服务器的配置选项，用于设置 SSH 连接和身份验证的规则。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">/etc/yum.conf 或 /etc/yum.repos.d/：这些文件用于配置 YUM 软件包管理器的仓库源，指定了从哪里获取软件包。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">/etc/crontab 或 /etc/cron.d/：这些文件用于设置定时任务（Crontab）的调度规则，可以定期执行特定命令或脚本。</span></span><br><span class="line"><span class="emphasis">拓展：</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">/etc/security 目录包含了与系统安全相关的配置文件和目录</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">/etc/security/access.conf： 该文件用于定义用户对于系统上不同资源的访问权限。可以通过配置规则来限制或允许用户对某些资源的访问。</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">/etc/security/limits.conf： 该文件用于为用户或用户组设置系统资源的限制。可以设置用户的进程数量、文件打开数量、内存使用量等限制。</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">/etc/security/namespace.conf： 该文件用于配置命名空间的安全策略。可以控制不同用户之间如何共享命名空间以及是否允许使用特定的命名空间参数。</span></span><br><span class="line"><span class="emphasis"></span></span><br><span class="line"><span class="emphasis">/etc/security/pam_</span>env.conf： 该文件用于配置 PAM（Pluggable Authentication Modules）环境变量。可以设置用户登录时的环境变量。</span><br><span class="line"></span><br><span class="line">/etc/security/opasswd： 该文件是用于存储用户密码历史记录的文件。当用户更改密码时，旧密码将被添加到该文件中，用于密码策略的检查。</span><br><span class="line"></span><br><span class="line">/etc/security/limits.d/ 目录： 该目录包含了用于设置资源限制的附加文件。可以使用这些文件来覆盖 /etc/security/limits.conf 中的设置</span><br><span class="line"></span><br><span class="line">/etc 目录是 CentOS 7 中存放系统配置文件的目录。它包含了许多重要的配置文件，用于设置用户账户、网络接口、主机名解析、DNS 解析、存储设备挂载、SSH 服务器等各种应用程序和服务的行为和属性。这些配置文件在系统运行过程中起着关键的作用，影响着系统的性能、安全性和功能</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;lib：库文件的目录，包含共享库和内核模块。这里存放的文件被系统和程序动态链接使用，从而提供了常用的函数和程序库。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">/lib/modules：这个目录包含了加载的内核模块（驱动程序）的库文件。每个内核模块都有对应的库文件，用于提供与硬件设备或其他内核功能的交互。</span><br><span class="line">​</span><br><span class="line">/lib/udev：这个目录包含了 udev 规则和相关的库文件。udev 是一个动态设备管理器，负责处理设备的插拔、设备节点的创建和命名等任务。</span><br><span class="line">​</span><br><span class="line">/lib/firmware：这个目录包含了硬件设备所需的固件文件。固件是嵌入式在硬件设备中的软件，它包含设备的控制指令和数据。</span><br><span class="line">​</span><br><span class="line">/lib/ld-linux.so<span class="emphasis">*：这些文件是 Linux 动态链接器的库文件，用于加载和解析共享库以及执行可执行文件的操作。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">/lib/libc.so*</span>：这些文件是 C 语言库的共享库文件，提供了 C 语言标准库函数的实现。大多数应用程序都会使用这些库文件。</span><br><span class="line">​</span><br><span class="line">/lib/libpthread.so<span class="emphasis">*：这些文件是 POSIX 线程库的共享库文件，提供了线程相关函数的实现。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">/lib/libm.so*</span>：这些文件是数学库的共享库文件，提供了数学运算相关的函数的实现。</span><br><span class="line">​</span><br><span class="line">/lib/security：这个目录包含了 PAM（Pluggable Authentication Modules）的安全模块。PAM 是一种身份验证框架，用于进行用户身份验证和访问控制。</span><br><span class="line">/lib 目录是 CentOS 7 中存放共享库文件的目录。它包含了与内核模块、udev、固件、动态链接器、C 语言库、线程库、数学库和安全模块等相关的库文件。这些库文件提供了各种功能和服务，在应用程序和系统组件的开发和执行过程中发挥着重要的作用</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;media：可移动媒体设备（如光盘、USB 设备等）挂载点的目录。当可移动设备被插入计算机时，它们通常会自动挂载到这个目录下。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">/media/cdrom 或 /media/dvd：这些子目录通常用于挂载光盘驱动器中的光盘。光盘可以包含安装程序、媒体文件、软件等。</span><br><span class="line">​</span><br><span class="line">/media/usb 或 /media/<span class="language-xml"><span class="tag">&lt;<span class="name">device_name</span>&gt;</span></span>：这些子目录用于挂载 USB 驱动器或其他可移动存储设备。具体的目录名称可能根据设备的类型或名称而有所不同。</span><br><span class="line">​</span><br><span class="line">当你插入可移动媒体设备时，系统会自动创建一个相应的子目录，并将设备挂载到该目录下。你可以通过浏览 /media 目录来查看当前已挂载的设备。</span><br><span class="line">/media 目录下的子目录仅用于临时挂载设备，当设备被卸载后，这些子目录将会被自动删除</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;opt：可选软件包的安装目录，常用于安装第三方软件。在一些情况下，软件包的具体安装位置不太容易确定，这个时候可以选择安装到这个目录下。</p>
+<p>&#x2F;root：超级用户（root）的主目录。与普通用户的目录类似，主要用于保存超级用户的文件和数据。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">配置文件：/root 目录经常包含与超级用户相关的配置文件，这些配置文件可能包括 shell 配置文件（如 .bashrc）、环境变量文件（如 .bash<span class="emphasis">_profile）等。这些文件可以定义超级用户的默认环境变量、别名和命令行提示符等设置。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">系统管理脚本：超级用户通常会在 /root 目录下保存一些系统管理脚本。这些脚本可以用于自动化任务、备份和恢复操作、系统维护等。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">日志文件：某些系统服务和应用程序的日志文件可能位于 /root 目录下。这些日志文件记录了系统的运行状态、错误信息、事件等，帮助管理员进行故障排除和系统监控。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">其他文件和目录：除了上述内容外，/root 目录可能还包含其他与超级用户相关的文件和目录。这可能包括下载的文件、个人文档、临时文件等。</span></span><br><span class="line"><span class="emphasis">/root 目录只能被超级用户访问，其他普通用户无法访问该目录下的文件和目录。这是为了确保超级用户的安全和权限</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;sbin：系统管理命令的目录，只有管理员可以使用。与 &#x2F;bin 目录不同，&#x2F;sbin 目录存放的命令通常需要特殊权限才能执行。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">ifconfig: 用于配置和显示网络接口的信息，包括 IP 地址、子网掩码、MAC 地址等。</span><br><span class="line">​</span><br><span class="line">route: 用于配置和显示网络路由表，控制数据包的转发。</span><br><span class="line">​</span><br><span class="line">iptables: 用于配置 Linux 系统的防火墙规则，控制网络流量的进出。</span><br><span class="line">​</span><br><span class="line">fdisk: 用于对硬盘进行分区操作，包括创建、删除、调整分区等。</span><br><span class="line">​</span><br><span class="line">mkfs: 用于创建文件系统，将分区格式化为特定的文件系统类型，如 ext4、XFS 等。</span><br><span class="line">​</span><br><span class="line">mount: 用于挂载文件系统到指定的挂载点，使得该文件系统可以访问。</span><br><span class="line">​</span><br><span class="line">umount: 用于卸载已挂载的文件系统，将其从系统中移除。</span><br><span class="line">​</span><br><span class="line">shutdown 和 reboot: 分别用于关闭系统和重新启动系统。</span><br><span class="line">​</span><br><span class="line">useradd 和 userdel: 分别用于添加和删除系统用户。</span><br><span class="line">​</span><br><span class="line">passwd: 用于设置用户的密码。</span><br><span class="line">/sbin 目录下的命令通常只有超级用户（root 用户）才能执行，这是为了保证权限和系统安全</span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;sys 目录是一个虚拟文件系统，它提供了一种访问内核启动时相关信息的方式。该目录包含了当前系统中硬件设备、内核模块、进程等实体的相关信息，以及一些系统和内核参数的配置项。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line">/sys/block/: 包含了系统中所有块设备（如硬盘、SSD）的信息。每个块设备都有一个对应的子目录，可以查看设备状态、分区信息等。</span><br><span class="line">​</span><br><span class="line">/sys/class/: 包含了设备类别（class）相关的信息。例如，/sys/class/net 子目录包含了网络接口的信息，/sys/class/power<span class="emphasis">_supply 子目录包含了电源供应器的信息。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">/sys/devices/: 包含了系统中所有设备的信息。每个设备都有一个对应的子目录，其中包含了设备的配置、状态、驱动程序等信息。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">/sys/fs/: 包含了文件系统相关的信息。例如，/sys/fs/cgroup 子目录包含了控制组（cgroup）的相关信息，/sys/fs/ext4 子目录包含了 ext4 文件系统相关信息。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">/sys/kernel/: 包含了内核相关的信息。例如，/sys/kernel/debug 子目录用于提供内核调试相关的信息，/sys/kernel/mm 子目录提供了内存管理相关的信息。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">/sys/module/: 包含了内核模块的信息。每个加载的内核模块都有一个对应的子目录，可以查看模块的参数、状态等。</span></span><br><span class="line"><span class="emphasis">​</span></span><br><span class="line"><span class="emphasis">/sys/power/: 包含了系统电源管理相关的信息。例如，/sys/power/state 文件用于控制系统的电源状态（如睡眠、挂起）。</span></span><br><span class="line"><span class="emphasis">/sys 目录中的文件和目录是动态生成的，并且大部分只能被超级用户（root 用户）访问</span></span><br></pre></td></tr></table></figure>
+
+<p>&#x2F;usr：用户程序和文件的目录，包含系统级应用程序、库文件和文档。这个目录通常占用了主机上大部分的空间。</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">/usr/bin/: 包含了大部分用户可执行的命令。这些命令通常不需要特殊的权限就可以执行。</span><br><span class="line">​</span><br><span class="line">/usr/sbin/: 包含了一些系统管理员（超级用户）使用的系统管理命令。这些命令通常需要超级用户权限才能执行。</span><br><span class="line">​</span><br><span class="line">/usr/lib/: 包含了系统和应用程序所需的共享库和支持文件。其中包含了很多扩展名为 .so 的共享库文件。</span><br><span class="line">​</span><br><span class="line">/usr/share/: 包含了系统和应用程序所需的共享数据和文档文件。其中包括帮助文件、文档、图标等。</span><br><span class="line">​</span><br><span class="line">/usr/local/: 包含了用户自己编译或安装的软件和文件。这些软件通常与操作系统自带的软件有所区别，也不会被操作系统的升级覆盖掉。</span><br><span class="line">​</span><br><span class="line">/usr/include/: 包含了 C 和 C++ 程序所需的头文件。</span><br><span class="line">/usr 目录下的文件和目录通常不会被操作系统本身所修改，因此，用户可以在其中安装自己所需的软件或文件，而不会影响操作系统的正常运行</span><br></pre></td></tr></table></figure>
+
+<h1 id="常用命令"><a href="#常用命令" class="headerlink" title="常用命令"></a>常用命令</h1><p><a target="_blank" rel="noopener" href="https://copy.sh/v86/?profile=linux26">Linux - Virtual x86</a>  |  <a target="_blank" rel="noopener" href="https://www.linuxcool.com/">Linux命令大全(手册) – 真正好用的Linux命令在线查询网站</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">ctrl+Backspace  ctrl+w</span><br><span class="line">cls  		ctrl+L</span><br></pre></td></tr></table></figure>
+
+<h3 id="总体内存占用的查看"><a href="#总体内存占用的查看" class="headerlink" title="总体内存占用的查看"></a>总体内存占用的查看</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">free -m</span><br><span class="line">free -h</span><br></pre></td></tr></table></figure>
+
+<p>（1） free 命令默认是以 kb 为单位显示的，可以用 free -m 用 Mb 单位来显示。</p>
+<p>（2） Mem 行 ：   total &#x3D; used  + free    其中 buffers 和 cached 虽然计算在 used 内， 但其实为可用内存。</p>
+<p>（3） Mem 下一行：used 为真实已占内存，free 为真实可用内存。</p>
+<p>（4）Swap：内存交换区的使用情况。</p>
+<h3 id="查看内存占用前五的进程"><a href="#查看内存占用前五的进程" class="headerlink" title="查看内存占用前五的进程"></a>查看内存占用前五的进程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps auxw | head -1;ps auxw|sort -rn -k4|head -5</span><br></pre></td></tr></table></figure>
+
+<p>ps auxw 显示系统资源占用情况；</p>
+<p>head -1 表示显示第一列，即标题列；</p>
+<p>sort -r 表示反向排序，-n 表示按数字排序，-k4 表示列的第 4 个字符。</p>
+<h3 id="查看-CPU-占用前三的进程"><a href="#查看-CPU-占用前三的进程" class="headerlink" title="查看 CPU 占用前三的进程"></a>查看 CPU 占用前三的进程</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps auxw|head -1;ps auxw|sort -rn -k3|head -3</span><br></pre></td></tr></table></figure>
+
+<p>类似内存占用命令，只是选择的资源占用情况的第 3 列（即 cpu），用“-k3”表示。</p>
+<h3 id="查看系统整体的负载"><a href="#查看系统整体的负载" class="headerlink" title="查看系统整体的负载"></a>查看系统整体的负载</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">top</span><br></pre></td></tr></table></figure>
+
+<p>（1）第一行： 系统时间 + 系统运行时间 + 几个用户 + 1&#x2F;5&#x2F;15 分钟系统平均负载</p>
+<p>（2）第二行：进程总数 (total) + 正在运行进程数 (running) + 睡眠进程数 (sleeping) + 停止的进程数 (stopped)+ 僵尸进程数 (zombie)</p>
+<p>（3）第三行：用户空间 CPU 占比 (us) + 内核空间 CPU 占比 (sy)+ CPU 空置率 (id)</p>
+<p>注解：</p>
+<p>PID ：进程 ID</p>
+<p>USER ：用户名</p>
+<p>PR ：优先级</p>
+<p>NI ：负值表示高优先级，正值表示低优先级。</p>
+<p>VIRT ：虚拟内存</p>
+<p>RES ： 真实内存</p>
+<p>SHR ：共享内存</p>
+<p>S ：进程状态 D&#x3D;不可中断的睡眠状态； R&#x3D;运行； S&#x3D;睡眠 ；T&#x3D;跟踪&#x2F;停止； Z&#x3D;僵尸进程</p>
+<p>参数：</p>
+<p>top -d 2 ：每隔 2 秒显式所有进程的资源占用情况</p>
+<p>top -c  ：每隔 5 秒显式进程的资源占用情况，并显示进程的命令行参数 (默认只有进程名)</p>
+<p>top -p 12345 -p 6789：每隔 5 秒显示 pid 是 12345 和 pid 是 6789 的两个进程的资源占用情况</p>
+<p>top -d 2 -c -p 123456 ：每隔 2 秒显示 pid 是 12345 的进程的资源使用情况，并显式该进程启动的命令行参数</p>
+<h3 id="显示文件系统的磁盘空间使用情况"><a href="#显示文件系统的磁盘空间使用情况" class="headerlink" title="显示文件系统的磁盘空间使用情况"></a>显示文件系统的磁盘空间使用情况</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">df -h</span><br></pre></td></tr></table></figure>
+
+<h3 id="计算指定目录或文件所占用的磁盘空间大小"><a href="#计算指定目录或文件所占用的磁盘空间大小" class="headerlink" title="计算指定目录或文件所占用的磁盘空间大小"></a>计算指定目录或文件所占用的磁盘空间大小</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">du -sh /path</span><br></pre></td></tr></table></figure>
+
+<p><code>-s</code> 选项表示只显示总体大小而不列出子目录；<code>-h</code> 选项将结果转化为人类可读格式。</p>
+<h3 id="通过-grep-过滤器获取特定进程的状态信息"><a href="#通过-grep-过滤器获取特定进程的状态信息" class="headerlink" title="通过 grep 过滤器获取特定进程的状态信息"></a>通过 grep 过滤器获取特定进程的状态信息</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">ps aux | grep process_name</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看架构"><a href="#查看架构" class="headerlink" title="查看架构"></a>查看架构</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat  /proc/version</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置时区"><a href="#设置时区" class="headerlink" title="设置时区"></a>设置时区</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo timedatectl set-timezone Asia/Shanghai</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看端口"><a href="#查看端口" class="headerlink" title="查看端口"></a>查看端口</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">lsof -i :端口号</span><br><span class="line">netstat -tunlp | grep:端口号</span><br></pre></td></tr></table></figure>
+
+<h3 id="md5"><a href="#md5" class="headerlink" title="md5"></a>md5</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">md5sum frpc</span><br></pre></td></tr></table></figure>
+
+<h3 id="安装所需组件"><a href="#安装所需组件" class="headerlink" title="安装所需组件"></a>安装所需组件</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 以下为 CentOS 命令</span></span></span><br><span class="line">yum update -y </span><br><span class="line">yum install curl wget -y</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 以下为 Debian / Ubuntu 命令</span></span></span><br><span class="line">apt update -y </span><br><span class="line">apt install curl wget -y</span><br></pre></td></tr></table></figure>
+
+<h3 id="控制台乱码"><a href="#控制台乱码" class="headerlink" title="控制台乱码"></a>控制台乱码</h3><p>远程工具看到的是乱码才需要（某些 VNC 工具不支持导致的乱码换工具即刻，折腾半天），命令：</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">state &lt;文件&gt;</span><br><span class="line">date</span><br></pre></td></tr></table></figure>
+
+<p>查看当前系统语言</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">echo $LANG</span><br><span class="line">locale</span><br></pre></td></tr></table></figure>
+
+<p>查看可用的语言包 <code>locale -a |grep zh_CN</code></p>
+<p>未发现 zh_CN.utf8 中文包<br>通过 UTF-8 编码格式，对 zh_CN 进行编码，生成 zh_CN.UTF-8 字符集：<br><code>localedef -i zh_CN -f UTF-8 zh_CN.UTF-8</code><br>下载安装中文语言包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">yum -y install fontconfig mkfontdir</span><br><span class="line">或</span><br><span class="line">yum install kde-l10n-Chinese</span><br></pre></td></tr></table></figure>
+
+<p>永久修改<br>在 &#x2F;etc&#x2F;profile 或 ~&#x2F;.bashrc 文件末尾新增 2 行</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">echo &quot;export LANG=zh_CN.utf8&quot; &gt;&gt; /etc/profile</span><br><span class="line">echo &quot;export LC_ALL=zh_CN.utf8&quot; &gt;&gt; /etc/profile</span><br><span class="line">source /etc/profile  # 保存后执行 source 命令刷新配置，使之生效</span><br></pre></td></tr></table></figure>
+
+<p>本机的语言环境并不是中文</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">vim /etc/locale.conf</span><br><span class="line">source /etc/locale.conf</span><br><span class="line">或</span><br><span class="line">localectl set-locale LANG=zh_CN</span><br></pre></td></tr></table></figure>
+
+<h3 id="查看系统架构"><a href="#查看系统架构" class="headerlink" title="查看系统架构"></a>查看系统架构</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">uname <span class="operator">-</span>a</span><br></pre></td></tr></table></figure>
+
+<table>
+<thead>
+<tr>
+<th>平台</th>
+<th>对应 FRPC</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>i386</td>
+<td>i386, i686</td>
+</tr>
+<tr>
+<td>amd64</td>
+<td>x86_64</td>
+</tr>
+<tr>
+<td>arm_garbage</td>
+<td>arm, armel</td>
+</tr>
+<tr>
+<td>armv7</td>
+<td>armv7l, armhf</td>
+</tr>
+<tr>
+<td>arm64</td>
+<td>aarch64,armv8l</td>
+</tr>
+<tr>
+<td>mips</td>
+<td>mips</td>
+</tr>
+<tr>
+<td>mips64</td>
+<td>mips64</td>
+</tr>
+</tbody></table>
+<p>下载文件</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/bin</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果您使用 wget，用以下命令:</span></span><br><span class="line">wget &lt;url&gt;</span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">如果上面命令报错 / 您喜欢用 curl，请使用:</span></span><br><span class="line">curl &lt;urL&gt;</span><br></pre></td></tr></table></figure>
+
+<p>下载成功后，使用该命令解压:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar -zxvf &lt;tar.gz文件&gt;</span><br></pre></td></tr></table></figure>
+
+<p>解压后输入下面的命令设置权限:</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">chmod 755 &lt;解压后出来文件名&gt;</span><br><span class="line">ls -ls &lt;解压后出来文件名&gt;</span><br></pre></td></tr></table></figure>
+
+<p>反馈的权限应该是: -rwxr-xr-x</p>
+<p>软件更新</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum update</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu&#x2F;Debian</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<h2 id="防火墙"><a href="#防火墙" class="headerlink" title="防火墙"></a>防火墙</h2><ul>
+<li>CentOS 6 系列使用 iptables</li>
+<li>Centos 7 使用 firewalld 代替了原来的 iptables</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash"><span class="comment"># 没有安装防火墙</span></span></span><br><span class="line">yum -y install firewalld</span><br></pre></td></tr></table></figure>
+
+<p>firewall</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --zone=public --add-port=80/tcp --permanent ##开启端口</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">zone <span class="comment">##作用域</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">add-port=80/tcp <span class="comment">##添加端口，格式为：端口/通讯协议</span></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">permanent <span class="comment">##永久生效，没有此参数重启后失效</span></span></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">firewall-cmd --state                           ##查看防火墙状态，（关闭后显示notrunning，开启后显示running）</span><br><span class="line">firewall-cmd --reload                          ##重启firewall，重新载入配置，比如添加规则之后，需要执行此命令</span><br><span class="line">firewall-cmd --list-ports                      ##查看已经开放的端口</span><br><span class="line">firewall-cmd --query-port=8080/tcp             ## 查询端口是否开放</span><br><span class="line">firewall-cmd --permanent --remove-port=8080/tcp # 移除端口</span><br><span class="line">firewall-cmd --list-all                        ## 查看防火墙规则</span><br><span class="line">firewall-cmd --get-zones                       ##列出支持的zone</span><br><span class="line">firewall-cmd --get-services                    ##列出支持的服务，在列表中的服务是放行的</span><br><span class="line">firewall-cmd --query-service ftp               ##查看ftp服务是否支持，返回yes或者no</span><br><span class="line">firewall-cmd --add-service=ftp                 ##临时开放ftp服务</span><br><span class="line">firewall-cmd --add-service=ftp --permanent     ##永久开放ftp服务</span><br><span class="line">firewall-cmd --remove-service=ftp --permanent  ##永久移除ftp服务</span><br><span class="line">firewall-cmd --add-port=80/tcp --permanent     ##永久添加80端口</span><br><span class="line">iptables -L -n                                 ##查看规则，这个命令是和iptables的相同的</span><br><span class="line">man firewall-cmd                               ##查看帮助</span><br></pre></td></tr></table></figure>
+
+<p>systemctl 命令操作防火墙</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">启动一个服务：systemctl start firewalld.service</span><br><span class="line">关闭一个服务：systemctl stop firewalld.service</span><br><span class="line">重启一个服务：systemctl restart firewalld.service</span><br><span class="line">显示一个服务的状态：systemctl status firewalld.service</span><br><span class="line">在开机时启用一个服务：systemctl enable firewalld.service</span><br><span class="line">在开机时禁用一个服务：systemctl disable firewalld.service</span><br><span class="line">查看服务是否开机启动：systemctl is-enabled firewalld.service;echo $?</span><br><span class="line">查看已启动的服务列表：systemctl list-unit-files|grep enabled</span><br></pre></td></tr></table></figure>
+
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"># 开启</span><br><span class="line">service firewalld start</span><br><span class="line"># 重启</span><br><span class="line">service firewalld restart</span><br><span class="line"># 关闭</span><br><span class="line">service firewalld stop</span><br><span class="line"></span><br><span class="line"># service iptables status（centos6）</span><br></pre></td></tr></table></figure>
+
+<h2 id="脚本"><a href="#脚本" class="headerlink" title="脚本"></a>脚本</h2><p>一键更换软件源</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -sSL https://linuxmirrors.cn/main.sh)</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://linuxmirrors.cn/">LinuxMirrors · 让换源更简单 - LinuxMirrors</a>  |  <a target="_blank" rel="noopener" href="https://github.com/SuperManito/LinuxMirrors">Site Unreachable</a></p>
+<p>测试</p>
+<ul>
+<li>显示当前测试的各种系统信息；</li>
+<li>取自世界多处的知名数据中心的测试点，下载测试比较全面；</li>
+<li>支持 IPv6 下载测速；</li>
+<li>IO 测试三次，并显示平均值。</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">curl -Lso- bench.sh | bash</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">或者</span></span><br><span class="line">wget -qO- 86.re/bench.sh | bash</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">或者</span></span><br><span class="line">curl -so- 86.re/bench.sh | bash</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tgph.319226.xyz/file/b50a7e5ec785d2f4b9bf4.png" alt="image.png"></p>
+<h2 id="三网回程路由"><a href="#三网回程路由" class="headerlink" title="三网回程路由"></a>三网回程路由</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl https://raw.githubusercontent.com/zhucaidan/mtr_trace/main/mtr_trace.sh|bash</span><br><span class="line">或者</span><br><span class="line">curl http://tutu.ovh/bash/returnroute/test.sh|bash</span><br></pre></td></tr></table></figure>
+
+<p>这个会更新软件包还是什么的，下载东西半天</p>
+<p><img src="https://tgph.319226.xyz/file/3a79c57b76a79b446cc50.png" alt="image.png"></p>
+<h2 id="国内三网测速"><a href="#国内三网测速" class="headerlink" title="国内三网测速"></a>国内三网测速</h2><figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Lso- https://raw.githubusercontent.com/BlueSkyXN/SpeedTestCN/main/superspeed.sh)</span><br></pre></td></tr></table></figure>
+
+<p>或者</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Lso- https://git.io/superspeed)</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tgph.319226.xyz/file/d5674960a86df0b273424.png" alt="image.png"></p>
+<h2 id="国外测速"><a href="#国外测速" class="headerlink" title="国外测速"></a>国外测速</h2><p>可以测试到国外一些城市的下载速度。</p>
+<figure class="highlight text"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -LsO bench.monster/speedtest.sh; bash speedtest.sh -Global</span><br></pre></td></tr></table></figure>
+
+<h2 id="融合怪命令"><a href="#融合怪命令" class="headerlink" title="融合怪命令"></a>融合怪命令</h2><p><a target="_blank" rel="noopener" href="https://github.com/spiritLHLS/ecs">Fetching Title#mwm2</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://gitlab.com/spiritysdx/za/-/raw/main/ecs.sh -o ecs.sh &amp;&amp; chmod +x ecs.sh &amp;&amp; bash ecs.sh</span><br><span class="line">或</span><br><span class="line">curl -L https://github.com/spiritLHLS/ecs/raw/main/ecs.sh -o ecs.sh &amp;&amp; chmod +x ecs.sh &amp;&amp; bash ecs.sh</span><br></pre></td></tr></table></figure>
+
+
+<p><a target="_blank" rel="noopener" href="https://github.com/spiritLHLS/one-click-installation-script">一键修复各种系统原生bug的仓库</a></p>
+<h2 id="寶塔面板開心版"><a href="#寶塔面板開心版" class="headerlink" title="寶塔面板開心版"></a>寶塔面板開心版</h2><p>日常命令 bt<br>CentOS7 安装命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">yum install -y wget &amp;&amp; wget -O install.sh http://io.bt.sy/install/install_6.0.sh &amp;&amp; sh install.sh</span><br></pre></td></tr></table></figure>
+
+<p>Ubuntu Deepin 安装命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O install.sh http://io.bt.sy/install/install-ubuntu_6.0.sh &amp;&amp; sudo bash install.sh</span><br></pre></td></tr></table></figure>
+
+<p>Debian 安装命令</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O install.sh http://io.bt.sy/install/install-ubuntu_6.0.sh &amp;&amp; bash install.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="哪吒面板"><a href="#哪吒面板" class="headerlink" title="哪吒面板"></a>哪吒面板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -L https://raw.githubusercontent.com/naiba/nezha/master/script/install.sh  -o nezha.sh &amp;&amp; chmod +x nezha.sh &amp;&amp; sudo ./nezha.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="極光面板"><a href="#極光面板" class="headerlink" title="極光面板"></a>極光面板</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -fsSL https://raw.githubusercontent.com/Aurora-Admin-Panel/deploy/main/install.sh)</span><br></pre></td></tr></table></figure>
+
+<h2 id="WARP"><a href="#WARP" class="headerlink" title="WARP"></a>WARP</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">wget -N https://gitlab.com/fscarmen/warp/-/raw/main/menu.sh &amp;&amp; bash menu.sh</span><br><span class="line">或</span><br><span class="line">wget -N https://gitlab.com/Misaka-blog/warp-script/-/raw/main/warp.sh &amp;&amp; bash warp.sh</span><br></pre></td></tr></table></figure>
+
+<h2 id="Netflix-檢測"><a href="#Netflix-檢測" class="headerlink" title="Netflix 檢測"></a>Netflix 檢測</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -O nf https://github.com/sjlleo/netflix-verify/releases/download/2.01/nf_2.01_linux_amd64 &amp;&amp; chmod +x nf &amp;&amp; clear &amp;&amp; ./nf</span><br></pre></td></tr></table></figure>
+
+<h2 id="XrayR"><a href="#XrayR" class="headerlink" title="XrayR"></a>XrayR</h2><p>日常命令 xrayr</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/XrayR-project/XrayR-release/master/install.sh)</span><br></pre></td></tr></table></figure>
+
+<h2 id="科技-lion-的脚本"><a href="#科技-lion-的脚本" class="headerlink" title="科技 lion 的脚本"></a>科技 lion 的脚本</h2><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sS -O https://raw.githubusercontent.com/kejilion/sh/main/kejilion.sh &amp;&amp; chmod +x kejilion.sh &amp;&amp; ./kejilion.sh</span><br></pre></td></tr></table></figure>
+<h2 id="x-ui"><a href="#x-ui" class="headerlink" title="x-ui"></a>x-ui</h2><p><a target="_blank" rel="noopener" href="https://github.com/FranzKafkaYu/x-ui/">仓库</a>  |  <a target="_blank" rel="noopener" href="https://v2rayssr.com/reality.html">参考</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">bash &lt;(curl -Ls https://raw.githubusercontent.com/FranzKafkaYu/x-ui/master/install.sh)</span><br></pre></td></tr></table></figure>
+
+<h1 id="Rclone-挂载"><a href="#Rclone-挂载" class="headerlink" title="Rclone 挂载"></a>Rclone 挂载</h1><p>rclone 命令可以参考这篇文章：<a target="_blank" rel="noopener" href="https://blog.tsinbei.com/archives/1445/">Rclone 使用教程 - 清北博客</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 rclone</span></span><br><span class="line">curl https://rclone.org/install.sh | sudo bash</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">安装 fuse, 如果 apt 报错用 yum</span></span><br><span class="line">apt install fuse</span><br></pre></td></tr></table></figure>
+
+<h3 id="配置坚果云"><a href="#配置坚果云" class="headerlink" title="配置坚果云"></a>配置坚果云</h3><p>坚果云添加应用，获得应用密码</p>
+<p>配置参考： <a target="_blank" rel="noopener" href="https://blog.csdn.net/csdn_life18/article/details/127234864">rClone 挂载Webdav_rclone webdav-CSDN博客</a></p>
+<p>其他网盘： <a target="_blank" rel="noopener" href="https://blog.csdn.net/Roger_Spencer/article/details/133971914">Onedrive</a></p>
+<h3 id="挂载"><a href="#挂载" class="headerlink" title="挂载"></a>挂载</h3><h4 id="手动挂载"><a href="#手动挂载" class="headerlink" title="手动挂载"></a>手动挂载</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">手动挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">rclone mount &lt;网盘名称:网盘路径&gt; &lt;本地路径&gt; [参数] --daemon</span></span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">取消挂载</span></span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">fusermount -qzu &lt;本地路径&gt;</span></span><br><span class="line"></span><br><span class="line">mkdir /mnt/rclone_bitwarden_backup</span><br><span class="line"></span><br><span class="line">rclone mount jianguoyun:/bitwarden_backup /mnt/rclone_bitwarden_backup --allow-non-empty --daemon --vfs-cache-mode full --log-file /var/log/rclone_bitwarden_backup.log</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>查看挂载情况</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">查看挂载情况</span></span><br><span class="line">df -h</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">验证配置，如果正确能正常获取到网盘文件列表</span></span><br><span class="line">rclone ls jianguoyun:/</span><br></pre></td></tr></table></figure>
+
+<p>如果没有成功，考虑 <code>tail -f /var/log/rclone_bitwarden_backup.log</code> ，查看是不是缺少什么</p>
+<p>比如我用 CentOS7 测试就需要 <code>yum install fuse3</code></p>
+<h4 id="开机自动挂载"><a href="#开机自动挂载" class="headerlink" title="开机自动挂载"></a>开机自动挂载</h4><ul>
+<li>下载并编辑自启脚本</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -N git.io/rcloned &amp;&amp; nano rcloned</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>修改内容：</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">NAME=&quot;Onedrive&quot; #Rclone配置时填写的name</span><br><span class="line">REMOTE=&#x27;&#x27;  #远程文件夹，网盘里的挂载的一个文件夹，留空为整个网盘</span><br><span class="line">LOCAL=&#x27;/Onedrive&#x27;  #挂载地址，VPS本地挂载目录</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>设置开机自启</li>
+</ul>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">mv rcloned /etc/init.d/rcloned</span><br><span class="line">chmod +x /etc/init.d/rcloned</span><br><span class="line">update-rc.d -f rcloned defaults # Debian/Ubuntu</span><br><span class="line">chkconfig rcloned on # CentOS</span><br><span class="line">bash /etc/init.d/rcloned start</span><br></pre></td></tr></table></figure>
+
+<p>看到 <code>[信息] rclone 启动成功 !</code> 即可。</p>
+<h4 id="管理"><a href="#管理" class="headerlink" title="管理"></a>管理</h4><p>开始挂载 <code>bash /etc/init.d/rcloned start</code></p>
+<p>停止挂载 <code>bash /etc/init.d/rcloned stop</code></p>
+<p>重新挂载 <code>bash /etc/init.d/rcloned restart</code></p>
+<p>查看日志 <code>tail -f /$HOME/.rclone/rcloned.log</code></p>
+<p>查看 Rclone 配置文件位置</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone config file</span><br></pre></td></tr></table></figure>
+
+
+<h4 id="卸载自启挂载"><a href="#卸载自启挂载" class="headerlink" title="卸载自启挂载"></a>卸载自启挂载</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">bash /etc/init.d/rcloned stop</span><br><span class="line">update-rc.d -f rcloned remove # Debian/Ubuntu</span><br><span class="line">chkconfig rcloned off # CentOS</span><br><span class="line">rm -f /etc/init.d/rcloned</span><br></pre></td></tr></table></figure>
+
+<h3 id="设置定时同步"><a href="#设置定时同步" class="headerlink" title="设置定时同步"></a>设置定时同步</h3><p>同步脚本</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">rclone copy /opt/volume_docker/bitwarden jianguoyun:/bitwarden_backup</span><br></pre></td></tr></table></figure>
+
+<p>再搭配一个 cron 任务即可，因为有宝塔，所以我用的宝塔的计划任务</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cjchn.github.io">CJ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cjchn.github.io/posts/20231023084835-linux.html">https://cjchn.github.io/posts/20231023084835-linux.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cjchn.github.io" target="_blank">CJ's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20231023084904-7273cdc.html" title="Maven"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7LJER.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Maven</div></div></a></div><div class="next-post pull-right"><a href="/posts/20231023084816-299e64ba.html" title="Junit"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Junit</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CJ</div><div class="author-info__description">保持正念，相信自己会越来越好</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2675851908&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://github.com/cjchn" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/302998641" target="_blank" title="视频"><i class="fab fa-youtube" style="color: #24292e;"></i></a><a class="social-icon" href="https://tgph.319226.xyz/" target="_blank" title="图床"><i class="fa-solid fa-image" style="color: #24292e;"></i></a><a class="social-icon" href="https://onedrive.319226.xyz/" target="_blank" title="云盘"><i class="fa-solid fa-cloud" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%96%B0%E5%BB%BA%E8%99%9A%E6%8B%9F%E6%9C%BA%E9%85%8D%E7%BD%AE%E7%BD%91%E7%BB%9C"><span class="toc-number">1.</span> <span class="toc-text">新建虚拟机配置网络</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E5%90%84%E7%B1%BB%E8%BD%AF%E4%BB%B6"><span class="toc-number"></span> <span class="toc-text">安装各类软件</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#Linux-%E5%AE%89%E8%A3%85-Maven"><span class="toc-number">1.</span> <span class="toc-text">Linux 安装 Maven</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#yum-%E5%AE%89%E8%A3%85-Docker"><span class="toc-number">2.</span> <span class="toc-text">yum 安装 Docker</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%88%9B%E5%BB%BA-root-%E7%94%A8%E6%88%B7"><span class="toc-number"></span> <span class="toc-text">创建 root 用户</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#linux-%E4%B8%8B%E5%90%84%E7%9B%AE%E5%BD%95%E7%9A%84%E5%A4%A7%E6%A6%82%E5%90%AB%E4%B9%89"><span class="toc-number"></span> <span class="toc-text">linux 下各目录的大概含义</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B8%B8%E7%94%A8%E5%91%BD%E4%BB%A4"><span class="toc-number"></span> <span class="toc-text">常用命令</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%80%BB%E4%BD%93%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E7%9A%84%E6%9F%A5%E7%9C%8B"><span class="toc-number">1.</span> <span class="toc-text">总体内存占用的查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E5%86%85%E5%AD%98%E5%8D%A0%E7%94%A8%E5%89%8D%E4%BA%94%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-number">2.</span> <span class="toc-text">查看内存占用前五的进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B-CPU-%E5%8D%A0%E7%94%A8%E5%89%8D%E4%B8%89%E7%9A%84%E8%BF%9B%E7%A8%8B"><span class="toc-number">3.</span> <span class="toc-text">查看 CPU 占用前三的进程</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%95%B4%E4%BD%93%E7%9A%84%E8%B4%9F%E8%BD%BD"><span class="toc-number">4.</span> <span class="toc-text">查看系统整体的负载</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%98%BE%E7%A4%BA%E6%96%87%E4%BB%B6%E7%B3%BB%E7%BB%9F%E7%9A%84%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E4%BD%BF%E7%94%A8%E6%83%85%E5%86%B5"><span class="toc-number">5.</span> <span class="toc-text">显示文件系统的磁盘空间使用情况</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%A1%E7%AE%97%E6%8C%87%E5%AE%9A%E7%9B%AE%E5%BD%95%E6%88%96%E6%96%87%E4%BB%B6%E6%89%80%E5%8D%A0%E7%94%A8%E7%9A%84%E7%A3%81%E7%9B%98%E7%A9%BA%E9%97%B4%E5%A4%A7%E5%B0%8F"><span class="toc-number">6.</span> <span class="toc-text">计算指定目录或文件所占用的磁盘空间大小</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%80%9A%E8%BF%87-grep-%E8%BF%87%E6%BB%A4%E5%99%A8%E8%8E%B7%E5%8F%96%E7%89%B9%E5%AE%9A%E8%BF%9B%E7%A8%8B%E7%9A%84%E7%8A%B6%E6%80%81%E4%BF%A1%E6%81%AF"><span class="toc-number">7.</span> <span class="toc-text">通过 grep 过滤器获取特定进程的状态信息</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%9E%B6%E6%9E%84"><span class="toc-number">8.</span> <span class="toc-text">查看架构</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E6%97%B6%E5%8C%BA"><span class="toc-number">9.</span> <span class="toc-text">设置时区</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%AB%AF%E5%8F%A3"><span class="toc-number">10.</span> <span class="toc-text">查看端口</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#md5"><span class="toc-number">11.</span> <span class="toc-text">md5</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E6%89%80%E9%9C%80%E7%BB%84%E4%BB%B6"><span class="toc-number">12.</span> <span class="toc-text">安装所需组件</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8E%A7%E5%88%B6%E5%8F%B0%E4%B9%B1%E7%A0%81"><span class="toc-number">13.</span> <span class="toc-text">控制台乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E7%B3%BB%E7%BB%9F%E6%9E%B6%E6%9E%84"><span class="toc-number">14.</span> <span class="toc-text">查看系统架构</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%98%B2%E7%81%AB%E5%A2%99"><span class="toc-number"></span> <span class="toc-text">防火墙</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%84%9A%E6%9C%AC"><span class="toc-number"></span> <span class="toc-text">脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B8%89%E7%BD%91%E5%9B%9E%E7%A8%8B%E8%B7%AF%E7%94%B1"><span class="toc-number"></span> <span class="toc-text">三网回程路由</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BD%E5%86%85%E4%B8%89%E7%BD%91%E6%B5%8B%E9%80%9F"><span class="toc-number"></span> <span class="toc-text">国内三网测速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%9B%BD%E5%A4%96%E6%B5%8B%E9%80%9F"><span class="toc-number"></span> <span class="toc-text">国外测速</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%9E%8D%E5%90%88%E6%80%AA%E5%91%BD%E4%BB%A4"><span class="toc-number"></span> <span class="toc-text">融合怪命令</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AF%B6%E5%A1%94%E9%9D%A2%E6%9D%BF%E9%96%8B%E5%BF%83%E7%89%88"><span class="toc-number"></span> <span class="toc-text">寶塔面板開心版</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%93%AA%E5%90%92%E9%9D%A2%E6%9D%BF"><span class="toc-number"></span> <span class="toc-text">哪吒面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%A5%B5%E5%85%89%E9%9D%A2%E6%9D%BF"><span class="toc-number"></span> <span class="toc-text">極光面板</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#WARP"><span class="toc-number"></span> <span class="toc-text">WARP</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#Netflix-%E6%AA%A2%E6%B8%AC"><span class="toc-number"></span> <span class="toc-text">Netflix 檢測</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#XrayR"><span class="toc-number"></span> <span class="toc-text">XrayR</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E7%A7%91%E6%8A%80-lion-%E7%9A%84%E8%84%9A%E6%9C%AC"><span class="toc-number"></span> <span class="toc-text">科技 lion 的脚本</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#x-ui"><span class="toc-number"></span> <span class="toc-text">x-ui</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Rclone-%E6%8C%82%E8%BD%BD"><span class="toc-number"></span> <span class="toc-text">Rclone 挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE%E5%9D%9A%E6%9E%9C%E4%BA%91"><span class="toc-number">1.</span> <span class="toc-text">配置坚果云</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8C%82%E8%BD%BD"><span class="toc-number">2.</span> <span class="toc-text">挂载</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%89%8B%E5%8A%A8%E6%8C%82%E8%BD%BD"><span class="toc-number">2.1.</span> <span class="toc-text">手动挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BC%80%E6%9C%BA%E8%87%AA%E5%8A%A8%E6%8C%82%E8%BD%BD"><span class="toc-number">2.2.</span> <span class="toc-text">开机自动挂载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AE%A1%E7%90%86"><span class="toc-number">2.3.</span> <span class="toc-text">管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8D%B8%E8%BD%BD%E8%87%AA%E5%90%AF%E6%8C%82%E8%BD%BD"><span class="toc-number">2.4.</span> <span class="toc-text">卸载自启挂载</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE%E5%AE%9A%E6%97%B6%E5%90%8C%E6%AD%A5"><span class="toc-number">3.</span> <span class="toc-text">设置定时同步</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231229062330-416f6fc3.html" title="NewPost">NewPost</a><time datetime="2023-12-29T06:23:30.000Z" title="发表于 2023-12-29 14:23:30">2023-12-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231222053433-b84b57db.html" title="Html">Html</a><time datetime="2023-12-22T05:34:33.000Z" title="发表于 2023-12-22 13:34:33">2023-12-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231215080353-36687561.html" title="关于音乐">关于音乐</a><time datetime="2023-12-15T08:03:53.000Z" title="发表于 2023-12-15 16:03:53">2023-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20231211023548-74516b02.html" title="office"><img src="https://vip.helloimg.com/images/2023/12/15/o7AvhR.md.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="office"/></a><div class="content"><a class="title" href="/posts/20231211023548-74516b02.html" title="office">office</a><time datetime="2023-12-11T02:35:48.000Z" title="发表于 2023-12-11 10:35:48">2023-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231207051738-3fb16ec5.html" title="人大金仓">人大金仓</a><time datetime="2023-12-07T05:17:38.000Z" title="发表于 2023-12-07 13:17:38">2023-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By CJ</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><span class="scroll-percent"></span><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.2/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><div class="aplayer no-destroy" data-id="2024518101" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-mini="true"> </div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.17.1/algoliasearch-lite.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.56.1/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div></body></html>

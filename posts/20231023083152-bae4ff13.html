@@ -1,0 +1,367 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>PostgreSQL | CJ's Blog</title><meta name="author" content="CJ"><meta name="copyright" content="CJ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="API时间函数   时间 标准 简写 单数    年 Years Y year   月 Months M Month   周 Weeks W Week   天 Days D Day   小时 Hours H Hour   分钟 Minutes M Minute   秒 Seconds S Second   获取时间123456789101112--标准时间函数select now();2022-0">
+<meta property="og:type" content="article">
+<meta property="og:title" content="PostgreSQL">
+<meta property="og:url" content="https://cjchn.github.io/posts/20231023083152-bae4ff13.html">
+<meta property="og:site_name" content="CJ&#39;s Blog">
+<meta property="og:description" content="API时间函数   时间 标准 简写 单数    年 Years Y year   月 Months M Month   周 Weeks W Week   天 Days D Day   小时 Hours H Hour   分钟 Minutes M Minute   秒 Seconds S Second   获取时间123456789101112--标准时间函数select now();2022-0">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://vip.helloimg.com/images/2023/12/15/o7LnAc.jpg">
+<meta property="article:published_time" content="2023-10-23T08:31:52.000Z">
+<meta property="article:modified_time" content="2024-01-04T08:19:42.761Z">
+<meta property="article:author" content="CJ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vip.helloimg.com/images/2023/12/15/o7LnAc.jpg"><link rel="shortcut icon" href="https://imgcdn.319226.xyz/202401041503387.png"><link rel="canonical" href="https://cjchn.github.io/posts/20231023083152-bae4ff13.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"51DB2F26GB","apiKey":"1de06e184485e0844182c52de8afda82","indexName":"cjchn.github.io","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'PostgreSQL',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-04 16:19:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://vip.helloimg.com/images/2023/12/15/o7LnAc.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="CJ's Blog"><span class="site-name">CJ's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">PostgreSQL</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-23T08:31:52.000Z" title="发表于 2023-10-23 16:31:52">2023-10-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-04T08:19:42.761Z" title="更新于 2024-01-04 16:19:42">2024-01-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">1.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>5分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="PostgreSQL"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="API"><a href="#API" class="headerlink" title="API"></a>API</h1><h2 id="时间函数"><a href="#时间函数" class="headerlink" title="时间函数"></a>时间函数</h2><table>
+<thead>
+<tr>
+<th>时间</th>
+<th>标准</th>
+<th>简写</th>
+<th>单数</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>年</td>
+<td>Years</td>
+<td>Y</td>
+<td>year</td>
+</tr>
+<tr>
+<td>月</td>
+<td>Months</td>
+<td>M</td>
+<td>Month</td>
+</tr>
+<tr>
+<td>周</td>
+<td>Weeks</td>
+<td>W</td>
+<td>Week</td>
+</tr>
+<tr>
+<td>天</td>
+<td>Days</td>
+<td>D</td>
+<td>Day</td>
+</tr>
+<tr>
+<td>小时</td>
+<td>Hours</td>
+<td>H</td>
+<td>Hour</td>
+</tr>
+<tr>
+<td>分钟</td>
+<td>Minutes</td>
+<td>M</td>
+<td>Minute</td>
+</tr>
+<tr>
+<td>秒</td>
+<td>Seconds</td>
+<td>S</td>
+<td>Second</td>
+</tr>
+</tbody></table>
+<h4 id="获取时间"><a href="#获取时间" class="headerlink" title="获取时间"></a>获取时间</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--标准时间函数</span></span><br><span class="line"><span class="keyword">select</span> now();</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">10</span>:<span class="number">31</span>:<span class="number">26.435501</span><span class="operator">+</span><span class="number">08</span></span><br><span class="line"><span class="comment">--标准时间函数，同now()</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">current_timestamp</span>;</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">10</span>:<span class="number">31</span>:<span class="number">33.679012</span><span class="operator">+</span><span class="number">08</span></span><br><span class="line"><span class="comment">--标准日期</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">current_date</span>;</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span></span><br><span class="line"><span class="comment">--标准时间</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">current_time</span>;</span><br><span class="line"><span class="number">10</span>:<span class="number">31</span>:<span class="number">47.180718</span><span class="operator">+</span><span class="number">08</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="加减时间"><a href="#加减时间" class="headerlink" title="加减时间"></a>加减时间</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--当前日期 + 一天</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">current_date</span>,<span class="built_in">current_date</span> <span class="operator">+</span> <span class="type">interval</span> <span class="string">&#x27;1 day&#x27;</span>;</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span>  <span class="number">2022</span><span class="number">-01</span><span class="number">-05</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span></span><br><span class="line"><span class="comment">-- 周月年同理</span></span><br><span class="line"></span><br><span class="line"><span class="comment">--用now，当前时间 + 1天，其他同理</span></span><br><span class="line"><span class="keyword">select</span> now(),now() <span class="operator">+</span> <span class="type">interval</span> <span class="string">&#x27;1 day&#x27;</span>;</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">10</span>:<span class="number">43</span>:<span class="number">14.587596</span><span class="operator">+</span><span class="number">08</span>  <span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">10</span>:<span class="number">43</span>:<span class="number">14.587596</span><span class="operator">+</span><span class="number">08</span></span><br><span class="line"><span class="keyword">select</span> now(),now() <span class="operator">+</span>  <span class="string">&#x27; 1 year&#x27;</span>;</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">10</span>:<span class="number">43</span>:<span class="number">14.587596</span><span class="operator">+</span><span class="number">08</span>  <span class="number">2023</span><span class="number">-01</span><span class="number">-04</span> <span class="number">10</span>:<span class="number">43</span>:<span class="number">14.587596</span><span class="operator">+</span><span class="number">08</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">select</span>  <span class="built_in">current_time</span>,<span class="built_in">current_time</span> <span class="operator">+</span> <span class="type">interval</span> <span class="string">&#x27;1 Minutes&#x27;</span>,<span class="built_in">current_time</span> <span class="operator">+</span> <span class="type">interval</span> <span class="string">&#x27;1 MinUte&#x27;</span>;</span><br><span class="line"><span class="number">10</span>:<span class="number">37</span>:<span class="number">16.843502</span><span class="operator">+</span><span class="number">08</span>  <span class="number">10</span>:<span class="number">38</span>:<span class="number">16.843502</span><span class="operator">+</span><span class="number">08</span>  <span class="number">10</span>:<span class="number">38</span>:<span class="number">16.843502</span><span class="operator">+</span><span class="number">08</span></span><br></pre></td></tr></table></figure>
+
+<p>时间函数的进阶，经常会遇到查询上月末的某天，或者每天的 2 点 20 分等等~</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">--当前日期，本年第一天，上一年最后一天</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">current_date</span>,date_trunc(<span class="string">&#x27;year&#x27;</span>, <span class="built_in">current_date</span>), date_trunc(<span class="string">&#x27;year&#x27;</span>, <span class="built_in">current_date</span>) <span class="operator">-</span> <span class="type">interval</span> <span class="string">&#x27;1 day&#x27;</span>;</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span>   <span class="number">2022</span><span class="number">-01</span><span class="number">-01</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="operator">+</span><span class="number">08</span>   <span class="number">2021</span><span class="number">-12</span><span class="number">-31</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="operator">+</span><span class="number">08</span></span><br><span class="line"><span class="comment">--当前日期，当月第一天，上月最后一天</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">current_date</span>,date_trunc(<span class="string">&#x27;month&#x27;</span>, <span class="built_in">current_date</span>), date_trunc(<span class="string">&#x27;month&#x27;</span>, <span class="built_in">current_date</span>) <span class="operator">-</span> <span class="type">interval</span> <span class="string">&#x27;1 day&#x27;</span>;</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span>   <span class="number">2022</span><span class="number">-01</span><span class="number">-01</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="operator">+</span><span class="number">08</span>   <span class="number">2021</span><span class="number">-12</span><span class="number">-31</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span><span class="operator">+</span><span class="number">08</span></span><br><span class="line"><span class="comment">--当前日期，今天2点20</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">current_date</span>,<span class="built_in">current_date</span> <span class="operator">+</span> <span class="type">interval</span> <span class="string">&#x27;2 hour&#x27;</span> <span class="operator">+</span> <span class="type">interval</span> <span class="string">&#x27;20 M&#x27;</span>;</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span>   <span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">02</span>:<span class="number">20</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="时间转为字符串"><a href="#时间转为字符串" class="headerlink" title="时间转为字符串"></a>时间转为字符串</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> to_char(now(),<span class="string">&#x27;YYYY-MM-DD HH24:MI:SS&#x27;</span>),To_char(now(),<span class="string">&#x27;yyyy-mm-dd hh24:mi:ss&#x27;</span>);</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">39</span>  <span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">39</span></span><br><span class="line"><span class="keyword">select</span> to_char(<span class="built_in">current_timestamp</span>,<span class="string">&#x27;YYYY-MM-DD HH24:MI:SS&#x27;</span>),to_char(<span class="built_in">current_timestamp</span>,<span class="string">&#x27;HH24:MI:SS&#x27;</span>);</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">50</span> <span class="number">11</span>:<span class="number">14</span>:<span class="number">50</span></span><br><span class="line"><span class="keyword">select</span> to_char(<span class="built_in">current_date</span>,<span class="string">&#x27;YYYY-MM-DD HH24:MI:SS&#x27;</span>);</span><br><span class="line"><span class="number">2022</span><span class="number">-01</span><span class="number">-04</span> <span class="number">00</span>:<span class="number">00</span>:<span class="number">00</span></span><br></pre></td></tr></table></figure>
+
+<h4 id="筛选时间段"><a href="#筛选时间段" class="headerlink" title="筛选时间段"></a>筛选时间段</h4><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">SELECT</span></span><br><span class="line">    customer_id,</span><br><span class="line">    payment_id,</span><br><span class="line">    amount,</span><br><span class="line">	payment_date</span><br><span class="line"><span class="keyword">FROM</span></span><br><span class="line">    payment</span><br><span class="line"><span class="keyword">WHERE</span></span><br><span class="line">    payment_date <span class="keyword">BETWEEN</span> <span class="string">&#x27;2007-02-07&#x27;</span> <span class="keyword">AND</span> <span class="string">&#x27;2007-02-15&#x27;</span>;</span><br></pre></td></tr></table></figure>
+
+<h2 id="字符串函数"><a href="#字符串函数" class="headerlink" title="字符串函数"></a>字符串函数</h2><h3 id="合并"><a href="#合并" class="headerlink" title="合并"></a>合并</h3><p>string_agg</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">STRING_AGG ( expression, separator [order_by_clause] )</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>expression 可以解析成字符串的任何有效表达式。如果是其他数据类型，需要显示转换为字符串。</li>
+<li>separator 指定连接字符串的分隔符</li>
+</ul>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">string_agg(str, <span class="string">&#x27;,&#x27;</span> <span class="keyword">order</span> <span class="keyword">by</span> str)</span><br></pre></td></tr></table></figure>
+
+<h3 id="大小写转换"><a href="#大小写转换" class="headerlink" title="大小写转换"></a>大小写转换</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">upper</span>(<span class="string">&#x27;test&#x27;</span>); <span class="comment">--TEST</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">lower</span>(<span class="string">&#x27;TEST&#x27;</span>); <span class="comment">--test</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="获取字符串长度"><a href="#获取字符串长度" class="headerlink" title="获取字符串长度"></a>获取字符串长度</h3><figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> length(<span class="string">&#x27;test&#x27;</span>); <span class="comment">-- 4</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">char_length</span>(<span class="string">&#x27;test&#x27;</span>); <span class="comment">-- 4</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">character_length</span>(<span class="string">&#x27;test&#x27;</span>); <span class="comment">-- 4</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="截取"><a href="#截取" class="headerlink" title="截取"></a>截取</h3><p>substring</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">substring</span>(<span class="string">&#x27;PostgreSQL&#x27;</span> <span class="keyword">from</span> <span class="number">2</span> <span class="keyword">for</span> <span class="number">4</span>); <span class="comment">--ostg</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">substring</span>(<span class="string">&#x27;PostgreSQL&#x27;</span> <span class="keyword">from</span> <span class="string">&#x27;[a-z]+&#x27;</span>); <span class="comment">--ostgre</span></span><br></pre></td></tr></table></figure>
+
+<p>substr</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> substr(<span class="string">&#x27;PostgreSQL&#x27;</span>, <span class="number">2</span>, <span class="number">0</span>); <span class="comment">-- 空字符串</span></span><br><span class="line"><span class="keyword">select</span> substr(<span class="string">&#x27;PostgreSQL&#x27;</span>, <span class="number">2</span>, <span class="number">1</span>); <span class="comment">-- o</span></span><br><span class="line"><span class="keyword">select</span> substr(<span class="string">&#x27;PostgreSQL&#x27;</span>, <span class="number">2</span>, <span class="number">4</span>); <span class="comment">-- ostg</span></span><br><span class="line"><span class="keyword">select</span> substr(<span class="string">&#x27;PostgreSQL&#x27;</span>, <span class="number">2</span>); <span class="comment">-- ostgreSQL</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="裁剪"><a href="#裁剪" class="headerlink" title="裁剪"></a>裁剪</h3><p><code>trim</code>  函数，从字符串的开头&#x2F;结尾&#x2F;两边（leading&#x2F;trailing&#x2F;both）尽可能多地裁剪指定的字符，不指定则裁剪空白符</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">trim</span>(<span class="keyword">leading</span> <span class="string">&#x27;x&#x27;</span> <span class="keyword">from</span> <span class="string">&#x27;xTestxx&#x27;</span>); <span class="comment">-- Testxx</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">trim</span>(<span class="keyword">trailing</span> <span class="string">&#x27;x&#x27;</span> <span class="keyword">from</span> <span class="string">&#x27;xTestxx&#x27;</span>); <span class="comment">-- xTest</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">trim</span>(<span class="keyword">both</span> <span class="string">&#x27;x&#x27;</span> <span class="keyword">from</span> <span class="string">&#x27;xTestxx&#x27;</span>); <span class="comment">-- Test</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">trim</span>(<span class="keyword">both</span> <span class="keyword">from</span> <span class="string">&#x27; Test &#x27;</span>); <span class="comment">-- Test</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">trim</span>(<span class="string">&#x27; Test &#x27;</span>); <span class="comment">-- Test</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> ltrim(<span class="string">&#x27;xTestxxy&#x27;</span>, <span class="string">&#x27;xy&#x27;</span>); <span class="comment">-- Testxxy</span></span><br><span class="line"><span class="keyword">select</span> rtrim(<span class="string">&#x27;xTestxxy&#x27;</span>, <span class="string">&#x27;xy&#x27;</span>); <span class="comment">-- xTest</span></span><br><span class="line"><span class="keyword">select</span> btrim(<span class="string">&#x27;xTestxxy&#x27;</span>, <span class="string">&#x27;xy&#x27;</span>); <span class="comment">-- Test</span></span><br></pre></td></tr></table></figure>
+
+<h3 id="判空"><a href="#判空" class="headerlink" title="判空"></a>判空</h3><p>null 是一种类型，‘’ 是空字符串，打个比方，‘’ 是你参加了考试且得了零分，而 null 则是你压根就没有参加考试。</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">-- null只能和is或is not搭配，使用=、!=或者&lt;&gt;结果都是null</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">null</span> <span class="keyword">is</span> <span class="keyword">null</span>; <span class="comment">-- true</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">null</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">null</span>; <span class="comment">-- false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- &#x27;&#x27;的判断可以使用is、is not、=、!=或者&lt;&gt;</span></span><br><span class="line"><span class="keyword">select</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">is</span> <span class="keyword">null</span>; <span class="comment">-- false</span></span><br><span class="line"><span class="keyword">select</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="keyword">null</span>; <span class="comment">-- true</span></span><br><span class="line"><span class="keyword">select</span> <span class="string">&#x27;&#x27;</span> <span class="operator">=</span> <span class="string">&#x27;&#x27;</span>; <span class="comment">-- true</span></span><br><span class="line"><span class="keyword">select</span> <span class="string">&#x27;&#x27;</span> <span class="operator">!=</span> <span class="string">&#x27;&#x27;</span>; <span class="comment">-- false</span></span><br><span class="line"><span class="keyword">select</span> <span class="string">&#x27;&#x27;</span> <span class="operator">&lt;&gt;</span> <span class="string">&#x27;&#x27;</span>; <span class="comment">-- false</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 任何与null的运算比较，结果都是null</span></span><br><span class="line"><span class="keyword">select</span> <span class="number">1</span> <span class="operator">&gt;</span> <span class="keyword">null</span>;  <span class="comment">-- null</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>COALESCE</p>
+<figure class="highlight sql"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">select</span> <span class="built_in">COALESCE</span>(<span class="keyword">null</span>,<span class="keyword">null</span>); <span class="comment">-- null</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">COALESCE</span>(<span class="keyword">null</span>,<span class="keyword">null</span>,now()::<span class="type">varchar</span>,<span class="string">&#x27;&#x27;</span>); <span class="comment">-- 结果会得到当前的时间</span></span><br><span class="line"><span class="keyword">select</span> <span class="built_in">COALESCE</span>(<span class="keyword">null</span>,<span class="keyword">null</span>,<span class="string">&#x27;&#x27;</span>,now()::<span class="type">varchar</span>); <span class="comment">-- 空字符串</span></span><br><span class="line"></span><br><span class="line"><span class="comment">-- 可以和其他函数配合来实现一些复杂点的功能：查询学生姓名，如果学生名字为null或&#x27;&#x27;则显示“姓名为空”</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> <span class="keyword">when</span> <span class="built_in">coalesce</span>(<span class="keyword">null</span>,<span class="string">&#x27;&#x27;</span>) <span class="operator">=</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;姓名为空&#x27;</span> <span class="keyword">else</span> <span class="string">&#x27;法外狂徒&#x27;</span> <span class="keyword">end</span>; <span class="comment">-- 姓名为空</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> <span class="keyword">when</span> <span class="built_in">coalesce</span>(<span class="string">&#x27;&#x27;</span>,<span class="string">&#x27;&#x27;</span>) <span class="operator">=</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;姓名为空&#x27;</span> <span class="keyword">else</span> <span class="string">&#x27;法外狂徒&#x27;</span> <span class="keyword">end</span>; <span class="comment">-- 姓名为空</span></span><br><span class="line"><span class="keyword">select</span> <span class="keyword">case</span> <span class="keyword">when</span> <span class="built_in">coalesce</span>(<span class="string">&#x27;张三&#x27;</span>,<span class="string">&#x27;&#x27;</span>) <span class="operator">=</span> <span class="string">&#x27;&#x27;</span> <span class="keyword">then</span> <span class="string">&#x27;姓名为空&#x27;</span> <span class="keyword">else</span> <span class="string">&#x27;法外狂徒&#x27;</span> <span class="keyword">end</span>; <span class="comment">-- 法外狂徒</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cjchn.github.io">CJ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cjchn.github.io/posts/20231023083152-bae4ff13.html">https://cjchn.github.io/posts/20231023083152-bae4ff13.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cjchn.github.io" target="_blank">CJ's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20231023084224-96a41905.html" title="SpringCloud"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7L2O1.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">SpringCloud</div></div></a></div><div class="next-post pull-right"><a href="/posts/20231023083030-cc1b9611.html" title="JavaScript"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7LXGM.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">JavaScript</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CJ</div><div class="author-info__description">保持正念，相信自己会越来越好</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2675851908&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://github.com/cjchn" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/302998641" target="_blank" title="视频"><i class="fab fa-youtube" style="color: #24292e;"></i></a><a class="social-icon" href="https://tgph.319226.xyz/" target="_blank" title="图床"><i class="fa-solid fa-image" style="color: #24292e;"></i></a><a class="social-icon" href="https://onedrive.319226.xyz/" target="_blank" title="云盘"><i class="fa-solid fa-cloud" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#API"><span class="toc-number">1.</span> <span class="toc-text">API</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E5%87%BD%E6%95%B0"><span class="toc-number">1.1.</span> <span class="toc-text">时间函数</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E6%97%B6%E9%97%B4"><span class="toc-number">1.1.0.1.</span> <span class="toc-text">获取时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A0%E5%87%8F%E6%97%B6%E9%97%B4"><span class="toc-number">1.1.0.2.</span> <span class="toc-text">加减时间</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%97%B6%E9%97%B4%E8%BD%AC%E4%B8%BA%E5%AD%97%E7%AC%A6%E4%B8%B2"><span class="toc-number">1.1.0.3.</span> <span class="toc-text">时间转为字符串</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%AD%9B%E9%80%89%E6%97%B6%E9%97%B4%E6%AE%B5"><span class="toc-number">1.1.0.4.</span> <span class="toc-text">筛选时间段</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%AD%97%E7%AC%A6%E4%B8%B2%E5%87%BD%E6%95%B0"><span class="toc-number">1.2.</span> <span class="toc-text">字符串函数</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%88%E5%B9%B6"><span class="toc-number">1.2.1.</span> <span class="toc-text">合并</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A4%A7%E5%B0%8F%E5%86%99%E8%BD%AC%E6%8D%A2"><span class="toc-number">1.2.2.</span> <span class="toc-text">大小写转换</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%8E%B7%E5%8F%96%E5%AD%97%E7%AC%A6%E4%B8%B2%E9%95%BF%E5%BA%A6"><span class="toc-number">1.2.3.</span> <span class="toc-text">获取字符串长度</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%88%AA%E5%8F%96"><span class="toc-number">1.2.4.</span> <span class="toc-text">截取</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A3%81%E5%89%AA"><span class="toc-number">1.2.5.</span> <span class="toc-text">裁剪</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%A4%E7%A9%BA"><span class="toc-number">1.2.6.</span> <span class="toc-text">判空</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231229062330-416f6fc3.html" title="NewPost">NewPost</a><time datetime="2023-12-29T06:23:30.000Z" title="发表于 2023-12-29 14:23:30">2023-12-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231222053433-b84b57db.html" title="Html">Html</a><time datetime="2023-12-22T05:34:33.000Z" title="发表于 2023-12-22 13:34:33">2023-12-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231215080353-36687561.html" title="关于音乐">关于音乐</a><time datetime="2023-12-15T08:03:53.000Z" title="发表于 2023-12-15 16:03:53">2023-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20231211023548-74516b02.html" title="office"><img src="https://vip.helloimg.com/images/2023/12/15/o7AvhR.md.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="office"/></a><div class="content"><a class="title" href="/posts/20231211023548-74516b02.html" title="office">office</a><time datetime="2023-12-11T02:35:48.000Z" title="发表于 2023-12-11 10:35:48">2023-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231207051738-3fb16ec5.html" title="人大金仓">人大金仓</a><time datetime="2023-12-07T05:17:38.000Z" title="发表于 2023-12-07 13:17:38">2023-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By CJ</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><span class="scroll-percent"></span><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.2/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><div class="aplayer no-destroy" data-id="2024518101" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-mini="true"> </div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.17.1/algoliasearch-lite.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.56.1/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div></body></html>

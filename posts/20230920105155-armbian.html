@@ -1,0 +1,461 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Armbian 盒子 | CJ's Blog</title><meta name="author" content="CJ"><meta name="copyright" content="CJ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="前言我使用的是 panther x2，闲鱼上收的矿渣，配置 4G+32G，cpu rk3566，卖家发过来时就刷好了 armbian。 关于 armbian 的包，找到了Github仓库可以备用。v2ex有个帖子说品控不太好，但是我这个暂时还没有发现。 现在先把青龙和QD装好，打算先作为签到站。后面写点脚本、小工具或者写个管理系统挂上去。也可以挂WordPress，但是不大想折腾博客了，有个静态的">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Armbian 盒子">
+<meta property="og:url" content="https://cjchn.github.io/posts/20230920105155-armbian.html">
+<meta property="og:site_name" content="CJ&#39;s Blog">
+<meta property="og:description" content="前言我使用的是 panther x2，闲鱼上收的矿渣，配置 4G+32G，cpu rk3566，卖家发过来时就刷好了 armbian。 关于 armbian 的包，找到了Github仓库可以备用。v2ex有个帖子说品控不太好，但是我这个暂时还没有发现。 现在先把青龙和QD装好，打算先作为签到站。后面写点脚本、小工具或者写个管理系统挂上去。也可以挂WordPress，但是不大想折腾博客了，有个静态的">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imgcdn.319226.xyz/202401041503387.png">
+<meta property="article:published_time" content="2023-09-20T10:51:55.000Z">
+<meta property="article:modified_time" content="2024-01-04T08:19:42.765Z">
+<meta property="article:author" content="CJ">
+<meta property="article:tag" content="生产力">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgcdn.319226.xyz/202401041503387.png"><link rel="shortcut icon" href="https://imgcdn.319226.xyz/202401041503387.png"><link rel="canonical" href="https://cjchn.github.io/posts/20230920105155-armbian.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"51DB2F26GB","apiKey":"1de06e184485e0844182c52de8afda82","indexName":"cjchn.github.io","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Armbian 盒子',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-04 16:19:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="CJ's Blog"><span class="site-name">CJ's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Armbian 盒子</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-20T10:51:55.000Z" title="发表于 2023-09-20 18:51:55">2023-09-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-04T08:19:42.765Z" title="更新于 2024-01-04 16:19:42">2024-01-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E4%B8%93%E9%A2%98/">专题</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">2.2k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>9分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Armbian 盒子"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h3 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h3><p>我使用的是 panther x2，闲鱼上收的矿渣，配置 4G+32G，cpu rk3566，卖家发过来时就刷好了 armbian。</p>
+<p>关于 armbian 的包，找到了<a target="_blank" rel="noopener" href="https://github.com/ophub/amlogic-s9xxx-armbian/blob/main/README.cn.md">Github仓库</a>可以备用。v2ex有个<a target="_blank" rel="noopener" href="https://v2ex.com/t/950762">帖子</a>说品控不太好，但是我这个暂时还没有发现。</p>
+<p>现在先把青龙和QD装好，打算先作为签到站。后面写点脚本、小工具或者写个管理系统挂上去。也可以挂WordPress，但是不大想折腾博客了，有个静态的自己记录下方便查看足够了。</p>
+<h3 id="初始化"><a href="#初始化" class="headerlink" title="初始化"></a>初始化</h3><p>一开始需要设置密码。我先用的 FinallShell 登进去就掉线，后面使用 idea 的就可以了。等设置好下面这些后，就可以用 FinallShell 登录了。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">st login: Wed Sep 20 10:37:23 2023 from 192.168.123.60</span><br><span class="line"></span><br><span class="line">Waiting for system to finish booting ...</span><br><span class="line">/usr/lib/armbian/armbian-firstlogin: line 330: /sys/class/graphics/fb0/virtual_size: No such file or directory</span><br><span class="line">Welcome to ARMBIAN! </span><br><span class="line"></span><br><span class="line">Documentation: https://docs.armbian.com | Community: https://forum.armbian.com</span><br><span class="line"></span><br><span class="line">IP address: 192.168.123.162</span><br><span class="line"></span><br><span class="line">Create root password: ********** </span><br><span class="line">Repeat root password: **********</span><br><span class="line"></span><br><span class="line">Support status: community support (looking for a dedicated maintainer)</span><br><span class="line"></span><br><span class="line">Choose default system command shell:</span><br><span class="line"></span><br><span class="line">1) bash</span><br><span class="line">2) zsh</span><br><span class="line">bash</span><br><span class="line"></span><br><span class="line">Choose default system command shell:</span><br><span class="line"></span><br><span class="line">1) bash</span><br><span class="line">2) zsh</span><br><span class="line">1</span><br><span class="line"></span><br><span class="line">Shell: BASH</span><br><span class="line"></span><br><span class="line">Creating a new user account. Press &lt;Ctrl-C&gt; to abort</span><br><span class="line"></span><br><span class="line">Please provide a username (eg. your first name): cj</span><br><span class="line">Create user (cj) password: **********</span><br><span class="line">Repeat user (cj) password: **********</span><br><span class="line"></span><br><span class="line">Please provide your real name: CJ</span><br><span class="line"></span><br><span class="line">Dear CJ, your account cj has been created and is sudo enabled.</span><br><span class="line">Please use this account for your daily work from now on.</span><br><span class="line"></span><br><span class="line">Detected timezone: Asia/Shanghai</span><br><span class="line"></span><br><span class="line">Set user language based on your location? [Y/n] y</span><br><span class="line">y</span><br><span class="line"></span><br><span class="line">Generating locales: zh_CN.UTF-8</span><br><span class="line">root@panther-x2:~# </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+<h3 id="更换源"><a href="#更换源" class="headerlink" title="更换源"></a>更换源</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo nano /etc/apt/sources.list</span><br></pre></td></tr></table></figure>
+
+<p>我用的这个默认就是清华的，使用其他的源（阿里，中科院）反而不全</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">清华源</span></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy main restricted universe multiverse</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy-security main restricted universe multiverse</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy-security main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy-updates main restricted universe multiverse</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy-updates main restricted universe multiverse</span></span><br><span class="line"></span><br><span class="line">deb http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy-backports main restricted universe multiverse</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">deb-src http://mirrors.tuna.tsinghua.edu.cn/ubuntu-ports/ jammy-backports main restricted universe multiverse</span></span><br></pre></td></tr></table></figure>
+
+<p>更新软件源列表</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt update</span><br></pre></td></tr></table></figure>
+
+<p>升级包</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">apt list --upgradable</span><br></pre></td></tr></table></figure>
+
+<h3 id="系统查看"><a href="#系统查看" class="headerlink" title="系统查看"></a>系统查看</h3><p>1.neofetch（查看系统信息）</p>
+<p>2.htop（查看进程和内存信息）</p>
+<p>3.s-tui（查看cpu温度和占用情况）需安装</p>
+<p>4.speedometer（监控网络的工具）需安装</p>
+<p>5.speedtest（网速测试工具）需安装</p>
+<h3 id="安装docker"><a href="#安装docker" class="headerlink" title="安装docker"></a>安装docker</h3><ol>
+<li>进去 Armbian系统后输入<code>apt install docker.io</code> 按提示输入y，等待安装完成即可</li>
+<li>输入<code>systemctl status docker</code> 判断docker是否正常运行（绿色active表示正常）</li>
+</ol>
+<h4 id="切换到国内镜像库"><a href="#切换到国内镜像库" class="headerlink" title="切换到国内镜像库"></a>切换到国内镜像库</h4><ol>
+<li>使用 <code>vi /etc/docker/daemon.json</code> 编辑配置文件，将下面内容添加进入，然后保存</li>
+</ol>
+<figure class="highlight json"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="punctuation">&#123;</span></span><br><span class="line">  <span class="attr">&quot;registry-mirrors&quot;</span><span class="punctuation">:</span> <span class="punctuation">[</span></span><br><span class="line">    <span class="string">&quot;https://registry.cn-hangzhou.aliyuncs.com&quot;</span></span><br><span class="line">  <span class="punctuation">]</span></span><br><span class="line"><span class="punctuation">&#125;</span></span><br></pre></td></tr></table></figure>
+
+<ol start="2">
+<li>使用 <code>systemctl restart docker</code> 命令重启服务，然后用 <code>docker info</code> 判断是否生效</li>
+</ol>
+<blockquote>
+<p>Registry Mirrors:<br> <a target="_blank" rel="noopener" href="https://registry.cn-hangzhou.aliyuncs.com/">https://registry.cn-hangzhou.aliyuncs.com</a></p>
+</blockquote>
+<h3 id="容器面板-portainer"><a href="#容器面板-portainer" class="headerlink" title="容器面板 portainer"></a>容器面板 portainer</h3><p>portainer.io</p>
+<p>中文版镜像</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">docker run -d \</span><br><span class="line">--name=portainer-zh \</span><br><span class="line">-p 9100:9000 \</span><br><span class="line">-v /var/run/docker.sock:/var/run/docker.sock \</span><br><span class="line">--restart=always \</span><br><span class="line">6053537/portainer-ce</span><br></pre></td></tr></table></figure>
+
+
+<h3 id="安装1Panel"><a href="#安装1Panel" class="headerlink" title="安装1Panel"></a>安装1Panel</h3><p>比 casaos 好用</p>
+<p>参考</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/lhcvip666/article/details/131679902">armbian系统安装1panel+青龙面板+autman+go-cqhttp</a></li>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/yang2330648064/article/details/131242481">Armbian安装1panel教程</a></li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">curl -sSL https://resource.fit2cloud.com/1panel/package/quick_start.sh -o quick_start.sh &amp;&amp; sudo bash quick_start.sh</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="安装青龙面板"><a href="#安装青龙面板" class="headerlink" title="安装青龙面板"></a>安装青龙面板</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">docker pull whyour/qinglong:latest</span><br><span class="line">docker run --restart always --name qinglong -p 5600:5600 -d -v /var/run/docker.sock:/var/run/docker.sock whyour/qinglong</span><br></pre></td></tr></table></figure>
+
+<h4 id="添加依赖"><a href="#添加依赖" class="headerlink" title="添加依赖"></a>添加依赖</h4><p>NodeJs里面所需依赖 添加依赖—&gt;选择自动拆分，把以下内容全部复制到名称里，之后点击确定</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br></pre></td><td class="code"><pre><span class="line">ts-md5</span><br><span class="line">@types/node</span><br><span class="line">prettytable</span><br><span class="line">node-telegram-bot-api</span><br><span class="line">tslib</span><br><span class="line">ql</span><br><span class="line">common</span><br><span class="line">fs</span><br><span class="line">typescript</span><br><span class="line">axios</span><br><span class="line">png-js</span><br><span class="line">axios</span><br><span class="line">ws@7.4.3</span><br><span class="line">crypto-js</span><br><span class="line">jieba</span><br><span class="line">global-agent</span><br><span class="line">jsdom -g</span><br><span class="line">moment</span><br><span class="line">form-data</span><br><span class="line">date-fns</span><br><span class="line">node-jsencrypt</span><br><span class="line">require</span><br><span class="line">js-base64</span><br><span class="line">tough-cookie</span><br><span class="line">json5</span><br><span class="line">jsdom</span><br><span class="line">dotenv</span><br><span class="line">qs</span><br></pre></td></tr></table></figure>
+
+<p>Python3 依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">ping3</span><br><span class="line">canvas</span><br><span class="line">requests</span><br><span class="line">jieba</span><br><span class="line">PyExecJS</span><br><span class="line">httpx</span><br></pre></td></tr></table></figure>
+
+<p>Linux 依赖</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">lxml</span><br><span class="line">bizMsg</span><br><span class="line">bizCode</span><br><span class="line">gcc</span><br><span class="line">python-devel</span><br><span class="line">aiohttp</span><br><span class="line">magic</span><br></pre></td></tr></table></figure>
+
+<p>拉库</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"># Faker2</span><br><span class="line">ql repo https://git.metauniverse-cn.com/https://github.com/shufflewzc/faker2.git &quot;jd_|jx_|gua_|jddj_|jdCookie&quot; &quot;activity|backUp&quot; &quot;^jd[^_]|USER|function|utils|sendNotify|ZooFaker_Necklace.js|JDJRValidator_|sign_graphics_validate|ql|JDSignValidator|magic|depend|h5sts&quot; &quot;main&quot;</span><br><span class="line"></span><br><span class="line"># Faker3 </span><br><span class="line">ql repo https://git.metauniverse-cn.com/https://github.com/shufflewzc/faker2.git &quot;jd_|jx_|gua_|jddj_|jdCookie&quot; &quot;activity|backUp&quot; &quot;^jd[^_]|USER|function|utils|sendNotify|ZooFaker_Necklace.js|JDJRValidator_|sign_graphics_validate|ql|JDSignValidator|magic|depend|h5sts&quot; &quot;main&quot;</span><br><span class="line"></span><br><span class="line"># KingRan库</span><br><span class="line">ql repo https://gh.fakev.cn/KingRan/KR.git &quot;jd_|jx_|jdCookie&quot; &quot;activity|backUp&quot; &quot;^jd[^_]|USER|utils|function|sign|sendNotify|ql|JDJR&quot;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>其他库</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="section"># BiliBiliToolPro</span></span><br><span class="line">https://github.com/RayWangQvQ/BiliBiliToolPro</span><br><span class="line"></span><br><span class="line"><span class="section"># aliyundriveDailyCheck</span></span><br><span class="line">https://github.com/mrabit/aliyundriveDailyCheck</span><br></pre></td></tr></table></figure>
+
+
+<p>定时规则</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">0 0 0 * * *</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="Casaos"><a href="#Casaos" class="headerlink" title="Casaos"></a>Casaos</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wget -qO- https://get.casaos.io | bash</span><br></pre></td></tr></table></figure>
+
+<p>卸载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">casaos-uninstall</span><br></pre></td></tr></table></figure>
+
+<p>bug 还是有，功能不算强，但是作为基本的家用影音是够的。但是我需求更多，弃用，改用同类型的 1panel</p>
+<h3 id="ZoroTier"><a href="#ZoroTier" class="headerlink" title="ZoroTier"></a>ZoroTier</h3><p>docker 安装</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">docker run --device=/dev/net/tun \</span><br><span class="line">--name zerotier \</span><br><span class="line">--net=host \</span><br><span class="line">--restart=always \</span><br><span class="line">--cap-add=NET_ADMIN \</span><br><span class="line">--cap-add=SYS_ADMIN \</span><br><span class="line">-v /var/lib/zerotier:/var/lib/zerotier \</span><br><span class="line">zerotier/zerotier:latest</span><br></pre></td></tr></table></figure>
+
+<p>以上命令执行后，待出现“&#x3D;&gt; Sleeping infinitely”；操作Ctrl+c暂停执行命令。</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker restart zerotier		#重启容器【重要】</span><br></pre></td></tr></table></figure>
+
+<p>加入&#x2F;脱离 Zerotier 虚拟局域网；【去服务端查找Zerotier网络ID】</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">docker exec zerotier zerotier-cli join [<span class="title class_">Zerotier</span>网络<span class="variable constant_">ID</span>]</span><br><span class="line">#加入233ccaac276757e0该组织网络；</span><br><span class="line"></span><br><span class="line">docker exec zerotier zerotier-cli leave [<span class="title class_">Zerotier</span>网络<span class="variable constant_">ID</span>]</span><br><span class="line">#退出233ccaac276757e0组织网络；</span><br></pre></td></tr></table></figure>
+
+<p>基于p2p，没有mom节点的情况下延迟上百。实测网页经常打不开，遂弃</p>
+<h3 id="DDNS-GO"><a href="#DDNS-GO" class="headerlink" title="DDNS-GO"></a>DDNS-GO</h3><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/581967733">教程参考</a>  |  <a target="_blank" rel="noopener" href="https://github.com/jeessy2/ddns-go#webhook">仓库</a> </p>
+<p>注意令牌跟着教程走，不要改其他东西；docker 容器的网络使用 host；注意要填写 ipv4 的 domain，很容易忘记，不然不会执行更新操作。</p>
+<p>失败在了光猫没有密码，无法解决端口映射的问题。有想过重置光猫，但是百度了太多失败案例，考虑到没有太多成功方案且失败居多，还是放弃此方案了。</p>
+<p>原理其实很简单，就是内网服务器本地配置了一个监控，定期获取公网ip，如果发现和域名的不一致，那么就触发 DNS 服务商（这里测试的 CloudFlare）的更新命令（一个接口），然后域名会更新解析到最新的公网ip，实现动态 DDNS 解析。如果有固定的公网 ip 就不需要这个了，但是因为公网 ip 的缺乏，大多数人都没有固定的，基本上都是由运营商动态变化的。而这个工具也不是万能的，在获取不到或者没有公网 ip 的情况下，无能为力；且这个工具本质只是为了减少切换解析到工作量，如果闲的，也可以不使用该工具，自行去 DNS 服务商手动更新 ip。</p>
+<h2 id="frps-frpc"><a href="#frps-frpc" class="headerlink" title="frps &amp; frpc"></a>frps &amp; frpc</h2><p>需要一个拥有公网 ip 的服务器作为跳转机，现在没有</p>
+<p>其实下面的两种frp都是基于这个的</p>
+<h3 id="HayFrp"><a href="#HayFrp" class="headerlink" title="HayFrp"></a>HayFrp</h3><p><code>/usr/local/bin</code> </p>
+<p><a target="_blank" rel="noopener" href="https://frp.hxkj.tk/">官网</a>  |  <a target="_blank" rel="noopener" href="https://status.hxkj.tk/status/hayfrp">status监测站点</a>  |  <a target="_blank" rel="noopener" href="https://docs.hxkj.tk/">Doc</a></p>
+<h3 id="内网穿透-openfrp"><a href="#内网穿透-openfrp" class="headerlink" title="内网穿透 openfrp"></a>内网穿透 openfrp</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">root@panther-x2:~# lsb_release -a</span><br><span class="line">No LSB modules are available.</span><br><span class="line">Distributor ID: Ubuntu</span><br><span class="line">Description:    Ubuntu 22.04 LTS</span><br><span class="line">Release:        22.04</span><br><span class="line">Codename:       jammy</span><br><span class="line">root@panther-x2:~# arch</span><br><span class="line">aarch64</span><br><span class="line">root@panther-x2:~# uname -r</span><br><span class="line">6.1.38-rockchip64</span><br><span class="line">root@panther-x2:~# </span><br></pre></td></tr></table></figure>
+
+<p>aarch64 属于 arm64</p>
+<p>官方教程：<a target="_blank" rel="noopener" href="https://docs.openfrp.net/use/frpc.html#linux">https://docs.openfrp.net/use/frpc.html#linux</a></p>
+<p>看密钥：<a target="_blank" rel="noopener" href="https://console.openfrp.net/home/dashboard">https://console.openfrp.net/home/dashboard</a></p>
+<p>启动服务</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cd /usr/local/bin </span><br><span class="line">./frpc_linux_amd64</span><br></pre></td></tr></table></figure>
+
+<p>！Linux图形化界面 (TerminalUI) 不能用 Finalshell, 请使用 Xshell 或其他软件替代 SSH 工具</p>
+<p>很容易离线，猜测是网络原因，需要想办法自启，否则只有选择其他方案</p>
+<h4 id="docker-容器自启"><a href="#docker-容器自启" class="headerlink" title="docker 容器自启"></a>docker 容器自启</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d --name of openfrp/frpc:latest -u (你的访问秘钥) -p （你的隧道ID)</span><br><span class="line">sudo docker run -d --name of openfrp/frpc:latest -u （你的访问秘钥） -p （你的隧道id）[,（隧道id2）,（隧道id3）]</span><br></pre></td></tr></table></figure>
+
+<p>示例</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo docker run -d --name of openfrp/frpc:latest -u 1145141919810 -p 114514,114515,114516</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://console.openfrp.net/home/dashboard">查看密钥和隧道</a></p>
+<p>设置容器自启</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker update --restart=always 容器名称</span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://www.runoob.com/docker/docker-container-usage.html">Docker命令_菜鸟教程</a></p>
+<h3 id="systemctl-自启动"><a href="#systemctl-自启动" class="headerlink" title="systemctl 自启动"></a>systemctl 自启动</h3><p>frp 目录 &#x2F;usr&#x2F;local&#x2F;bin&#x2F;frp_0.51.3_linux_arm64</p>
+<p>frpc.service</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">[Unit]</span><br><span class="line">Description=Frp Client Service</span><br><span class="line">After=network.target</span><br><span class="line"></span><br><span class="line">[Service]</span><br><span class="line">Type=simple</span><br><span class="line">User=nobody</span><br><span class="line">Restart=on-failure</span><br><span class="line">RestartSec=5s</span><br><span class="line">ExecStart=/usr/local/bin/frp<span class="emphasis">_0.51.3_</span>linux<span class="emphasis">_arm64/frpc -c /usr/local/bin/frp_</span>0.51.3<span class="emphasis">_linux_</span>arm64/frpc.ini</span><br><span class="line">ExecReload=/usr/local/bin/frp<span class="emphasis">_0.51.3_</span>linux<span class="emphasis">_arm64/frpc reload -c /usr/local/bin/frp_</span>0.51.3<span class="emphasis">_linux_</span>arm64/frpc.ini</span><br><span class="line">ExecStop=/usr/bin/killall frpc</span><br><span class="line"></span><br><span class="line">[Install]</span><br><span class="line">WantedBy=multi-user.target</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>直接运行systemctl命令会提示需要重载</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">systemctl daemon-reload</span><br></pre></td></tr></table></figure>
+
+<p>systemctl命令</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_">#</span><span class="language-bash">启动</span></span><br><span class="line">sudo systemctl start frpc </span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">关闭</span></span><br><span class="line">sudo systemctl stop frpc</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">重启</span></span><br><span class="line">sudo systemctl restart frpc</span><br><span class="line"><span class="meta prompt_">#</span><span class="language-bash">查看状态</span></span><br><span class="line">sudo systemctl status frpc</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>设置开机自动启动</p>
+<figure class="highlight powershell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo systemctl enable frpc</span><br></pre></td></tr></table></figure>
+
+
+
+<h3 id="QD框架"><a href="#QD框架" class="headerlink" title="QD框架"></a>QD框架</h3><p><a target="_blank" rel="noopener" href="https://qd-today.github.io/qd/zh_CN/">QD指南</a></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">docker run -d --restart=always --name qiandao -p 80:8923 -v $(pwd)/qd/config:/usr/src/app/config qdtoday/qd</span><br></pre></td></tr></table></figure>
+
+<p>模板订阅</p>
+<blockquote>
+<p>qd-templates  <a target="_blank" rel="noopener" href="https://github.com/wjf0214/qd-templates">https://github.com/wjf0214/qd-templates</a></p>
+</blockquote>
+<p>生产力计划</p>
+<blockquote>
+<p>核心是解放生产力，重复且无意义的交给机器人去做，创造且有意义的自己去做</p>
+</blockquote>
+<p>自动签到服务<br>三方站点 <a target="_blank" rel="noopener" href="https://qiandao.arisa.moe/my/">https://qiandao.arisa.moe/my/</a><br>代码仓库 <a target="_blank" rel="noopener" href="https://github.com/qd-today/qd">https://github.com/qd-today/qd</a><br>公共模板库  <a target="_blank" rel="noopener" href="https://github.com/qd-today/templates">https://github.com/qd-today/templates</a><br>文档 <a target="_blank" rel="noopener" href="https://qd-today.github.io/qd/zh_CN/">https://qd-today.github.io/qd/zh_CN/</a><br>站点作者博客  <a target="_blank" rel="noopener" href="https://blog.arisa.moe/blog/2022/220530-auto-sign-in-guide/">https://blog.arisa.moe/blog/2022/220530-auto-sign-in-guide/</a></p>
+<p>默认公开模版：<a target="_blank" rel="noopener" href="https://github.com/qd-today/templates">https://github.com/qd-today/templates</a><br>wjf0214维护模版：<a target="_blank" rel="noopener" href="https://github.com/wjf0214/qd-templates">https://github.com/wjf0214/qd-templates</a></p>
+<p>cookie，session 都是请求参数里边可以看到的</p>
+<h3 id="Alist"><a href="#Alist" class="headerlink" title="Alist"></a>Alist</h3><p><a target="_blank" rel="noopener" href="https://alist.nn.ci/zh/">官方文档</a></p>
+<h3 id="已部署的站点"><a href="#已部署的站点" class="headerlink" title="已部署的站点"></a>已部署的站点</h3><table>
+<thead>
+<tr>
+<th align="left">应用</th>
+<th align="left">端口</th>
+<th align="left"></th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">1panel</td>
+<td align="left">19848</td>
+<td align="left"><a target="_blank" rel="noopener" href="http://192.168.3.105:19894/">http://192.168.3.105:19894</a><div><a target="_blank" rel="noopener" href="https://cn-yw-plc-1.openfrp.top:22592/fennykit">https://cn-yw-plc-1.openfrp.top:22592/fennykit</a> <div><a target="_blank" rel="noopener" href="https://cn.sz1.frp.hxkj.tk:56362/fennykit">https://cn.sz1.frp.hxkj.tk:56362/fennykit</a><br></div>                                                                                                                                                                                                                                                                                            </div></td>
+</tr>
+<tr>
+<td align="left">qinglong</td>
+<td align="left">5700</td>
+<td align="left"><a target="_blank" rel="noopener" href="http://192.168.123.162:5600/">http://192.168.123.162:5600</a><div><a target="_blank" rel="noopener" href="http://cn.sz1.frp.hxkj.tk:44733/">http://cn.sz1.frp.hxkj.tk:44733</a>                                                                                                                                                                                                                                                                                                                                                                       </div></td>
+</tr>
+<tr>
+<td align="left">qiandao</td>
+<td align="left">8923</td>
+<td align="left"><a target="_blank" rel="noopener" href="http://192.168.3.105:8923/">http://192.168.3.105:8923</a><div><a target="_blank" rel="noopener" href="http://cn.sz1.frp.hxkj.tk:46132/">http://cn.sz1.frp.hxkj.tk:46132</a>                                                                                                                                                                                                                                                                                                                                                                       </div></td>
+</tr>
+<tr>
+<td align="left">alist</td>
+<td align="left">5244</td>
+<td align="left"><a target="_blank" rel="noopener" href="http://192.168.3.105:5244/">http://192.168.3.105:5244</a><div><a target="_blank" rel="noopener" href="http://cn.sz1.frp.hxkj.tk:53584/">http://cn.sz1.frp.hxkj.tk:53584</a>                                                                                                                                                                                                                                                                                                                                                                       </div></td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">80</td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<p>谨慎开放的端口<br>windows（远程桌面）3389<br>http 80<br>https 44</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cjchn.github.io">CJ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cjchn.github.io/posts/20230920105155-armbian.html">https://cjchn.github.io/posts/20230920105155-armbian.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cjchn.github.io" target="_blank">CJ's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E7%94%9F%E4%BA%A7%E5%8A%9B/">生产力</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20230920105155-armbian.html" title="Armbian 盒子"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Armbian 盒子</div></div></a></div><div class="next-post pull-right"><a href="/posts/20230920063041-a6ee4416.html" title="常用软件探究"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">常用软件探究</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CJ</div><div class="author-info__description">保持正念，相信自己会越来越好</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2675851908&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://github.com/cjchn" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/302998641" target="_blank" title="视频"><i class="fab fa-youtube" style="color: #24292e;"></i></a><a class="social-icon" href="https://tgph.319226.xyz/" target="_blank" title="图床"><i class="fa-solid fa-image" style="color: #24292e;"></i></a><a class="social-icon" href="https://onedrive.319226.xyz/" target="_blank" title="云盘"><i class="fa-solid fa-cloud" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%88%9D%E5%A7%8B%E5%8C%96"><span class="toc-number">2.</span> <span class="toc-text">初始化</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9B%B4%E6%8D%A2%E6%BA%90"><span class="toc-number">3.</span> <span class="toc-text">更换源</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E7%B3%BB%E7%BB%9F%E6%9F%A5%E7%9C%8B"><span class="toc-number">4.</span> <span class="toc-text">系统查看</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85docker"><span class="toc-number">5.</span> <span class="toc-text">安装docker</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%87%E6%8D%A2%E5%88%B0%E5%9B%BD%E5%86%85%E9%95%9C%E5%83%8F%E5%BA%93"><span class="toc-number">5.1.</span> <span class="toc-text">切换到国内镜像库</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%B9%E5%99%A8%E9%9D%A2%E6%9D%BF-portainer"><span class="toc-number">6.</span> <span class="toc-text">容器面板 portainer</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%851Panel"><span class="toc-number">7.</span> <span class="toc-text">安装1Panel</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E9%9D%92%E9%BE%99%E9%9D%A2%E6%9D%BF"><span class="toc-number">8.</span> <span class="toc-text">安装青龙面板</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B7%BB%E5%8A%A0%E4%BE%9D%E8%B5%96"><span class="toc-number">8.1.</span> <span class="toc-text">添加依赖</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Casaos"><span class="toc-number">9.</span> <span class="toc-text">Casaos</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#ZoroTier"><span class="toc-number">10.</span> <span class="toc-text">ZoroTier</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#DDNS-GO"><span class="toc-number">11.</span> <span class="toc-text">DDNS-GO</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#frps-frpc"><span class="toc-number"></span> <span class="toc-text">frps &amp; frpc</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#HayFrp"><span class="toc-number">1.</span> <span class="toc-text">HayFrp</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%86%85%E7%BD%91%E7%A9%BF%E9%80%8F-openfrp"><span class="toc-number">2.</span> <span class="toc-text">内网穿透 openfrp</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#docker-%E5%AE%B9%E5%99%A8%E8%87%AA%E5%90%AF"><span class="toc-number">2.1.</span> <span class="toc-text">docker 容器自启</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#systemctl-%E8%87%AA%E5%90%AF%E5%8A%A8"><span class="toc-number">3.</span> <span class="toc-text">systemctl 自启动</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#QD%E6%A1%86%E6%9E%B6"><span class="toc-number">4.</span> <span class="toc-text">QD框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Alist"><span class="toc-number">5.</span> <span class="toc-text">Alist</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%B7%B2%E9%83%A8%E7%BD%B2%E7%9A%84%E7%AB%99%E7%82%B9"><span class="toc-number">6.</span> <span class="toc-text">已部署的站点</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231229062330-416f6fc3.html" title="NewPost">NewPost</a><time datetime="2023-12-29T06:23:30.000Z" title="发表于 2023-12-29 14:23:30">2023-12-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231222053433-b84b57db.html" title="Html">Html</a><time datetime="2023-12-22T05:34:33.000Z" title="发表于 2023-12-22 13:34:33">2023-12-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231215080353-36687561.html" title="关于音乐">关于音乐</a><time datetime="2023-12-15T08:03:53.000Z" title="发表于 2023-12-15 16:03:53">2023-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20231211023548-74516b02.html" title="office"><img src="https://vip.helloimg.com/images/2023/12/15/o7AvhR.md.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="office"/></a><div class="content"><a class="title" href="/posts/20231211023548-74516b02.html" title="office">office</a><time datetime="2023-12-11T02:35:48.000Z" title="发表于 2023-12-11 10:35:48">2023-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231207051738-3fb16ec5.html" title="人大金仓">人大金仓</a><time datetime="2023-12-07T05:17:38.000Z" title="发表于 2023-12-07 13:17:38">2023-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By CJ</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><span class="scroll-percent"></span><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.2/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><div class="aplayer no-destroy" data-id="2024518101" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-mini="true"> </div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.17.1/algoliasearch-lite.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.56.1/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div></body></html>

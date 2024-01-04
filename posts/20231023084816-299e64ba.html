@@ -1,0 +1,293 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Junit | CJ's Blog</title><meta name="author" content="CJ"><meta name="copyright" content="CJ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Junit记录需要在pom里面引入springBoot-test组件 12345&lt;dependency&gt;	&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;&lt;artifactId&gt;spring-boot-starter-test&lt;&#x2F;artifactId&gt;&lt;scope&gt;test&lt;&#x2F;sco">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Junit">
+<meta property="og:url" content="https://cjchn.github.io/posts/20231023084816-299e64ba.html">
+<meta property="og:site_name" content="CJ&#39;s Blog">
+<meta property="og:description" content="Junit记录需要在pom里面引入springBoot-test组件 12345&lt;dependency&gt;	&lt;groupId&gt;org.springframework.boot&lt;&#x2F;groupId&gt;&lt;artifactId&gt;spring-boot-starter-test&lt;&#x2F;artifactId&gt;&lt;scope&gt;test&lt;&#x2F;sco">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imgcdn.319226.xyz/202401041503387.png">
+<meta property="article:published_time" content="2023-10-23T08:48:16.000Z">
+<meta property="article:modified_time" content="2024-01-04T08:19:42.761Z">
+<meta property="article:author" content="CJ">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgcdn.319226.xyz/202401041503387.png"><link rel="shortcut icon" href="https://imgcdn.319226.xyz/202401041503387.png"><link rel="canonical" href="https://cjchn.github.io/posts/20231023084816-299e64ba.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"51DB2F26GB","apiKey":"1de06e184485e0844182c52de8afda82","indexName":"cjchn.github.io","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Junit',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-04 16:19:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a href="/" title="CJ's Blog"><span class="site-name">CJ's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">Junit</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-23T08:48:16.000Z" title="发表于 2023-10-23 16:48:16">2023-10-23</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-04T08:19:42.761Z" title="更新于 2024-01-04 16:19:42">2024-01-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">649</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>2分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="Junit"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><h1 id="Junit记录"><a href="#Junit记录" class="headerlink" title="Junit记录"></a>Junit记录</h1><p>需要在pom里面引入springBoot-test组件</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&lt;dependency&gt;	</span><br><span class="line">&lt;groupId&gt;org.springframework.boot&lt;/groupId&gt;</span><br><span class="line">&lt;artifactId&gt;spring-boot-starter-test&lt;/artifactId&gt;</span><br><span class="line">&lt;scope&gt;test&lt;/scope&gt;</span><br><span class="line">&lt;/dependency&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="测试类服务注入报空指针"><a href="#测试类服务注入报空指针" class="headerlink" title="测试类服务注入报空指针"></a>测试类服务注入报空指针</h3><p>在spring-test 里面自带了Junit 的包,只需要在test包下面建立测试类就可以愉快的跑测试用例了<br>。但是这个时候你想要测试service的调用的时候就会报空指针异常,debug后发现service并没有注入，不管事用过@Autowired还是@Resource标签都不可以，例如下图：</p>
+<p><img src="https://imgconvert.csdnimg.cn/aHR0cHM6Ly9ub3RlLnlvdWRhby5jb20veXdzL3B1YmxpYy9yZXNvdXJjZS9mZTZmNTA5MzBkZTcwM2M3NjNkMzk2NTM4OTNlMzNjMC94bWxub3RlLzI3NjNEM0YwMzk3RTQwMEVCMTlDQjgyRTc0OTU5MzYzLzIyMg?x-oss-process=image/format,png"></p>
+<p>我们只到我们是将我们的类交给spring管理的,而在测试类中，容器因为没有上下文环境，是没有办法对类进行初始化（实例化）操作的，所以就是这样在我们的测试类中并没有注入类的实例</p>
+<h3 id="如何注入service和dao"><a href="#如何注入service和dao" class="headerlink" title="如何注入service和dao"></a>如何注入service和dao</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringRunner.class)</span><br><span class="line">@SpringBootTest(classes = BlogApplication.class)</span><br><span class="line">public class BlogApplicationTests &#123;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h3 id="RunWith"><a href="#RunWith" class="headerlink" title="@RunWith"></a>@RunWith</h3><p>@RunWith注解是类级别的注解, 它提供了一种更改测试运行程序的默认行为的机制。简单理解，@RunWith注解就是一个运行器，其接受一个类的签名来指定是使用什么类、在什么环境下运行。需要注意的是，该注解的参数必须是Runner类的子类，JUnit本身有提供几个Runner，默认值为JUnit4，一个常见的替代方法是参数化类。</p>
+<p>当使用@RunWith注解对JUnit测试进行注解时，将对测试的生命周期和测试的运行方式进行一些更改。</p>
+<p>比如@RunWith(JUnit4.class)就是指用JUnit4来运行。</p>
+<p><strong>比如@RunWith(SpringJUnit4ClassRunner.class)就是让测试运行于Spring测试环境。</strong></p>
+<p>比如@RunWith(Suite.class)的话就是一套测试集合。</p>
+<p>比如@RunWith(SpringJUnit4ClassRunner.class)使用了Spring的SpringJUnit4ClassRunner，以便在测试开始的时候自动创建Spring的应用上下文。一般情况下想创建spring容器的话，需要通过web.xml配置classloder，但如果注解了@RunWith注解的话，就可以直接使用spring容器，直接使用@Test注解，不用启动spring容器。</p>
+<p>在上面的代码中，<strong>使用了@RunWith(SpringRunner.class)，实际上，SpringRunner类就是继承于Spring的SpringJUnit4ClassRunner类。</strong></p>
+<h3 id="SpringBootTest注解"><a href="#SpringBootTest注解" class="headerlink" title="@SpringBootTest注解"></a>@SpringBootTest注解</h3><p>@SpringBootTest注解是一个Spring Boot提供的注解，通过这个注解可以使JUnit单元测试跑在Spring Boot的运行环境中。</p>
+<p>我们可以通过classes参数来指定Spring Boot的启动类。</p>
+<h3 id="完整测试类"><a href="#完整测试类" class="headerlink" title="完整测试类"></a>完整测试类</h3><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">@RunWith(SpringRunner.class)</span><br><span class="line">@SpringBootTest(classes = BlogApplication.class)</span><br><span class="line">public class BlogApplicationTests &#123;</span><br><span class="line"></span><br><span class="line">    @Autowired</span><br><span class="line">    private UserService UserService;</span><br><span class="line"></span><br><span class="line">    @Test</span><br><span class="line">    public void test() &#123;</span><br><span class="line">        User user = UserService.getById(1L);</span><br><span class="line">        System.out.println(user.toString());</span><br><span class="line">    &#125;</span><br><span class="line"></span><br><span class="line">&#125;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cjchn.github.io">CJ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cjchn.github.io/posts/20231023084816-299e64ba.html">https://cjchn.github.io/posts/20231023084816-299e64ba.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cjchn.github.io" target="_blank">CJ's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20231023084835-linux.html" title="Linux"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7Lq06.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Linux</div></div></a></div><div class="next-post pull-right"><a href="/posts/20231023084756-749a22ae.html" title="Kotlin"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7LeAP.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">Kotlin</div></div></a></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CJ</div><div class="author-info__description">保持正念，相信自己会越来越好</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2675851908&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://github.com/cjchn" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/302998641" target="_blank" title="视频"><i class="fab fa-youtube" style="color: #24292e;"></i></a><a class="social-icon" href="https://tgph.319226.xyz/" target="_blank" title="图床"><i class="fa-solid fa-image" style="color: #24292e;"></i></a><a class="social-icon" href="https://onedrive.319226.xyz/" target="_blank" title="云盘"><i class="fa-solid fa-cloud" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#Junit%E8%AE%B0%E5%BD%95"><span class="toc-number">1.</span> <span class="toc-text">Junit记录</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%B5%8B%E8%AF%95%E7%B1%BB%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%85%A5%E6%8A%A5%E7%A9%BA%E6%8C%87%E9%92%88"><span class="toc-number">1.0.1.</span> <span class="toc-text">测试类服务注入报空指针</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%A6%82%E4%BD%95%E6%B3%A8%E5%85%A5service%E5%92%8Cdao"><span class="toc-number">1.0.2.</span> <span class="toc-text">如何注入service和dao</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#RunWith"><span class="toc-number">1.0.3.</span> <span class="toc-text">@RunWith</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#SpringBootTest%E6%B3%A8%E8%A7%A3"><span class="toc-number">1.0.4.</span> <span class="toc-text">@SpringBootTest注解</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%8C%E6%95%B4%E6%B5%8B%E8%AF%95%E7%B1%BB"><span class="toc-number">1.0.5.</span> <span class="toc-text">完整测试类</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231229062330-416f6fc3.html" title="NewPost">NewPost</a><time datetime="2023-12-29T06:23:30.000Z" title="发表于 2023-12-29 14:23:30">2023-12-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231222053433-b84b57db.html" title="Html">Html</a><time datetime="2023-12-22T05:34:33.000Z" title="发表于 2023-12-22 13:34:33">2023-12-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231215080353-36687561.html" title="关于音乐">关于音乐</a><time datetime="2023-12-15T08:03:53.000Z" title="发表于 2023-12-15 16:03:53">2023-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20231211023548-74516b02.html" title="office"><img src="https://vip.helloimg.com/images/2023/12/15/o7AvhR.md.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="office"/></a><div class="content"><a class="title" href="/posts/20231211023548-74516b02.html" title="office">office</a><time datetime="2023-12-11T02:35:48.000Z" title="发表于 2023-12-11 10:35:48">2023-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231207051738-3fb16ec5.html" title="人大金仓">人大金仓</a><time datetime="2023-12-07T05:17:38.000Z" title="发表于 2023-12-07 13:17:38">2023-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By CJ</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><span class="scroll-percent"></span><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.2/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><div class="aplayer no-destroy" data-id="2024518101" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-mini="true"> </div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.17.1/algoliasearch-lite.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.56.1/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div></body></html>

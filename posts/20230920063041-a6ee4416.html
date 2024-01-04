@@ -1,0 +1,846 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>常用软件探究 | CJ's Blog</title><meta name="author" content="CJ"><meta name="copyright" content="CJ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="相信一个好的软件是能极大提升工作效率的  火绒安全工具 IntelliJ IDEA激活 Some keys for testing - jetbra.in 前言使用中的一些记录。 配置jvm 乱码1-Dfile.encoding&#x3D;utf-8 -Dsun.jnu.encoding&#x3D;utf-8  Web 项目发布配置(17条消息) IDEA 完整web项目配置_zhangpf的代码人生的博客-CSD">
+<meta property="og:type" content="article">
+<meta property="og:title" content="常用软件探究">
+<meta property="og:url" content="https://cjchn.github.io/posts/20230920063041-a6ee4416.html">
+<meta property="og:site_name" content="CJ&#39;s Blog">
+<meta property="og:description" content="相信一个好的软件是能极大提升工作效率的  火绒安全工具 IntelliJ IDEA激活 Some keys for testing - jetbra.in 前言使用中的一些记录。 配置jvm 乱码1-Dfile.encoding&#x3D;utf-8 -Dsun.jnu.encoding&#x3D;utf-8  Web 项目发布配置(17条消息) IDEA 完整web项目配置_zhangpf的代码人生的博客-CSD">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://imgcdn.319226.xyz/202401041503387.png">
+<meta property="article:published_time" content="2023-09-20T06:30:41.000Z">
+<meta property="article:modified_time" content="2024-01-04T08:19:42.765Z">
+<meta property="article:author" content="CJ">
+<meta property="article:tag" content="专题">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://imgcdn.319226.xyz/202401041503387.png"><link rel="shortcut icon" href="https://imgcdn.319226.xyz/202401041503387.png"><link rel="canonical" href="https://cjchn.github.io/posts/20230920063041-a6ee4416.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"51DB2F26GB","apiKey":"1de06e184485e0844182c52de8afda82","indexName":"cjchn.github.io","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '常用软件探究',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-04 16:19:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://vip.helloimg.com/images/2024/01/04/oIBXXE.jpg')"><nav id="nav"><span id="blog-info"><a href="/" title="CJ's Blog"><span class="site-name">CJ's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">常用软件探究</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-09-20T06:30:41.000Z" title="发表于 2023-09-20 14:30:41">2023-09-20</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-04T08:19:42.765Z" title="更新于 2024-01-04 16:19:42">2024-01-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E7%94%9F%E6%B4%BB/">生活</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">11.1k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>38分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="常用软件探究"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><blockquote>
+<p>相信一个好的软件是能极大提升工作效率的</p>
+</blockquote>
+<h1 id="火绒"><a href="#火绒" class="headerlink" title="火绒"></a>火绒</h1><p>安全工具</p>
+<h1 id="IntelliJ-IDEA"><a href="#IntelliJ-IDEA" class="headerlink" title="IntelliJ IDEA"></a>IntelliJ IDEA</h1><p>激活 <a target="_blank" rel="noopener" href="https://jb.rmb.run/">Some keys for testing - jetbra.in</a></p>
+<h2 id="前言"><a href="#前言" class="headerlink" title="前言"></a>前言</h2><p>使用中的一些记录。</p>
+<h2 id="配置"><a href="#配置" class="headerlink" title="配置"></a>配置</h2><h3 id="jvm-乱码"><a href="#jvm-乱码" class="headerlink" title="jvm 乱码"></a>jvm 乱码</h3><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">-Dfile.encoding=utf-8 -Dsun.jnu.encoding=utf-8</span><br></pre></td></tr></table></figure>
+
+<h3 id="Web-项目发布配置"><a href="#Web-项目发布配置" class="headerlink" title="Web 项目发布配置"></a>Web 项目发布配置</h3><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/u010970951/article/details/86636874">(17条消息) IDEA 完整web项目配置_zhangpf的代码人生的博客-CSDN博客_idea配置web项目</a></p>
+<h3 id="IDEA-类和方法注释模板设置"><a href="#IDEA-类和方法注释模板设置" class="headerlink" title="IDEA 类和方法注释模板设置"></a>IDEA 类和方法注释模板设置</h3><p><strong>路径</strong></p>
+<p>File–&gt;settings–&gt;Editor–&gt;File and Code Templates–&gt;Files</p>
+<figure class="highlight java"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">if</span> ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != <span class="string">&quot;&quot;</span>)<span class="keyword">package</span> $&#123;PACKAGE_NAME&#125;;#end  </span><br><span class="line">#parse(<span class="string">&quot;File Header.java&quot;</span>)  </span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@ClassName</span>: $&#123;NAME&#125;  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:   </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: CJ  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: Created in $&#123;TIME&#125; $&#123;DATE&#125;  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Version</span>: 1.0  </span></span><br><span class="line"><span class="comment"> */</span><span class="keyword">public</span> <span class="keyword">class</span> <span class="title class_">$</span>&#123;NAME&#125; &#123;  </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight kotlin"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">#<span class="keyword">if</span> ($&#123;PACKAGE_NAME&#125; &amp;&amp; $&#123;PACKAGE_NAME&#125; != <span class="string">&quot;&quot;</span>)<span class="keyword">package</span> $&#123;PACKAGE_NAME&#125;  </span><br><span class="line">  </span><br><span class="line">#end  </span><br><span class="line">#parse(<span class="string">&quot;File Header.java&quot;</span>)  </span><br><span class="line"><span class="comment">/**  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Author</span>: CJ  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Description</span>:  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Date</span>: Created in $&#123;TIME&#125; $&#123;DATE&#125;  </span></span><br><span class="line"><span class="comment"> * <span class="doctag">@Modified</span> By:  </span></span><br><span class="line"><span class="comment"> */</span></span><br></pre></td></tr></table></figure>
+
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/xiaoliulang0324/article/details/79030752">IDEA类和方法注释模板设置</a></p>
+<h3 id="激活"><a href="#激活" class="headerlink" title="激活"></a>激活</h3><p><a target="_blank" rel="noopener" href="http://www.itzoo.net/idea/intellij-idea2022-1-one-click-installation-without-configuration-ja-netfilter-all-agent.html">IntelliJ IDEA2022.1 永久激活2021.3 免添加配置 一键激活 破解教程 附带下载工具 - ITZOO – IT知识分享 免费资源下载</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.exception.site/">最新激活教程</a></p>
+<h3 id="安装的插件目录"><a href="#安装的插件目录" class="headerlink" title="安装的插件目录"></a>安装的插件目录</h3><ol>
+<li>2020 年前的 intellij idea 安装的插件所在目录默认在:</li>
+</ol>
+<blockquote>
+<p>C:\Users\Administrator\.IntelliJIdea2019.3\config\plugins</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20200703170339827.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM4NjU1MQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"><br>2. 2020 年的 intellij idea 安装的插件所在目录默认在:</p>
+<blockquote>
+<p>C:\Users\Administrator\AppData\Roaming\JetBrains\IntelliJIdea2020.1\plugins</p>
+</blockquote>
+<p><img src="https://img-blog.csdnimg.cn/20200703170507284.png?x-oss-process=image/watermark,type_ZmFuZ3poZW5naGVpdGk,shadow_10,text_aHR0cHM6Ly9ibG9nLmNzZG4ubmV0L3dlaXhpbl80MjM4NjU1MQ==,size_16,color_FFFFFF,t_70" alt="在这里插入图片描述"></p>
+<h2 id="服务器部署"><a href="#服务器部署" class="headerlink" title="服务器部署"></a>服务器部署</h2><p><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_38225558/article/details/94736404"> idea使用Deployment部署项目到服务器的全过程_郑清的博客-CSDN博客_deployment idea</a></p>
+<h3 id="一键部署到-Docker"><a href="#一键部署到-Docker" class="headerlink" title="一键部署到 Docker"></a>一键部署到 Docker</h3><p><strong>Docker 开启远程访问</strong></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">[root@izwz9eftauv7x69f5jvi96z docker]# vim /lib/systemd/system/docker.service</span><br><span class="line">#修改ExecStart这行</span><br><span class="line">ExecStart=/usr/bin/dockerd  -H tcp://0.0.0.0:2375  -H unix:///var/run/docker.sock</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">#重新加载配置文件</span><br><span class="line">[root@izwz9eftauv7x69f5jvi96z docker]# systemctl daemon-reload    </span><br><span class="line">#重启服务</span><br><span class="line">[root@izwz9eftauv7x69f5jvi96z docker]# systemctl restart docker.service </span><br><span class="line">#查看端口是否开启</span><br><span class="line">[root@izwz9eftauv7x69f5jvi96z docker]# netstat -nlpt</span><br><span class="line">#直接curl看是否生效</span><br><span class="line">[root@izwz9eftauv7x69f5jvi96z docker]# curl http://127.0.0.1:2375/info</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img2023.cnblogs.com/blog/3087294/202302/3087294-20230206152143443-117817189.png"></p>
+<p><strong>pom 文件添加依赖</strong></p>
+<figure class="highlight xml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">properties</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">java.version</span>&gt;</span>1.8<span class="tag">&lt;/<span class="name">java.version</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">docker.image.prefix</span>&gt;</span>cjapp<span class="tag">&lt;/<span class="name">docker.image.prefix</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">properties</span>&gt;</span></span><br><span class="line"> </span><br><span class="line"> </span><br><span class="line">    <span class="tag">&lt;<span class="name">build</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;<span class="name">plugins</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>org.springframework.boot<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>spring-boot-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;<span class="name">plugin</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">groupId</span>&gt;</span>com.spotify<span class="tag">&lt;/<span class="name">groupId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">artifactId</span>&gt;</span>docker-maven-plugin<span class="tag">&lt;/<span class="name">artifactId</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">version</span>&gt;</span>1.0.0<span class="tag">&lt;/<span class="name">version</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;<span class="name">configuration</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">imageName</span>&gt;</span>$&#123;docker.image.prefix&#125;/$&#123;project.artifactId&#125;<span class="tag">&lt;/<span class="name">imageName</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">dockerDirectory</span>&gt;</span><span class="tag">&lt;/<span class="name">dockerDirectory</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;<span class="name">resources</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;<span class="name">resource</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">targetPath</span>&gt;</span>/<span class="tag">&lt;/<span class="name">targetPath</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">directory</span>&gt;</span>$&#123;project.build.directory&#125;<span class="tag">&lt;/<span class="name">directory</span>&gt;</span></span><br><span class="line">                            <span class="tag">&lt;<span class="name">include</span>&gt;</span>$&#123;project.build.finalName&#125;.jar<span class="tag">&lt;/<span class="name">include</span>&gt;</span></span><br><span class="line">                        <span class="tag">&lt;/<span class="name">resource</span>&gt;</span></span><br><span class="line">                    <span class="tag">&lt;/<span class="name">resources</span>&gt;</span></span><br><span class="line">                <span class="tag">&lt;/<span class="name">configuration</span>&gt;</span></span><br><span class="line">            <span class="tag">&lt;/<span class="name">plugin</span>&gt;</span></span><br><span class="line">        <span class="tag">&lt;/<span class="name">plugins</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;/<span class="name">build</span>&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>在 pom 文件同层级下创建 Dockerfile 文件</p>
+<p><img src="https://img2023.cnblogs.com/blog/3087294/202302/3087294-20230206152203666-1389200116.png"></p>
+<p>Dockerfile</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"># 设置本镜像需要使用的基础镜像  </span><br><span class="line">FROM  openwhisk/java8action  </span><br><span class="line">  </span><br><span class="line"># 把jar包添加到镜像中  </span><br><span class="line">COPY target/sys-api-0.0.1-SNAPSHOT.jar /app.jar  </span><br><span class="line">  </span><br><span class="line"># 镜像暴露的端口，这里注意设置不常用的端口防止出现端口被占用  </span><br><span class="line">EXPOSE 1021  </span><br><span class="line">  </span><br><span class="line"># 赋权  </span><br><span class="line">RUN bash -c &#x27;touch /app.jar&#x27;  </span><br><span class="line">  </span><br><span class="line"># 容器启动命令  </span><br><span class="line">ENTRYPOINT [&quot;java&quot;,&quot;-jar&quot;,&quot;/app.jar&quot;]  </span><br><span class="line">  </span><br><span class="line"># 设置时区  </span><br><span class="line">RUN /bin/cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime &amp;&amp; echo &#x27;Asia/Shanghai&#x27; &gt;/etc/timezone</span><br></pre></td></tr></table></figure>
+
+<p>将工程打包，在 idea Terminal 中执行 mvn clean package 命令进行编译打包，打包后会在 target 目录下生成 jar 包。生成 jar 包后，可以在本地启动服务，进行测试。测试后，配置 docker 镜像制件命令。从 Run-&gt;Edit Configrations 进入配置界面。</p>
+<p>点击 Docker，再点击 + 号，添加一个 docker 命令，输入 Name，选择 Server，选择 Dockerfile 文件，输入镜像 tag，完成配置。</p>
+<p><img src="https://img2023.cnblogs.com/blog/3087294/202302/3087294-20230206152224503-378949793.png"></p>
+<p>完成后，执行这个命令：<br><img src="https://img2023.cnblogs.com/blog/3087294/202302/3087294-20230206152254034-952241720.png"></p>
+<p>执行成功后，可以远程 docker 上看到这个镜像。执行 docker ps 可以看到，镜像已经生产容器开始运行。</p>
+<p><img src="https://img2023.cnblogs.com/blog/3087294/202302/3087294-20230206152309443-783478323.png"></p>
+<h3 id="本地部署"><a href="#本地部署" class="headerlink" title="本地部署"></a>本地部署</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/deng-cc/p/6416332.html">理解 IntelliJ IDEA 的项目配置和Web部署 - Dulk - 博客园 (cnblogs.com)</a></p>
+<h3 id="项目创建"><a href="#项目创建" class="headerlink" title="项目创建"></a>项目创建</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/yeya/p/10320885.html">用idea搭建SSM项目，原来这么简单 - 鄙人薛某 - 博客园 (cnblogs.com)</a><br><a target="_blank" rel="noopener" href="https://blog.csdn.net/wenxingchen/article/details/78563317">IDEA用maven创建springMVC项目和配置（XML配置和Java配置）(修正版)_苍穹之跃的博客-CSDN博客_idea maven springmvc</a></p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/6V6-Mzft21jEkXJWYn07Rg">IDEA下创建SpringBoot+MyBatis+MySql项目实现动态登录与注册功能 (qq.com)</a></p>
+<h3 id="Rest-api"><a href="#Rest-api" class="headerlink" title="Rest-api"></a>Rest-api</h3><figure class="highlight http"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"># 注释</span><br><span class="line">POST http://localhost:8150/nb/electroniccontact/list  </span><br><span class="line"><span class="attribute">Accept</span><span class="punctuation">: </span>*/*  </span><br><span class="line"><span class="attribute">Cache-Control</span><span class="punctuation">: </span>no-cache  </span><br><span class="line"><span class="attribute">Content-Type</span><span class="punctuation">: </span>application/json  </span><br><span class="line"><span class="attribute">Authorization</span><span class="punctuation">: </span>064c1c57-02cc-4fbe-9283-2173d2fff88a  </span><br><span class="line">  </span><br><span class="line">&#123;  </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">### 分割</span><br></pre></td></tr></table></figure>
+
+<h2 id="提升效率"><a href="#提升效率" class="headerlink" title="提升效率"></a>提升效率</h2><p><a target="_blank" rel="noopener" href="https://cloud.189.cn/web/main/file/folder/32427158264122495">天翼云_idea-setting导出</a></p>
+<h3 id="插件"><a href="#插件" class="headerlink" title="插件"></a>插件</h3><h4 id="配置-1"><a href="#配置-1" class="headerlink" title="配置"></a>配置</h4><p>时常抽风，多试几次<br><img src="https://img2023.cnblogs.com/blog/3087294/202302/3087294-20230206152046090-1169883964.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://plugins.zhile.io</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://img2023.cnblogs.com/blog/3087294/202302/3087294-20230206152111966-1683361669.png"></p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">https://plugins.jetbrains.com</span><br></pre></td></tr></table></figure>
+
+<h4 id="String-Manipulation"><a href="#String-Manipulation" class="headerlink" title="String Manipulation"></a>String Manipulation</h4><p>字符串操作，驼峰 &#x2F;下划线…</p>
+<p><a target="_blank" rel="noopener" href="https://blog.csdn.net/cnds123321/article/details/102870312">(17条消息) IDEA插件系列（21）：String Manipulation插件——字符串操作_二木成林的博客-CSDN博客_stringmanipulation</a></p>
+<p>快捷键：Alt+M</p>
+<h4 id="JRebel"><a href="#JRebel" class="headerlink" title="JRebel"></a>JRebel</h4><p>JRebel mybatisPlus extension</p>
+<p>支持 MyBatis 的热部署</p>
+<p>注册教程，适用于 jrebel 版本 2022.4.1, <a target="_blank" rel="noopener" href="https://cloud.189.cn/web/main/file/folder/41392114164401070">天翼云备份</a></p>
+<p><a target="_blank" rel="noopener" href="https://jrebel.qekang.com/">https://jrebel.qekang.com/</a>  |  <a target="_blank" rel="noopener" href="https://jrebel.996icu.wiki/">jrebel.996icu.wiki</a></p>
+<p><a target="_blank" rel="noopener" href="http://jrebel-license.jiweichengzhu.com/">http://jrebel-license.jiweichengzhu.com/</a></p>
+<p>这篇文章解决了 mapper 热部署的问题： <a target="_blank" rel="noopener" href="https://blog.csdn.net/duanluan/article/details/79080370">IDEA + Spring Boot + JRebel + MyBatis Mapper XML 热部署不能自动编译的解决方案和启动的几种方式_jrebel mybatis-CSDN博客</a></p>
+<p>jrebel 是依靠 idea 自动热部署 mapper，修改后 Ctrl+S 保存<br>java 文件最好手动编译一下，快捷键 Ctrl+shift+F9 </p>
+<p><img src="https://img2023.cnblogs.com/blog/3087294/202303/3087294-20230330170115999-1790818931.png" alt="img"></p>
+<h4 id="EasyCode"><a href="#EasyCode" class="headerlink" title="EasyCode"></a>EasyCode</h4><p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/1b8MEOh2YobjMZsJQDZLk">IDEA EasyCode(代码神器) (qq.com)</a></p>
+<h5 id="CharAutoReplace"><a href="#CharAutoReplace" class="headerlink" title="CharAutoReplace"></a>CharAutoReplace</h5><p>打出来的符号自动替换，比如中文都变成英文的</p>
+<h4 id="Translation"><a href="#Translation" class="headerlink" title="Translation"></a>Translation</h4><p>翻译插件</p>
+<p>Translation <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/8579-translation">https://plugins.jetbrains.com/plugin/8579-translation</a></p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">windows host文件路径： C:\windows\system32\drivers\etc</span></span><br><span class="line">203.208.40.66 translate.google.com</span><br><span class="line">203.208.40.66 translate.googleapis.com</span><br></pre></td></tr></table></figure>
+
+<p>其他翻译地址</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">https://translate.google.cn/ 谷歌翻译（国内）</span><br><span class="line">https://translate.google.com/ 谷歌翻译（国外）</span><br><span class="line">https://fanyi.baidu.com/ 百度翻译</span><br><span class="line">http://fanyi.youdao.com/ 网易有道翻译</span><br><span class="line">https://fanyi.qq.com/ 腾讯翻译君</span><br></pre></td></tr></table></figure>
+
+<p>使用百度翻译接口，<a target="_blank" rel="noopener" href="https://api.fanyi.baidu.com/manage/developer">地址</a>，填写 APP ID 和 秘钥</p>
+<h4 id="类和-JSON-互转"><a href="#类和-JSON-互转" class="headerlink" title="类和 JSON 互转"></a>类和 JSON 互转</h4><p>RoboPOJOGenerator：json 生成类</p>
+<p>POJO to JSON：类生成 json</p>
+<h4 id="GsonFormatPlus"><a href="#GsonFormatPlus" class="headerlink" title="GsonFormatPlus"></a>GsonFormatPlus</h4><p>JSON 格式化</p>
+<p>GsonFormatPlus <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/14949-gsonformatplus">https://plugins.jetbrains.com/plugin/14949-gsonformatplus</a></p>
+<h4 id="GenerateAllSetter"><a href="#GenerateAllSetter" class="headerlink" title="GenerateAllSetter"></a>GenerateAllSetter</h4><p>生成所有 set 方法调用</p>
+<p>GenerateAllSetter <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/9360-generateallsetter">https://plugins.jetbrains.com/plugin/9360-generateallsetter</a></p>
+<h4 id="MyBatisCodeHelperPro"><a href="#MyBatisCodeHelperPro" class="headerlink" title="MyBatisCodeHelperPro"></a>MyBatisCodeHelperPro</h4><p>付费插件,免费功能也够用</p>
+<p>MyBatisCodeHelperPro 插件为 java mybatis 框架，提供自动完成检查，代码生成，使 mybatis 易于使用</p>
+<p>MyBatisCodeHelperPro <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/9837-mybatiscodehelperpro">https://plugins.jetbrains.com/plugin/9837-mybatiscodehelperpro</a></p>
+<h4 id="Free-MyBatis-plugin（不维护）"><a href="#Free-MyBatis-plugin（不维护）" class="headerlink" title="Free MyBatis plugin（不维护）"></a>Free MyBatis plugin（不维护）</h4><p><a target="_blank" rel="noopener" href="https://github.com/chuntungho/free-mybatis-plugin">https://github.com/chuntungho/free-mybatis-plugin</a></p>
+<h4 id="Maven-Helper"><a href="#Maven-Helper" class="headerlink" title="Maven Helper"></a>Maven Helper</h4><p>Maven Helper <a target="_blank" rel="noopener" href="https://plugins.jetbrains.com/plugin/7179-maven-helper">https://plugins.jetbrains.com/plugin/7179-maven-helper</a></p>
+<h4 id="GitToolBox"><a href="#GitToolBox" class="headerlink" title="GitToolBox"></a>GitToolBox</h4><p>GitToolBox：分支信息、提交信息等</p>
+<h4 id="grep-console"><a href="#grep-console" class="headerlink" title="grep console"></a>grep console</h4><p>日志输出着色</p>
+<h4 id="Rainbow-Brackets"><a href="#Rainbow-Brackets" class="headerlink" title="Rainbow Brackets"></a>Rainbow Brackets</h4><p>彩色括号</p>
+<h4 id="AceJump"><a href="#AceJump" class="headerlink" title="AceJump"></a>AceJump</h4><p>AceJump 允许您将插入符号快速导航到编辑器中可见的任何位置。  只需按“ctrl+;”，</p>
+<h4 id="IeadVim"><a href="#IeadVim" class="headerlink" title="IeadVim"></a>IeadVim</h4><p>Vim 效率工具</p>
+<p>IdeaVimExtension,IdeaVim-EasyMotion</p>
+<p>参考的中文版操作说明： <a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_40395874/article/details/116047253">点我</a></p>
+<p><img src="https://img2023.cnblogs.com/blog/3087294/202305/3087294-20230508100819518-1652250226.png" alt="img"></p>
+<p>yy 复制当前行,p 粘贴, x 删除<br>dw 删除到下一个单词，de 删除到该单词末尾，d2w 删除 2 个单词<br>dd 删除一行，2dd 删除两行,v 进入内容选择模式可以多选删除<br>d$ 删除该行后面的</p>
+<p>di” 删除双引号里的内容<br>da” 把双引号一起删除<br>ci” 删除完双引号里的内容想立即切换到 插入模式</p>
+<p>a 在光标后，进入插入模式；<br>A 在本行结尾，进入插入模式；<br>i 在光标前，进入插入模式；<br>I 在本行开头，进入插入模式<br>o 在本行之后新增一行，并进入插入模式；<br>O 在本行之前新增一行，并进入插入模式；<br>s 删除当前字符，并进入插入模式；<br>S 删除当前行中的所有文本，并进入插入模式；</p>
+<p>0 行首<br>w 下一个单词首，e 下一个单词末尾<br>u 撤销，ctrl+r 恢复<br>p 粘贴<br>r 替换<br>c 删除后进入插入模式<br>gg 首行<br>G 最后一行 19G 跳转到 19 行</p>
+<p>% 查找配对括号<br>&#x2F;文字 搜索文字 Enter<br>n 下一个 ctrl-o 回退<br>N 上一个 ctrl-i 新位置<br>?文字 逆向搜索文字 Enter</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">:q :wq 提出文件</span><br><span class="line">:s 替换  </span><br><span class="line">    :s/old/new &lt;回车&gt;  替换该行第一个匹配串</span><br><span class="line">    :#,#s/old/new/g 是替换两行之间出现的每个匹配串 （#,# 代表的是替换操作的若干行中首尾两行的行号）</span><br><span class="line">    :%s/old/new/g     则是替换整个文件中的每个匹配串</span><br><span class="line">    :%s/old/new/gc    会找到整个文件中的每个匹配串，并且对每个匹配串提示是否进行替换</span><br><span class="line">:!&lt;外部命令&gt; 例如:!ls 执行外部命令</span><br><span class="line">:w TEST 以 TEST 为文件名保存整个文件</span><br><span class="line">v motion :w FILENAME 保存部分文件内容（v motion 是多选文件内容）</span><br><span class="line">:r FILENAME 可提取磁盘文件 FILENAME 并将其插入到当前文件的光标位置后面</span><br></pre></td></tr></table></figure>
+
+<p>ctrl-g 行信息</p>
+<p>1、  f{word}  是用来查找 当前行，当前光标后，是否存在某个字符 {word}  若存在光标就会自动移动过去；<br>2、  $ 跳转到行尾，^ 跳转到行首；<br>3、  % 括号匹配跳转 () [] {}<br>4、  * 跳转到 i 上一个字符定位处；<br>5、  [n]h&#x2F;j&#x2F;k&#x2F;l 数字加上方向键 代表重复运行多少次；<br>例如 10h 向左移动 10 个字符，3j 向下移动三行；<br>6、  G 移动到最后一行，gg 移动到第一行；<br>7、  H 移动到当前页的第一行，M 移动到编辑器的中部，L 移动到当前页的最后一行；<br>8、  [n]w 移动到后面的 第[n] 个单词 的开始位置；<br>e 移动到下一个单词末尾<br>b 移动到上一个单词的开头</p>
+<h4 id="RestfulTool"><a href="#RestfulTool" class="headerlink" title="RestfulTool"></a>RestfulTool</h4><p>RESTful Web 服务辅助开发工具</p>
+<h3 id="idea-编译没有-class，maven-生命周期正常"><a href="#idea-编译没有-class，maven-生命周期正常" class="headerlink" title="idea 编译没有 class，maven 生命周期正常"></a>idea 编译没有 class，maven 生命周期正常</h3><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/bestxyl/p/13937873.html">idea跑springboot项目编译时提示“程序包xxx不存在，找不到符号”</a></p>
+<h3 id="快捷键"><a href="#快捷键" class="headerlink" title="快捷键"></a>快捷键</h3><p>ctrl+alt+M 重构方法</p>
+<h1 id="安卓开发"><a href="#安卓开发" class="headerlink" title="安卓开发"></a>安卓开发</h1><p>安卓开发环境搭建：<a target="_blank" rel="noopener" href="https://www.jb51.net/article/280372.htm">点我</a></p>
+<p>解决 Gradle 插件不支持 Java8 的方法：<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/465438793">点我</a></p>
+<p>了解安卓开发可参考以下文章，写的挺不错的：<br><a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42242452/article/details/124719180">**安卓开发入门基础 **</a>** **<a target="_blank" rel="noopener" href="https://blog.csdn.net/qq_42242452/article/details/124761317"><strong>安卓的简单控件</strong></a></p>
+<h1 id="Visual-Studio-Code"><a href="#Visual-Studio-Code" class="headerlink" title="Visual Studio Code"></a>Visual Studio Code</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cjcn/p/vscode.html">Visual Studio Code</a></p>
+<h1 id="Another-Redis-Desktop-Manager"><a href="#Another-Redis-Desktop-Manager" class="headerlink" title="Another Redis Desktop Manager"></a>Another Redis Desktop Manager</h1><p>Redis 连接工具</p>
+<h1 id="DBeaver"><a href="#DBeaver" class="headerlink" title="DBeaver"></a>DBeaver</h1><p>数据库连接工具</p>
+<p><a target="_blank" rel="noopener" href="https://dbeaver.io/download/">下载地址</a></p>
+<h1 id="Navicat"><a href="#Navicat" class="headerlink" title="Navicat"></a>Navicat</h1><h3 id="快捷键-1"><a href="#快捷键-1" class="headerlink" title="快捷键"></a>快捷键</h3><p><del>Ctrl + N：新建连接<br>Ctrl + Shift + N：新建查询</del><br>Ctrl + T：新建表<br>Ctrl + I：新建索引<br><del>Ctrl + E：编辑表结构</del><br>Ctrl + D：删除表<br>Ctrl + R：运行 SQL<br>Ctrl + F：查找<br>Ctrl + H：替换<br><del>Ctrl + Enter：执行当前 SQL 语句</del><br>Ctrl + Q: 新建查询框<br>F5：刷新<br>Ctrl + W：关闭当前窗口<br>Ctrl + Y: 复原撤销<br>Ctrl + Z: 撤销</p>
+<p>F2 重命名</p>
+<h3 id="查看数据时如何快速定位到字段列"><a href="#查看数据时如何快速定位到字段列" class="headerlink" title="查看数据时如何快速定位到字段列"></a>查看数据时如何快速定位到字段列</h3><p>在查看表数据的界面，点击右上角：</p>
+<p>查看 - 显示 - 显示或隐藏列</p>
+<h1 id="ApiPost7"><a href="#ApiPost7" class="headerlink" title="ApiPost7"></a>ApiPost7</h1><p>接口工具</p>
+<h1 id="Beyond-Compare-4"><a href="#Beyond-Compare-4" class="headerlink" title="Beyond Compare 4"></a>Beyond Compare 4</h1><p>对比工具</p>
+<h1 id="向日葵"><a href="#向日葵" class="headerlink" title="向日葵"></a>向日葵</h1><p>远程连接工具</p>
+<h1 id="天翼云盘"><a href="#天翼云盘" class="headerlink" title="天翼云盘"></a>天翼云盘</h1><p>主力网盘</p>
+<h1 id="Snipaste"><a href="#Snipaste" class="headerlink" title="Snipaste"></a>Snipaste</h1><p>截图</p>
+<h1 id="图压"><a href="#图压" class="headerlink" title="图压"></a>图压</h1><p>图片压缩</p>
+<h1 id="Obsidian"><a href="#Obsidian" class="headerlink" title="Obsidian"></a>Obsidian</h1><p>这个软件其实相对好了，对于多平台的支持，让我把所有的终端都给安装上了。而且自由度高，主题，插件社区都比较完善。使用这个软件以来，我研究了多端同步和图床，研究了自定义样式，可定制的程度相当高，隐私性也很强。</p>
+<p>Obsidian 借助 Remotely save 插件同步坚果云，出现“503，获取元数据错误”，查询网络上说现阶段对于 <a href="%E5%85%8D%E8%B4%B9%E7%9A%84%E4%BA%91%E8%B5%84%E6%BA%90.md">坚果云</a> 不支持的。</p>
+<p>2023 年 10 月 23 日</p>
+<p>同步方案太难了，现在最好的应该就是 livesync，但是需要自建 CouchDB，想想 frp 老是断线，还不如用 git 呢。git 想了想，不如用 idea，插件什么的算了。还有个 remoteSync，本来搭配国内坚果云速度和稳定应该都挺好，只是体验上一言难尽，坚果云免费版有限制老是报错，换了个 oneDrive，emmm，可用但不那么理想。而且，这个插件没有看到怎么屏蔽目录，我的 node_modules 都给我上传了干嘛，都是些包文件。</p>
+<p>先开始想着来个移动端，PC 端的同步方案，后面发现了移动端续航和同步时效的问题，只选择 PC 之间，结果还是不理想，索性放弃多端同步方案了。</p>
+<h3 id="官方链接"><a href="#官方链接" class="headerlink" title="官方链接"></a>官方链接</h3><p><a target="_blank" rel="noopener" href="https://obsidian.md/">官网</a>  |  <a target="_blank" rel="noopener" href="https://github.com/obsidianmd/obsidian-releases/releases">软件发布地址</a>  |  <a target="_blank" rel="noopener" href="https://mobile.softpedia.com/apk/obsidian/">三方移动端mobile下载</a>  </p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DV0Vod0ZwZlp0elBF">入群须知 (qq.com)</a><ul>
+<li><a target="_blank" rel="noopener" href="https://forum-zh.obsidian.md/">Obsidian 中文论坛 - Obsidian 知识管理 笔记</a></li>
+<li><a target="_blank" rel="noopener" href="https://forum-zh.obsidian.md/t/topic/1628">obsidian新手不完全指南 - 经验分享 - Obsidian 中文论坛</a></li>
+<li><a target="_blank" rel="noopener" href="https://publish.obsidian.md/chinesehelp">落山鸡写的中文帮助文档</a></li>
+<li><a target="_blank" rel="noopener" href="https://www.zhihu.com/column/c_1302994040707948544">obsidian 软件技巧 - 知乎 (zhihu.com)</a></li>
+<li><a target="_blank" rel="noopener" href="https://docs.qq.com/doc/DZkdYWU9WTHNzZVRh">问题收集箱 (qq.com)</a></li>
+</ul>
+</li>
+</ul>
+<h4 id="插件-1"><a href="#插件-1" class="headerlink" title="插件"></a>插件</h4><p><a target="_blank" rel="noopener" href="https://airtable.com/shrdmp10Lxmf5Wmgl/tblJqnWpcKURTjysX">Obsidian插件维格表</a>  |  <a target="_blank" rel="noopener" href="https://ob.pory.app/">OB插件汇总</a>  |  <a target="_blank" rel="noopener" href="https://github.com/obsidian-canzi/Enhanced-editing">增强编辑</a>  |  <a target="_blank" rel="noopener" href="https://cloud.189.cn/web/main/file/folder/91460115822144287">某些没有上架的收录</a>  |  <a target="_blank" rel="noopener" href="https://publish.obsidian.md/chinesehelp/01+2021%E6%96%B0%E6%95%99%E7%A8%8B/Obsidian%E6%8F%92%E4%BB%B6%E5%88%97%E8%A1%A8%E4%B8%8E%E6%95%99%E7%A8%8B%EF%BC%88MOC%EF%BC%89">Obsidian插件列表与教程</a>  |  <a target="_blank" rel="noopener" href="https://pkmer.cn/Pkmer-Docs/10-obsidian/obsidian%E7%A4%BE%E5%8C%BA%E6%8F%92%E4%BB%B6/obsidian%E7%A4%BE%E5%8C%BA%E6%8F%92%E4%BB%B6/">PKMER</a>  </p>
+<h4 id="效率"><a href="#效率" class="headerlink" title="效率"></a>效率</h4><p><a target="_blank" rel="noopener" href="https://tableconvert.com/markdown-to-markdown">在线table处理</a>  |  <a target="_blank" rel="noopener" href="https://getquicker.net/Share/Actions?exe=obsidian.exe">分享的Quicker动作</a> | <a target="_blank" rel="noopener" href="https://github.com/cumany/Blue-topaz-examples">开箱即用库</a></p>
+<h3 id="图床"><a href="#图床" class="headerlink" title="图床"></a>图床</h3><p>使用过 Github，Gitee 做图床，Gitee 直接没用两天就被封了，就自己私有笔记在用，也没有分享给别人，这种非专有用途的风险很高。</p>
+<p>Github 倒是成功了，但是在没有翻墙手段的时候，会因为网络问题上传失败，查看有免费的加速倒还可用，只是随着封锁加剧，也伴随着不确定性。详见 <a href="%E5%85%8D%E8%B4%B9%E7%9A%84%E4%BA%91%E8%B5%84%E6%BA%90.md">免费的云资源</a></p>
+<p>最好还是使用专业的图床，虽然有各种限制，但是也够用了。比如 SMMS 等。</p>
+<h4 id="流程"><a href="#流程" class="headerlink" title="流程"></a>流程</h4><ol>
+<li>把图片粘贴 Obisidian</li>
+<li>Ob 插件“Image auto Upload”请求局域网接口</li>
+<li>PicGo 触发自动上传，完成后返回图片链接</li>
+<li>粘贴图片的位置替换放入图片链接</li>
+</ol>
+<h4 id="一键提交-bat-脚本"><a href="#一键提交-bat-脚本" class="headerlink" title="一键提交 bat 脚本"></a>一键提交 bat 脚本</h4><figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br></pre></td><td class="code"><pre><span class="line">title GIT提交批处理--CJ</span><br><span class="line"></span><br><span class="line">color 16</span><br><span class="line">echo 开始提交代码到本地仓库</span><br><span class="line">echo 开始定位到图床目录</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">d:</span><br><span class="line">cd D:\图床\pri-pic</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">echo 当前目录是：%cd%</span><br><span class="line">echo 开始更新到本地</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">git pull</span><br><span class="line">echo 更新执行结束！</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">echo;</span><br><span class="line">echo 开始添加变更</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">git add -A .</span><br><span class="line">echo 添加执行结束！</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">echo;</span><br><span class="line">echo 提交变更到本地仓库</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">::输入提交的commit信息</span><br><span class="line">set /p declation=输入修改:</span><br><span class="line">git commit -m &quot;%declation%&quot;</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">echo;</span><br><span class="line">echo 将变更情况提交到远程git服务器</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">git push</span><br><span class="line">echo ++++++++++++++++++++++++++++++++++++++++++++++++++++++++++++</span><br><span class="line">echo;</span><br><span class="line">echo 批处理执行完毕！</span><br><span class="line">echo;</span><br><span class="line">pause</span><br></pre></td></tr></table></figure>
+
+<h4 id="中文乱码"><a href="#中文乱码" class="headerlink" title="中文乱码"></a>中文乱码</h4><p>右键编辑, 然后选文件另存, 指定为 ANSI 编码, 保存</p>
+<h3 id="解决国内插件市场无法使用的问题"><a href="#解决国内插件市场无法使用的问题" class="headerlink" title="解决国内插件市场无法使用的问题"></a>解决国内插件市场无法使用的问题</h3><p>通过下载一个 proxyGithub 的插件，替换到工作空间，重启后插件市场就可以使用了</p>
+<p><a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/76UNMPzek-bL1wNuabF44w">解决obsidian插件与主题无法加载的问题 (qq.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/430538023">不需要VPN与翻墙，完美解决obsidian无法加载第三方插件（社区插件）的问题 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://gitee.com/juqkai/obsidian-proxy-github/releases">obsidian-proxy下载</a>  </p>
+<h3 id="同步"><a href="#同步" class="headerlink" title="同步"></a>同步</h3><p><strong>同步工具划分</strong></p>
+<p>文件同步借助的坚果云，Gitee，OneDriver。</p>
+<p>Gitee 是考虑到某些代码文件需要方便使用，借助的 Git 插件定时同步。<br>坚果云使用的 PC 工具自动监控同步。<br>OneDriver 使用的 RemotelySave 插件，手动和定时触发。</p>
+<p><strong>同步目录区分</strong></p>
+<p>坚果云，Gitee 默认是全量的同步，包括配置、插件、gitee 同步配置等。<br>OneDriver 非全量，主要是.obsidian 配置和插件目录，还有文档目录同步了，其他的诸如.git,.idea,.cloud 之类的就没有了，插件约束的，具体可见插件的配置面板的描述。.trust 不会被同步到 OneDriver，插件限制的，考虑到 PC 是全量的，主要的操作在 PC，手机主要是看和少量的修改，因此也还行。<br>值得一提的是，Obsidain 的 PC 插件到了&#x3D;&#x3D;手机&#x3D;&#x3D;上还有部分可用，因此手机也是使用的 RemotelySave+OneDriver 同步的。</p>
+<h4 id="同步到-OneDriver"><a href="#同步到-OneDriver" class="headerlink" title="同步到 OneDriver"></a>同步到 OneDriver</h4><p>借助了插件 RemotelySave，配置好即可，速度不好将就可用。</p>
+<p>OneDriver 现在云盘空间为 15G，考虑插件配置占用 1G，其余 10G+ 也够用了。</p>
+<h4 id="同步到坚果云"><a href="#同步到坚果云" class="headerlink" title="同步到坚果云"></a>同步到坚果云</h4><p>手机端（安卓）的同步不要采用坚果云，实践过，由于坚果云 api 的限制，每次同步到手机就会触发 503 导致失败。电脑端的可以用坚果云。</p>
+<h4 id="同步到-Git"><a href="#同步到-Git" class="headerlink" title="同步到 Git"></a>同步到 Git</h4><p>同步插件 Obsidian Git 配置如下，安装后自动 30min 同步，手动提交 ctrl+p，先 git commit 再 git push</p>
+<p><img src="https://tgph.319226.xyz/file/23e89a883ba0a0123262e.png"></p>
+<p>QuickAdd 插件可以制作宏，绑定快捷键可以一键提交。</p>
+<p>20220408 考虑使用卡片笔记法，打乱笔记的存放。目录结构改变后把 git 改成了全量同步，如果后面出现了安全问题再限制。坚果云可能笔记文件或者图标文件过多后，同步容易出现问题，那么初次同步就是先用 git 拉下来，再用坚果云保持后续的同步工作，这样比较好。唯一担忧的就是 git 的安全问题，替代品也有，onedriver 自动同步可行，但 git 提供了版本记录，先这样。</p>
+<p>天翼云的同步盘会对文件名做校验，某些文件无法上传，除非改文件名，放弃使用此网盘自动同步笔记的策略</p>
+<h4 id="新的同步方案"><a href="#新的同步方案" class="headerlink" title="新的同步方案"></a>新的同步方案</h4><p><a target="_blank" rel="noopener" href="https://obsidian.md/sync">Obsidian Sync</a> 官方同步方案，贵（$10&#x2F;month 50G，$20&#x2F;month 100G），少量用户说速度没优势</p>
+<p>livesync + CouchDB 实时同步</p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://blog.csdn.net/weixin_40592845/article/details/132282834">教程</a>，应该可行，但是证书太麻烦，遂弃</li>
+<li><a target="_blank" rel="noopener" href="https://githubfast.com/vrtmrz/obsidian-livesync/blob/main/README_cn.md">仓库</a></li>
+</ul>
+<p>git 同步步骤感觉太繁琐，懒</p>
+<p>Webdav + <a target="_blank" rel="noopener" href="https://github.com/sboesen/remotely-sync">remotely-sync</a></p>
+<ul>
+<li>Onedrive，可用，速度不是很满意</li>
+<li>坚果云，搭配插件不太行会超过限制。不过 win（坚果云客户端）+ 安卓（坚果云 markdown）可以稳定运行</li>
+<li>dropbox 国外的，考虑网络怕哪一天被掐</li>
+</ul>
+<p>S3 + <a target="_blank" rel="noopener" href="https://github.com/sboesen/remotely-sync">remotely-sync</a></p>
+<ul>
+<li>付费，穷</li>
+<li>Cloudflare R2，s3 协议<ul>
+<li><a target="_blank" rel="noopener" href="https://xieincz.github.io/post/li-yong-remotely-save-tong-guo-cloudflare-r2-s3-api-zai-duo-ge-she-bei-tong-bu-obsidian/">相关教程</a></li>
+</ul>
+</li>
+<li>自建 s3，<a target="_blank" rel="noopener" href="https://github.com/minio/minio">minio</a><ul>
+<li>方案不错，但是证书太麻烦，没采用</li>
+</ul>
+</li>
+</ul>
+<p>风险</p>
+<ul>
+<li>只同步文本体验较好</li>
+</ul>
+<h4 id="目录整改方案"><a href="#目录整改方案" class="headerlink" title="目录整改方案"></a>目录整改方案</h4><p>最开始是用的坚果云的同步方案，现在想要依靠软件自带的插件来进行同步，也可以支持手机端。</p>
+<p>使用的是 CloudFlare 的 R2，现在的问题是插件 Remotely-Sync 的限制上传作用有限（. 和 _），不能把依赖包这种屏蔽掉，因此想了几个方案：</p>
+<ol>
+<li>修改插件，自定义屏蔽规则。<ol>
+<li>去 Github 上边下载了源码来看，无从下手；</li>
+<li>考虑到后续更新，非必要不采用这个方案；</li>
+</ol>
+</li>
+<li>换主题，不需要依赖包那种。<ol>
+<li>还没有找到太简约又喜欢的主题；</li>
+</ol>
+</li>
+<li>分析想要屏蔽的文件夹，主要是 node_modules 和 themes 这两个模块。<ol>
+<li>node_modules 是 npm 的包依赖，但没有找到可以自定义路径的方案，遂弃；</li>
+<li>themes 查找了主题的配置，找到了一个路径，但考虑到 hexo 的隐藏配置有点多，还是决定不采用；</li>
+</ol>
+</li>
+<li>等待插件支持。<ol>
+<li>看到 GitHub 上有人提 Issue ,以后还是有希望解决的；</li>
+</ol>
+</li>
+<li>隔离 hexo 博客和 obsidian 文件目录。<ol>
+<li>因为 hexo 博客主要是依赖 github 和 action 自动构建，只是 md 资源依靠 obisidian 的 md 文件，而 obsidian 只进行文件管理，并不需要对 hexo 的文件进行操作，且隔离开对于 obsidian 的索引更好。</li>
+<li>因此完全可以隔离开，只是 source 目录的同步需要寻找一个方案；</li>
+<li>想过三方的一些同步工具，但其实不想引入太多的工具；</li>
+<li>想到 rclone 的映射，寻找 Windows，找到了类似的方案；</li>
+</ol>
+</li>
+</ol>
+<p>决定使用 5 方案先用着，如果后续 4 方案可行了，再简化。</p>
+<h5 id="做好文件夹映射"><a href="#做好文件夹映射" class="headerlink" title="做好文件夹映射"></a>做好文件夹映射</h5><p>window 创建联接</p>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">mklink /j C:\PersonalDocuments\hexo_blog\git_push\source C:\PersonalDocuments\hexo_blog\obsidian_vault</span><br></pre></td></tr></table></figure>
+
+<p>迁移时只需要修改目录前缀即可。</p>
+<p>其他操作系统应该有类似的映射方案。至于移动端，只考虑少量的修改和查看，不考虑编译提交方案，因此只需要同步 obsidian 的文件夹即可。</p>
+<p>弄好的目录结构是这样</p>
+<figure class="highlight markdown"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">hexo<span class="emphasis">_blog</span></span><br><span class="line"><span class="emphasis">├─git_</span>push</span><br><span class="line"><span class="code">    ├─.git</span></span><br><span class="line"><span class="code">    ├─.github</span></span><br><span class="line"><span class="code">    ├─.idea</span></span><br><span class="line"><span class="code">    ├─node_modules</span></span><br><span class="line"><span class="code">    ├─public</span></span><br><span class="line"><span class="code">    ├─scaffolds</span></span><br><span class="line"><span class="code">    ├─source #映射</span></span><br><span class="line"><span class="code">    ├─themes</span></span><br><span class="line"><span class="code">    ├─.gitignore</span></span><br><span class="line"><span class="code">    ├─_config.butterfly.yml</span></span><br><span class="line"><span class="code">    ├─_config.yml</span></span><br><span class="line"><span class="code">    ├─db.json</span></span><br><span class="line"><span class="code">    ├─package.json</span></span><br><span class="line"><span class="code">    ├─package-lock.json</span></span><br><span class="line"><span class="code">    ├─README.md</span></span><br><span class="line"><span class="code">    ├─yarn.lock</span></span><br><span class="line"><span class="code">└─obsidian_vault #映射源</span></span><br><span class="line"><span class="code">    ├─.obsidian</span></span><br><span class="line"><span class="code">    ├─about</span></span><br><span class="line"><span class="code">    ├─categories</span></span><br><span class="line"><span class="code">    ├─gallery</span></span><br><span class="line"><span class="code">    ├─hide</span></span><br><span class="line"><span class="code">    ├─link</span></span><br><span class="line"><span class="code">    ├─music</span></span><br><span class="line"><span class="code">    ├─nav</span></span><br><span class="line"><span class="code">    ├─tags</span></span><br><span class="line"><span class="code">    ├─_data</span></span><br><span class="line"><span class="code">    └─_posts</span></span><br><span class="line"><span class="code">    └─CNAME</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://tgph.319226.xyz/file/2796e340d3f43cafc6cdb.png" alt="博客同步结构图.png"></p>
+<p><a target="_blank" rel="noopener" href="https://cji.lanzouu.com/iBYur1j7noje">博客同步结构图.drawio</a></p>
+<h3 id="连通-Anki"><a href="#连通-Anki" class="headerlink" title="连通 Anki"></a>连通 Anki</h3><h4 id="下载"><a href="#下载" class="headerlink" title="下载"></a>下载</h4><p><a target="_blank" rel="noopener" href="https://github.com/ankitects/anki">ankitects&#x2F;anki：台式计算机的 Anki (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/ankidroid/Anki-Android">ankidroid&#x2F;Anki-Android: AnkiDroid: Anki flashcards on Android. Your secret trick to achieve superhuman information retention. (github.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://apps.ankiweb.net/">Anki - 功能强大、智能的抽认卡 (ankiweb.net)</a></p>
+<h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><ol>
+<li>anki 安装并配置 anki connector 插件</li>
+</ol>
+<blockquote>
+<p> 2055492159 </p>
+</blockquote>
+<ol start="2">
+<li>插件配置 如下</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">&#123;</span><br><span class="line">    &quot;apiKey&quot;: null,</span><br><span class="line">    &quot;apiLogPath&quot;: null,</span><br><span class="line">    &quot;webBindAddress&quot;: &quot;127.0.0.1&quot;,</span><br><span class="line">    &quot;webBindPort&quot;: 8765,</span><br><span class="line">    &quot;webCorsOrigin&quot;: &quot;http://localhost&quot;,</span><br><span class="line">    &quot;webCorsOriginList&quot;: [</span><br><span class="line">        &quot;http://localhost&quot;,</span><br><span class="line">        &quot;app://obsidian.md&quot;</span><br><span class="line">    ]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>结束后重启 anki</p>
+<ol start="3">
+<li>在 Plugin Options 中找到 obsidian_to_anki 的配置，在 Note Type Table 的 Basic 卡 对应的 Custom Regexp 一栏中添加下面的内容</li>
+</ol>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">((?:[^\n][\n]?)+) #flashcard ?\n*((?:\n(?:^.&#123;1,3&#125;$|^.&#123;4&#125;(?&lt;!&lt;!--).*))+) </span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>这个是匹配标签 “#flashcard” 的就会加入 anki</p>
+<p>格式是</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">How to sync Obsidian wih Anki? #flashcard</span><br><span class="line">use the Obsidian_to_Anki </span><br><span class="line"><span class="comment">&lt;!--ID: 1648801936482--&gt;</span></span><br></pre></td></tr></table></figure>
+
+<p>注意空格部分（我用的 _）</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">XX?_#flashcard_</span><br><span class="line">XX_</span><br></pre></td></tr></table></figure>
+
+<ol start="4">
+<li>ID 前一行加上 DELETE 就会删掉 Anki 的卡片<br> 如果后面又想创建，就把后面的隐藏内容删掉后同步即可</li>
+</ol>
+<h4 id="flashcards-obsidian"><a href="#flashcards-obsidian" class="headerlink" title="flashcards-obsidian"></a>flashcards-obsidian</h4><p>上一个工具老是不成功，换成另一个好用的插件。</p>
+<p><a target="_blank" rel="noopener" href="https://www.bilibili.com/read/cv13053893">回忆爷爷的卡片，我的启蒙教育-obsidian配合anki制卡 - 哔哩哔哩 (bilibili.com)</a></p>
+<h3 id="Anki"><a href="#Anki" class="headerlink" title="Anki"></a>Anki</h3><h4 id="前言-1"><a href="#前言-1" class="headerlink" title="前言"></a>前言</h4><p>有这么一个想法自然是因为 AnkiWeb 的服务器在国外，实在是太慢了吧，现在才开始，所以速度还可，但后面当牌组上千后就不好说了。因此，了解了一下自建服务器的难度。总归而言技术方面都有完备的插件 or 教程，主要还是缺少一个云服务器。现阶段了解了下局域网服务器也可行，后面如果有了自己的云服务器后再考虑是否搭建吧。实在不行，nas 内网穿透也是一种解决方案。</p>
+<h4 id="下载和安装"><a href="#下载和安装" class="headerlink" title="下载和安装"></a>下载和安装</h4><p>Anki 中国地址：<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=http://www.ankichina.net/">http://www.ankichina.net/</a> 或者这个网址：<a target="_blank" rel="noopener" href="https://links.jianshu.com/go?to=https://apps.ankiweb.net/">https://apps.ankiweb.net/</a></p>
+<h4 id="同步速度问题"><a href="#同步速度问题" class="headerlink" title="同步速度问题"></a>同步速度问题</h4><p>实际使用中，图床和文件都使用在线的，也就是说如果不加入资源文件，其实速度还是很快的。</p>
+<h4 id="局域网"><a href="#局域网" class="headerlink" title="局域网"></a>局域网</h4><p>关于自建同步服务器</p>
+<p><a target="_blank" rel="noopener" href="https://www.jianshu.com/p/dddd99ede2b7">教程</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.kancloud.cn/ankigaokao/ankigaokao/784948">高中生也能看懂的 Anki 教程 · 看云 (kancloud.cn)</a></p>
+<p><a target="_blank" rel="noopener" href="https://cloud.189.cn/web/main/file/folder/91336115894268508">文件-天翼云：202010_anki_sync一键搭建本地同步服务器.zip</a></p>
+<h2 id="插件-2"><a href="#插件-2" class="headerlink" title="插件"></a>插件</h2><p>时间长了老是记不住插件是干嘛的，做个英文名称映射表。</p>
+<table>
+<thead>
+<tr>
+<th>插件</th>
+<th>名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>better-search-views</td>
+<td>更好的搜索视图</td>
+<td>全局搜索、反向链接和查询，使用类似大纲的上下文树</td>
+</tr>
+<tr>
+<td>darlal-switcher-plus&#x2F;Quick Switcher++</td>
+<td>快速切换器</td>
+<td>对标题查询</td>
+</tr>
+<tr>
+<td>Enhanced-editing</td>
+<td>增强编辑</td>
+<td></td>
+</tr>
+<tr>
+<td>float-search</td>
+<td>浮动搜索框</td>
+<td></td>
+</tr>
+<tr>
+<td>link-favicon</td>
+<td></td>
+<td>为笔记中的网页链接增加网站图标</td>
+</tr>
+<tr>
+<td>obsidian-auto-link-title</td>
+<td></td>
+<td>自动填充标题</td>
+</tr>
+<tr>
+<td>obsidian-image-auto-upload-plugin</td>
+<td></td>
+<td>图片上传，配合 PicGo</td>
+</tr>
+<tr>
+<td>obsidian-linter</td>
+<td></td>
+<td>中英文间隔，统一格式</td>
+</tr>
+<tr>
+<td>obsidian-livesync</td>
+<td></td>
+<td>同步插件，配合 CouchDB</td>
+</tr>
+<tr>
+<td>obsidian-quiet-outline</td>
+<td>大纲</td>
+<td>默认的右侧大纲不能滚动也无法定位，这个可以， 页面在哪里，右侧的目录就定位到哪里，还能自定义展开的层级。</td>
+</tr>
+<tr>
+<td>obsidian-shellcommands</td>
+<td>shell 联动</td>
+<td>hexo 相关的命令操作都是靠它简化，生产力工具</td>
+</tr>
+<tr>
+<td>recent-files-obsidian</td>
+<td>最近使用</td>
+<td></td>
+</tr>
+<tr>
+<td>remotely-secure</td>
+<td>同步</td>
+<td>支持 webdav，S3，我用的 CF R2，感觉不错</td>
+</tr>
+<tr>
+<td>tag-wrangler</td>
+<td></td>
+<td>标签的右键扩展</td>
+</tr>
+<tr>
+<td>obsidian-shellcommands 的脚本做个记录</td>
+<td></td>
+<td></td>
+</tr>
+</tbody></table>
+<figure class="highlight shell"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Run Blog 启动本地服务</span></span><br><span class="line">start powershell &#x27;-NoExit -Command  </span><br><span class="line">cd C:\PersonalDocuments\hexo_blog\git_push; </span><br><span class="line">hexo g; </span><br><span class="line">start http://localhost:4000;</span><br><span class="line">hexo s;</span><br><span class="line">&#x27;;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">Push Github 提交 Github 部署</span></span><br><span class="line">start powershell &#x27;-NoExit -Command  </span><br><span class="line">cd C:\PersonalDocuments\hexo_blog\git_push; </span><br><span class="line">git pull;</span><br><span class="line">git status;</span><br><span class="line">git add .;</span><br><span class="line">git commit -m &quot;auto commit note&quot;;</span><br><span class="line">git push;</span><br><span class="line">&#x27;;</span><br><span class="line"><span class="meta prompt_"></span></span><br><span class="line"><span class="meta prompt_"># </span><span class="language-bash">New Note 新建笔记</span></span><br><span class="line">start powershell &#x27;-NoExit -Command  </span><br><span class="line">cd C:\PersonalDocuments\hexo_blog\git_push; </span><br><span class="line">hexo new post NewPost</span><br><span class="line">&#x27;;</span><br></pre></td></tr></table></figure>
+
+<p>如果使用有问题，可以参考 <a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/554333805">这篇文章</a></p>
+<h1 id="Edge"><a href="#Edge" class="headerlink" title="Edge"></a>Edge</h1><p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cjcn/p/17095819.html">https://www.cnblogs.com/cjcn/p/17095819.html</a></p>
+<p>浏览器书签同步方案<br><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cjcn/p/17105148.html">https://www.cnblogs.com/cjcn/p/17105148.html</a></p>
+<p>查看同步状态</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">edge://sync-internals/</span><br></pre></td></tr></table></figure>
+
+<p><img src="https://tgph.319226.xyz/file/e0df0897397d9466bedf4.png"></p>
+<h1 id="TrayS"><a href="#TrayS" class="headerlink" title="TrayS"></a>TrayS</h1><p>任务栏工具，显示系统网络、内存、CPU 等信息</p>
+<h1 id="memorymaster"><a href="#memorymaster" class="headerlink" title="memorymaster"></a>memorymaster</h1><p>魔方的小工具，优化内存的</p>
+<h1 id="IDM"><a href="#IDM" class="headerlink" title="IDM"></a>IDM</h1><p><a target="_blank" rel="noopener" href="https://prajna.lanzoux.com/b04gihtfa">Inet Download Manager_crack版本</a></p>
+<h1 id="tachiyomi-漫画"><a href="#tachiyomi-漫画" class="headerlink" title="tachiyomi 漫画"></a>tachiyomi 漫画</h1><p><a target="_blank" rel="noopener" href="https://tachiyomi.org/">https://tachiyomi.org/</a></p>
+<p><a target="_blank" rel="noopener" href="https://github.com/tachiyomiorg/tachiyomi/releases">https://github.com/tachiyomiorg/tachiyomi/releases</a></p>
+<h1 id="喵上漫画"><a href="#喵上漫画" class="headerlink" title="喵上漫画"></a>喵上漫画</h1><p>广告多，但是不用去担心源的问题了</p>
+<p>下载：<a target="_blank" rel="noopener" href="https://res2.cdn.bcebos.com/comic/ms/download.html">https://res2.cdn.bcebos.com/comic/ms/download.html</a></p>
+<h1 id="滴答清单"><a href="#滴答清单" class="headerlink" title="滴答清单"></a>滴答清单</h1><p>主力使用手机端</p>
+<p><a target="_blank" rel="noopener" href="https://www.cnblogs.com/cjcn/p/17095793.html">https://www.cnblogs.com/cjcn/p/17095793.html</a></p>
+<h2 id="教程"><a href="#教程" class="headerlink" title="教程"></a>教程</h2><p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/46337589">如何更好地使用滴答清单（TickTick）？ - 知乎 (zhihu.com)</a></p>
+<h3 id="GTD"><a href="#GTD" class="headerlink" title="GTD"></a>GTD</h3><ul>
+<li>一些琐碎的定期任务，能够理顺生活</li>
+<li>GTD 就是 Getting Things Done 的缩写，意思是“把需要做的事情处理好”，是一个管理时间的方法。GTD 的核心理念概括就是必须记录下来要做的事，然后整理安排并使自己一一去执行。GTD 的五个核心原则是：收集、整理、组织、回顾、执行。</li>
+<li>GTD 的核心理念在于清空大脑，然后一步步按照设定的路线去努力执行。</li>
+</ul>
+<p><img src="https://tgph.319226.xyz/file/1acc151b04b71ac1b132a.png" alt="image"></p>
+<h4 id="搭配-GTD-案例"><a href="#搭配-GTD-案例" class="headerlink" title="搭配 GTD 案例"></a>搭配 GTD 案例</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/21638555">《滴答清单与GTD时间管理》专栏目录 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/26508583">滴答清单：如何让“今天”清单只显示真正必须今天完成的任务？ - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/33805189">如何养成GTD的七个习惯之⑤——每周回顾 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32076794">如何养成GTD的七个习惯之⑥——把人生变成一个个项目 - 知乎 (zhihu.com)</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/22001676">行动清单的分类方法有哪些 - 知乎 (zhihu.com)</a></p>
+<h4 id="延伸"><a href="#延伸" class="headerlink" title="延伸"></a>延伸</h4><p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/410217489" title="关于如何组织永久笔记的回答">关于如何组织永久笔记的回答</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/410039417" title="关于闪念笔记如何迁移的回答">关于闪念笔记如何迁移的回答</a></p>
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/353521308" title="如何构建笔记系统-实际操作篇">如何构建笔记系统-实际操作篇</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zhihu.com/question/23427617/answer/1461195696" title="如何构建自己的笔记系统？">如何构建自己的笔记系统？</a></p>
+<p><a target="_blank" rel="noopener" href="https://sspai.com/post/68607" title="卡片笔记之困与秩序的重建">卡片笔记之困与秩序的重建</a></p>
+<h2 id="使用-1"><a href="#使用-1" class="headerlink" title="使用"></a>使用</h2><h4 id="版本"><a href="#版本" class="headerlink" title="版本"></a>版本</h4><p>因为费用的问题，测试出的稳定的破解版</p>
+<p><a target="_blank" rel="noopener" href="https://cloud.189.cn/web/main/file/folder/61410114288841169">手机 ticktick  v6.1.1.0</a><br><a target="_blank" rel="noopener" href="https://cloud.189.cn/web/main/file/folder/31484114452658360">手机 ticktick v6.3.3.0</a><br><a target="_blank" rel="noopener" href="https://cloud.189.cn/web/main/file/folder/31484114452658360">电脑 滴答清单 v3.7.2.1</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.dida365.com/public/changelog/zh.html">滴答清单-更新日志</a></p>
+<h4 id="三方破解更新网站"><a href="#三方破解更新网站" class="headerlink" title="三方破解更新网站"></a>三方破解更新网站</h4><p><a target="_blank" rel="noopener" href="https://www.yxssp.com/?s=ticktick">https://www.yxssp.com/?s=ticktick</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.zyfou.com/43894.html">https://www.zyfou.com/43894.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.nite07.com/didaqingdan/">https://www.nite07.com/didaqingdan/</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.whg6.com/1130.html">https://www.whg6.com/1130.html</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.lan-sha.com/520.html">https://www.lan-sha.com/520.html</a></p>
+<p>如果都没有，那么挂『番茄』去谷歌直接搜 “ticktick 破解 “ 也是一种比较快捷的方法。</p>
+<h4 id="免费用户限制"><a href="#免费用户限制" class="headerlink" title="免费用户限制"></a>免费用户限制</h4><p><img src="https://tgph.319226.xyz/file/3abe5d60ff979065e8519.png" alt="image"></p>
+<h3 id="功能-使用"><a href="#功能-使用" class="headerlink" title="功能&amp;使用"></a>功能&amp;使用</h3><h4 id="应该收集什么？"><a href="#应该收集什么？" class="headerlink" title="应该收集什么？"></a>应该收集什么？</h4><p>收集箱定位和习惯</p>
+<p>在滴答清单的所有智能清单里，只有“收集箱”是没法进行设置的（估计很多酷友都没注意到噢）它作为你下载滴答清单后看到的第一个清单，放在了置顶的位置，其用意也一目了然——那就是官方一直在引导着我们关注“收集箱”。</p>
+<p>它作为你工作流程的第一站，收集一切想法，一切念头，一切任务待办，一切待读文章，一切杂七杂八的东西都应该收集在这里。</p>
+<p>以我自己为例，收集的东西大致可以分为以下四类：</p>
+<p>idea：如怎么实现笔记管理、哪家火锅店好吃、怎么构思滴答清单推文（即一切突如其来的想法和念头）<br>todo：如忘记取快递了可以今天晚饭过后去取、班群里通知后天下午有班级活动，自己需要腾出时间、有想买的纸质书还没加入购物车（即待办事项和日程安排）<br>note：如有用的群聊信息、同别人聊天时一些值得记录下的东西、备忘录（即临时的碎片信息）<br>later：如一些来不及仔细阅读（观看）或者需要反复阅读（观看）的文章&#x2F;视频的链接（即稍后读&#x2F;看）</p>
+<p>这里可能有小伙伴会问：为什么不用专门的稍后读软件来进行管理？</p>
+<p>其实我仔细想了想，原因有二。</p>
+<p>一是自己对文章剪藏、防 404 的需求很小很小；二是希望尽可能 all in one。</p>
+<p>当然我也不是不使用稍后读软件，如果那篇文章我反复阅读的几率很高的话，那我还是会发送一份到待读 APP 里。（比如“慢读”“cubox”……）</p>
+<p>你看，这些最后的归宿都不会是放在滴答清单的收集箱里，而是会被分配到适合它们的地方：或许是成为待办，或许是备忘录，或许是一则笔记，亦或许是一张截图……</p>
+<p>而这，就是它作为工作流程第一站的意义。</p>
+<h4 id="收集箱任务的初步处理"><a href="#收集箱任务的初步处理" class="headerlink" title="收集箱任务的初步处理"></a>收集箱任务的初步处理</h4><p>其实有小伙伴会问，如果这样把各类任务、念头一股脑全往收集箱里塞，不会难以处理吗？对的，当然会。所以其实这一步也相当关键：我们需要对收集箱的任务进行一个初步的处理。</p>
+<p>具体步骤其实很简单：</p>
+<p>如果这条任务有明确的时间，那么就标上时间。<br>如果这条任务有明确的属性，那么就标上标签。<br>这里重点说一下标签。「标签的本质其实是一种“情景”，一种筛选的条件，一个过滤箱。」</p>
+<p>收集箱里的任务五花八门、种类繁多，如果不加个标签，你很难选出适合当下的任务。</p>
+<p>这里给小伙伴们提供一个设置标签的思路</p>
+<p>你可以按照“地点”设置标签，比如某些是只能在外出的情景下完成，有些可以是上课摸鱼完成，有些只能是在图书馆……<br>你可以按照“工具”设置标签，比如某些任务只能用手机完成，有些只能用平板，有些只能用电脑……<br>你还可以按照“人物”设置标签，比如某些任务是关联女朋友的，某些任务是关联父母的……</p>
+<p>总之，你只需掌握标签的本质作用，剩下的就具体问题具体分析了（小提醒：不要过多设置标签噢）</p>
+<p><img src="https://tgph.319226.xyz/file/2f179e746f9484e9586e0.png"></p>
+<h4 id="到期重复-vs-完成重复"><a href="#到期重复-vs-完成重复" class="headerlink" title="到期重复 vs 完成重复"></a>到期重复 vs 完成重复</h4><p>自定义重复里边，举个例子解释这两个类型的区别：</p>
+<p>假设你原本设置的任务日期是 1 号，每个月重复，但是这个任务你拖延了，3 号才完成，如果设置的到期重复，那么下个任务就还是下个月 1 号，但如果是完成重复，那么下个任务就是下个月 3 号。</p>
+<h5 id="什么场景下需要用完成重复呢"><a href="#什么场景下需要用完成重复呢" class="headerlink" title="什么场景下需要用完成重复呢"></a>什么场景下需要用完成重复呢</h5><p>比如我想每隔 2 周换床单被套，有时候任务到期了天气不好拖延了 1 周，那么我点击完成后，就是以完成当天再间隔 2 周生成新任务的时间，如果选择普通的到期重复的话，那么才过 1 周就又会提醒我换被套了。</p>
+<h5 id="信用卡还款等重复任务"><a href="#信用卡还款等重复任务" class="headerlink" title="信用卡还款等重复任务"></a>信用卡还款等重复任务</h5><p>这里要用到任务里设置重复时间的功能，可以按照各种重复频率设置，每次完成后就会自动生成一个新的任务。</p>
+<p>我会<strong>为每张信用卡建立一个还款重复任务</strong>，有点骄傲地说到现在为止四五年没有逾期过。还有交房租、保险扣费、更换隐形眼镜等任务。</p>
+<p>除了常规的每日、每周、每月重复，还能设置每个法定工作日、艾宾浩斯记忆法和自定义重复。<br><strong>自定义重复里面有到期重复和完成重复。</strong>举个例子解释这两个类型的区别：</p>
+<p>假设你原本设置的任务日期是 1 号，每个月重复，但是这个任务你拖延了，3 号才完成，如果设置的到期重复，那么下个任务就还是下个月 1 号，但如果是完成重复，那么下个任务就是下个月 3 号。</p>
+<h4 id="计划和复盘"><a href="#计划和复盘" class="headerlink" title="计划和复盘"></a>计划和复盘</h4><p>在我的生活文件夹里第一个任务清单就是计划清单，里面会放我的每日计划、周计划。每日计划不一定每天都会写，但是某天我对下班空闲时间有提前安排的话，就会添加一个每日计划的任务，在详情里把想做的事一件件列好，回家后就可以直接开始做了。</p>
+<p>但是我列的这个每日计划和每周计划<strong>并不会很刻意去统计完成率</strong>，如果我去统计完成情况，一是不容易坚持，二是看到未完成时会自我责备，其实有时候任务没完成是有一定客观原因的，临时有事或者白天工作太忙晚上到家后状态不佳，能做的事就会打折扣，一旦有责备自己的心理，就容易破罐子破摔，索性放飞自我了。</p>
+<p>强制必须要完成的事，大多不会拖延，会拖延的大多是一些重要但不紧急的事。虽然很多时间管理的书都会强调我们要把时间花在重要但不紧急的事上，但是作为一个普（fei）通（chai）人，因为缺少足够的内在动力，如果逼迫自己太狠，只会导致过度焦虑，反而适得其反。</p>
+<p>计划是为了知道自己还有什么事情可以做，保持进一寸有进一寸的欢喜的心态，只要做好记录，等过一段时间之后复盘，说不定就有惊喜呢。</p>
+<p>那么我是如何复盘的呢？很简单，看<strong>日历视图</strong>。滴答清单的周视图和国誉的手账本很像，有时间轴，每个时间段做了什么都很清晰。</p>
+<p>每周我会看一下时间轴，选择标签进行回顾，对自己这一周是怎么过得就心中有数了。<br>每个月会根据各个清单里面的任务整理一份每月复盘，如果平常不做记录，每月复盘的时候就很容易忘记自己这个月做了什么。</p>
+<h4 id="人际关系管理"><a href="#人际关系管理" class="headerlink" title="人际关系管理"></a>人际关系管理</h4><p>自从去年更新了多级子任务后，我发现这个新功能可以很好的满足人际关系管理的需求。</p>
+<p><strong>用家人朋友的名字建立一级任务，每次和朋友约饭见面都可以在对应的任务里建立一条新的子任务</strong>，点开一级任务就可以很清晰地看到上次和这位朋友见面是什么时候。</p>
+<p>有必要的话，还可以在朋友的子任务里建立生日的重复任务，这样就不会忘记朋友的生日啦！</p>
+<p>除了当天的提醒，一个任务是可以设置多次提醒的，可以在提前一周或者一个月的时候再提醒一次留出时间准备生日礼物。</p>
+<h4 id="优先级习惯"><a href="#优先级习惯" class="headerlink" title="优先级习惯"></a>优先级习惯</h4><p>我现在的方法是设置高中低优先级，然后在日历视图中按高中低优先级来显示颜色。高表示必须完成，中表示优先完成，低和无优先级表示弹性任务</p>
+<h4 id="番茄工作法"><a href="#番茄工作法" class="headerlink" title="番茄工作法"></a>番茄工作法</h4><p>得到休息，精力保持在较高水平</p>
+<h5 id="三类事情适合番茄"><a href="#三类事情适合番茄" class="headerlink" title="三类事情适合番茄"></a>三类事情适合番茄</h5><p>长时间伏案工作<br>枯燥乏味的工作<br>偏执行类工作</p>
+<h5 id="水滴计划法"><a href="#水滴计划法" class="headerlink" title="水滴计划法"></a>水滴计划法</h5><p>石头，明确目标<br>水花，根据目标的框架，大局观<br>涟漪，框架下做计划</p>
+<h5 id="金字塔学习法"><a href="#金字塔学习法" class="headerlink" title="金字塔学习法"></a>金字塔学习法</h5><p><img src="https://tgph.319226.xyz/file/404bfeb557b5d7b0a737b.png"></p>
+<h4 id="导入"><a href="#导入" class="headerlink" title="导入"></a>导入</h4><p>表头需要用备份的模板才可识别，金山云文档放了一个备份导出的模板和导入成功的模板，因为隐私问题就不设置为共享了。</p>
+<p>一、List Name<br>类型：文本型<br>说明：清单名<br>举例：inbox、外出、工作<br>二、Title<br>类型：文本型<br>说明：任务名<br>举例：去超市买酸奶<br>三、Content<br>类型：文本型<br>说明：任务描述<br>举例：注意看下酸奶的生产日期。<br>以▫开头表示为未完成的子任务<br>以▪开头表示为已完成的子任务<br>四、Is Checklist<br>类型：枚举型<br>说明：是否有子任务<br>举例及解释：Y（有子任务）、N（无子任务）<br>五、Due Date<br>类型：日期型<br>说明：截止时间<br>举例及解释：<br>全天任务：2016-05-14T16:00:00+0000（东八区时间 0 点）<br>无截止时间：空值<br>特定时间：2016-01-12T12:00:00+0000（晚上 20 点，东八区，20-8&#x3D;12）<br>六、Reminder<br>类型：枚举型<br>说明：是否提醒<br>举例及解释：PT0S（需要提醒）、空值（不需要提醒）<br>七、Repeat<br>类型：枚举型（组合）<br>说明：重复类型<br>解释：<br>FREQ（间隔类型：Daily 每日重复、Weekly 每周重复、Monthly 每月重复、Yearly 每年重复、LUNAR:FREQ&#x3D;YEARLY 农历每年重复）<br>WKST（每周开始于，MO 周一、SA 周六、SU 周日）<br>INTERVAL（间隔数量：数字，按 FREQ 中的单位）<br>BYDAY（周几重复：MO 周一、TU 周二、WE 周三、TH 周四、FR 周五、SA 周六、SU 周日）<br>举例：<br>LUNAR:FREQ&#x3D;YEARLY;INTERVAL&#x3D;1;BYMONTH&#x3D;7;BYMONTHDAY&#x3D;16<br>FREQ&#x3D;WEEKLY;WKST&#x3D;MO;INTERVAL&#x3D;1;BYDAY&#x3D;SA<br>FREQ&#x3D;WEEKLY;WKST&#x3D;MO;INTERVAL&#x3D;3;BYDAY&#x3D;SA<br>FREQ&#x3D;DAILY;INTERVAL&#x3D;3<br>FREQ&#x3D;WEEKLY;INTERVAL&#x3D;1<br>FREQ&#x3D;WEEKLY;WKST&#x3D;MO;INTERVAL&#x3D;1;BYDAY&#x3D;SA,TU<br>FREQ&#x3D;WEEKLY;INTERVAL&#x3D;1;BYDAY&#x3D;MO,TU,WE,TH,FR</p>
+<p>八、Priority<br>类型：枚举型<br>说明：任务优先级<br>举例及解释：0（无优先级）、1（低优先级）、3（中优先级）、5（高优先级）<br>九、Status<br>类型：枚举型<br>说明：任务状态<br>举例及解释：0（正常）、1（完成）、2（归档 – 老版本功能，目前版本已弃用）<br>十、Completed Time<br>类型：日期型<br>说明：任务完成时间<br>举例及解释：2016-05-18T06:08:28+0000，与“五、截止时间”相同<br>十一、Order<br>类型：数字<br>说明：任务完成时间<br>举例及解释：排序码（也许是用于决定自定义下的任务顺序的，这个的生成和变化规则没有搞清楚）<br>2199023255552<br>-1649267441664<br>十二、Timezone<br>类型：枚举型<br>说明：所属时区<br>举例及解释：Asia&#x2F;Shanghai,Europe&#x2F;London（实际测试，与首次使用滴答设置任务时间时候设备的时区设置相关，与后续的设备时区设置无关）<br>十三、Is All Day<br>类型：枚举型<br>说明：是否全天任务<br>举例及解释：TRUE（全天任务）、FALSE（设置了时间的任务）、空值（没有设置截止时间的任务）</p>
+<h1 id="朝暮计划"><a href="#朝暮计划" class="headerlink" title="朝暮计划"></a>朝暮计划</h1><p>滴答清单还是最好用的，但是不能买断限制太多，订阅制太贵。作为一个穷人，只能寻找平替了。花了 55 大洋收的个账号，也可以做活动推广获得，但是没那时间和交际圈。功能够用，但是也不够完美，将就用吧。bug 比较多，沟通群里就是不断适配和记录问题。</p>
+<p>朝暮计划任务备注限制 500 字。</p>
+<p>备忘录可记录的内容比较多，但提交通过 Fiddler 检测发现, 传输使用的明文, 如果出现中间人攻击会泄露隐私, 因此没有解决这个问题之前不能用它记录密码等高危隐私内容。两者之间的同步也是有瑕疵的，多端同步易出现未同步的情况，多端对同一文件修改有覆盖丢失情况。现在改用坚果云（基本实时同步）和本地笔记（速度快），以后如果优化了可能回归吧。</p>
+<p>朝暮计划的数据存储交互有问题，网页版的需要很长时间才能存储到服务器，因此会存在丢失备忘或者清单备注的情况。在未修复之前，尽量不用网页端。</p>
+<p>图片上传用的转 base64 记录的方式, 太多文本时可能会出现无法存储的现象. 它的保存机制存在问题, 习惯性的关网页可能造成记录修改操作的丢失, 因此我才说到第一点.</p>
+<p>网页端的保存机制很迷, 验证后发现, 点击保存控制了没有修改就不会发请求, 可以理解. 手机端能够比较短时间内更新内容, 而网页端有段时间不会更新内容, 是缓存? 还是什么机制? 尝试手机端都更新上传服务器数据, 因此服务器应该是最新的数据, 只是网页不更新让不知道的人不就很迷, 认为没有提交成功吗.  重新登录了网页端也没有最新。</p>
+<h2 id="也试用了下其他同类-app"><a href="#也试用了下其他同类-app" class="headerlink" title="也试用了下其他同类 app"></a>也试用了下其他同类 app</h2><p>氢时光的功能相对 ios 版本的缺失很多，比如 时间识别，相对而言每个任务的设置就很繁琐了。</p>
+<p>瓦尔登 也可以关注，20230629 现在只有 ios， 安卓上线缓慢。</p>
+<p>朝暮计划提醒比较弱。</p>
+<p>微软 todo 同步功能较弱。</p>
+<h1 id="今日头条"><a href="#今日头条" class="headerlink" title="今日头条"></a>今日头条</h1><p>本地新闻</p>
+<h1 id="摸鱼-kik"><a href="#摸鱼-kik" class="headerlink" title="摸鱼 kik"></a>摸鱼 kik</h1><p>新闻追踪，热点聚合</p>
+<h1 id="小红书"><a href="#小红书" class="headerlink" title="小红书"></a>小红书</h1><p>经验</p>
+<h1 id="豆瓣"><a href="#豆瓣" class="headerlink" title="豆瓣"></a>豆瓣</h1><p>小组经验</p>
+<h1 id="酷安"><a href="#酷安" class="headerlink" title="酷安"></a>酷安</h1><p>手机 APP</p>
+<p>附：<a target="_blank" rel="noopener" href="https://apkcombo.com/zh/">谷歌应用</a></p>
+<h1 id="知乎"><a href="#知乎" class="headerlink" title="知乎"></a>知乎</h1><p>快速了解一个东西</p>
+<h1 id="最右"><a href="#最右" class="headerlink" title="最右"></a>最右</h1><p>新贴吧，找经验<br>下饭剧</p>
+<h1 id="哔哩哔哩-bilibili"><a href="#哔哩哔哩-bilibili" class="headerlink" title="哔哩哔哩&#x2F;bilibili"></a>哔哩哔哩&#x2F;bilibili</h1><p>下饭剧</p>
+<h1 id="58-同城"><a href="#58-同城" class="headerlink" title="58 同城"></a>58 同城</h1><p>根据地铁或者定位，在地图搜房</p>
+<h1 id="阅读"><a href="#阅读" class="headerlink" title="阅读"></a>阅读</h1><p>看书 txt，epub 用【静读天下】</p>
+<p><a target="_blank" rel="noopener" href="https://github.com/gedoor/legado">Site Unreachable</a></p>
+<p>搭配 tts 实现听书 <a target="_blank" rel="noopener" href="https://github.com/jing332/tts-server-android">GitHub - jing332&#x2F;tts-server-android: 这是一个Android系统TTS应用，内置微软演示接口，可自定义HTTP请求，可导入其他本地TTS引擎，以及根据中文双引号的简单旁白&#x2F;对话识别朗读 ，还有自动重试，备用配置，文本替换等更多功能。</a></p>
+<h1 id="大众点评"><a href="#大众点评" class="headerlink" title="大众点评"></a>大众点评</h1><p>看餐馆的评价和消费金额参考</p>
+<h1 id="什么值得买"><a href="#什么值得买" class="headerlink" title="什么值得买"></a>什么值得买</h1><p>薅羊毛，商品评价参考</p>
+<h1 id="京粉"><a href="#京粉" class="headerlink" title="京粉"></a>京粉</h1><p>京东返</p>
+<h1 id="省钱快报"><a href="#省钱快报" class="headerlink" title="省钱快报"></a>省钱快报</h1><p>返利 app 返</p>
+<h1 id="微博"><a href="#微博" class="headerlink" title="微博"></a>微博</h1><p>关注人消息</p>
+<p>三方 APP：See 微博</p>
+<h1 id="李跳跳-MissLee"><a href="#李跳跳-MissLee" class="headerlink" title="李跳跳 &#x2F; MissLee"></a>李跳跳 &#x2F; MissLee</h1><p><strong>自定义规则</strong></p>
+<ol>
+<li>替换默认的返回按钮文案, 比如 “ 返回, 跳过 “ 等</li>
+</ol>
+<p>​	替换 <code>&#123;&quot;keywords&quot;:[&quot;xxx&quot;]&#125;</code></p>
+<p>​	追加 <code>&#123;&quot;keywords_append&quot;:[&quot;xxx&quot;]&#125;</code></p>
+<ol start="2">
+<li><p>借助 AutoJs 获取到跳过按钮的 <code>id</code> 或 <code>bounds</code></p>
+<p>成品 <code>&#123;&quot;popup_rules&quot;:[&#123;&quot;id&quot;:&quot;+检测到&amp;-用户体验&quot;,&quot;action&quot;:&quot;=以后再说&quot;&#125;]&#125;</code></p>
+<p>系统返回键触发 <code>&quot;action&quot;:&quot;GLOBAL_ACTION_BACK&quot;</code></p>
+</li>
+<li><p>进阶</p>
+<ul>
+<li><p>如果有跳过提示，设置「强制点击」就行：<code>&#123;&quot;popup_rules&quot;:[], &quot;click_way_popup&quot;:1&#125;</code></p>
+</li>
+<li><p>如果没跳过提示，延长「搜索次数」就行：<code>&#123;&quot;popup_rules&quot;:[], &quot;search_times_popup&quot;:5&#125;</code></p>
+</li>
+<li><p>设置延迟点击 (单位毫秒)</p>
+<ul>
+<li>开屏广告延迟点击：<code>&#123;&quot;delay&quot;:200&#125;</code></li>
+<li>弹窗延迟点击：<code>&#123;&quot;delay_popup&quot;:200&#125;</code></li>
+</ul>
+</li>
+<li><p>设置点击次数：<code>&#123;&quot;popup_rules&quot;:[&#123;&quot;id&quot;:&quot;xxx&quot;,&quot;action&quot;:&quot;xxx&quot;,times:2&#125;]&#125;</code></p>
+</li>
+<li><p>联合规则：<code>&#123;&quot;unite_popup_rules&quot;:true&#125;</code></p>
+<ul>
+<li>点击一个 100 秒后才能点击的按钮 <code>&#123;&quot;popup_rules&quot;:[&#123;&quot;id&quot;:&quot;还剩&amp;秒&quot;,&quot;action&quot;:&quot;还剩&amp;秒&quot;,times:0&#125;,&#123;&quot;id&quot;:&quot;弹窗&quot;,&quot;action&quot;:&quot;关闭按钮&quot;&#125;],&quot;unite_popup_rules&quot;:true&#125;</code></li>
+</ul>
+</li>
+<li><p>根据 CheckBox 的状态点击控件 (比如 : 实现 QQ 自动勾选原图)</p>
+<ul>
+<li>已选中状态：<code>100,200,300,400,1</code></li>
+<li>未选中状态：<code>100,200,300,400,0</code></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p><strong>工具</strong></p>
+<p>用到的软件 <a target="_blank" rel="noopener" href="https://cloud.189.cn/web/main/file/folder/12473156929980228">AutoJs</a>  | <a target="_blank" rel="noopener" href="https://cloud.189.cn/web/main/file/folder/82473156893458720">李跳跳</a></p>
+<p><a target="_blank" rel="noopener" href="https://snoopy1866.github.io/LiTiaotiao-Custom-Rules/">李跳跳在线规则页面</a>  |  <a target="_blank" rel="noopener" href="https://testingcf.jsdelivr.net/gh/Snoopy1866/LiTiaotiao-Custom-Rules@main/AllRules.json">备用链接</a></p>
+<p><strong>参考自</strong></p>
+<ul>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/6938590373740544007">李跳跳进阶指南</a></li>
+<li><a target="_blank" rel="noopener" href="https://juejin.cn/post/7146224911030157320">利用autojs获取控件信息</a></li>
+</ul>
+<p>注意</p>
+<ol>
+<li>部分字体识别可能不成功,需要换其他的好识别的字来试试 (by 天翼云盘)</li>
+</ol>
+<h2 id="GKD-搞快点"><a href="#GKD-搞快点" class="headerlink" title="GKD 搞快点"></a>GKD 搞快点</h2><p><a target="_blank" rel="noopener" href="https://githubfast.com/gkd-kit/gkd">软件</a> 内置了一套默认订阅规则，此外大家还可以手动添加各种订阅规则，也能单独禁用某组规则</p>
+<p>基于 <a target="_blank" rel="noopener" href="https://github.com/gkd-kit/gkd">开源社区</a>，如果有各种大佬参与制作订阅规则，那么 GKD 就会非常好用</p>
+<p>但是没有手动添加规则，对想要自行管理规则的普通人就不那么友好了</p>
+<h2 id="开屏跳过"><a href="#开屏跳过" class="headerlink" title="开屏跳过"></a>开屏跳过</h2><p>TouchHelper</p>
+<p><a target="_blank" rel="noopener" href="https://touchhelper.zfdang.com/">官网</a> | <a target="_blank" rel="noopener" href="https://github.com/zfdang/Android-Touch-Helper">源码仓库</a></p>
+<p>不需要网络权限，不需要存储权限，无隐私问题，主打就是一个本地化</p>
+<p>软件会自动跳过广告，可以加白名单</p>
+<h2 id="TapClick"><a href="#TapClick" class="headerlink" title="TapClick"></a>TapClick</h2><p>不联网 <a target="_blank" rel="noopener" href="https://mp.weixin.qq.com/s/9nINlprk1KCvPGaVmbPcmg">https://mp.weixin.qq.com/s/9nINlprk1KCvPGaVmbPcmg</a> 文件天翼云盘找</p>
+<h1 id="rethinkdns"><a href="#rethinkdns" class="headerlink" title="rethinkdns"></a>rethinkdns</h1><p>去广告的工具</p>
+<p><a target="_blank" rel="noopener" href="https://www.rethinkdns.com/download">下载</a></p>
+<h1 id="SKIP"><a href="#SKIP" class="headerlink" title="SKIP"></a>SKIP</h1><p><a target="_blank" rel="noopener" href="https://guoxicheng.top/SKIP-Docs/1-introduction/" title="doc">doc</a>  | <a target="_blank" rel="noopener" href="https://github.com/GuoXiCheng/SKIP" title="github">github</a></p>
+<h1 id="KeePass"><a href="#KeePass" class="headerlink" title="KeePass"></a>KeePass</h1><p>坚果云</p>
+<p>keepass 客户端</p>
+<ul>
+<li>android：KeePass2Android，KeePassDX</li>
+<li>ios: 奇密</li>
+</ul>
+<p>2023 年 12 月 11 日，改用 Bitwarden 主力</p>
+<h2 id="Bitwarden"><a href="#Bitwarden" class="headerlink" title="Bitwarden"></a>Bitwarden</h2><p>多平台支持，现代化界面</p>
+<p><a target="_blank" rel="noopener" href="https://bitwarden.com/">官网</a></p>
+<h1 id="tg"><a href="#tg" class="headerlink" title="tg"></a>tg</h1><p><a target="_blank" rel="noopener" href="https://tgstat.com/channels/search">Telegram channels search — TGStat</a></p>
+<p><a target="_blank" rel="noopener" href="https://ednovas.xyz/2021/02/22/telegram/#%E9%A2%91%E9%81%93">Telegram使用指南 | EdNovas的小站</a></p>
+<h1 id="Cyberduck"><a href="#Cyberduck" class="headerlink" title="Cyberduck"></a>Cyberduck</h1><p>s3 ftp 协议等</p>
+<h1 id="FinalShell"><a href="#FinalShell" class="headerlink" title="FinalShell"></a>FinalShell</h1><p>ssh 远程工具</p>
+<h1 id="FileZilla"><a href="#FileZilla" class="headerlink" title="FileZilla"></a>FileZilla</h1><p>服务器 ftp 工具</p>
+<h1 id="pichoro"><a href="#pichoro" class="headerlink" title="pichoro"></a>pichoro</h1><p>移动端云存储&#x2F;网盘&#x2F;图床&#x2F;云服务器管理大师</p>
+<p><a target="_blank" rel="noopener" href="https://pichoro.horosama.com/#/">PicHoro</a></p>
+<h1 id="PicGo"><a href="#PicGo" class="headerlink" title="PicGo"></a>PicGo</h1><p><a target="_blank" rel="noopener" href="https://picgo.github.io/PicGo-Doc/">Doc</a>  |  <a target="_blank" rel="noopener" href="https://github.com/Molunerfinn/PicGo/releases">仓库</a></p>
+<p><img src="https://tgph.319226.xyz/file/d31394ed431729d288773.png"></p>
+<h1 id="PicList"><a href="#PicList" class="headerlink" title="PicList"></a>PicList</h1><p><a target="_blank" rel="noopener" href="https://piclist.cn/">PicList</a></p>
+<h1 id="其他"><a href="#其他" class="headerlink" title="其他"></a>其他</h1><p>wps，天翼云盘，小星记账（木木记账也可以），有知有行，阿里云盘，懒饭，懂车帝，花瓣测速，clicli 漫画，乐看视频，qq，微信，京东，淘宝，支付宝</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cjchn.github.io">CJ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cjchn.github.io/posts/20230920063041-a6ee4416.html">https://cjchn.github.io/posts/20230920063041-a6ee4416.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cjchn.github.io" target="_blank">CJ's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E4%B8%93%E9%A2%98/">专题</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20230920105155-armbian.html" title="Armbian 盒子"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">Armbian 盒子</div></div></a></div><div class="next-post pull-right"><a href="/posts/20230919082150-81225cbf.html" title="免费的云资源"><div class="cover" style="background: var(--default-bg-color)"></div><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">免费的云资源</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/20231019032459-fec99276.html" title="消息队列"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7Lm9z.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-19</div><div class="title">消息队列</div></div></a></div><div><a href="/posts/20231018090328-c0add594.html" title="vue"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7LTkK.png" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-18</div><div class="title">vue</div></div></a></div><div><a href="/posts/20231019034827-40769f33.html" title="面试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-19</div><div class="title">面试</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CJ</div><div class="author-info__description">保持正念，相信自己会越来越好</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2675851908&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://github.com/cjchn" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/302998641" target="_blank" title="视频"><i class="fab fa-youtube" style="color: #24292e;"></i></a><a class="social-icon" href="https://tgph.319226.xyz/" target="_blank" title="图床"><i class="fa-solid fa-image" style="color: #24292e;"></i></a><a class="social-icon" href="https://onedrive.319226.xyz/" target="_blank" title="云盘"><i class="fa-solid fa-cloud" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%81%AB%E7%BB%92"><span class="toc-number">1.</span> <span class="toc-text">火绒</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IntelliJ-IDEA"><span class="toc-number">2.</span> <span class="toc-text">IntelliJ IDEA</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%89%8D%E8%A8%80"><span class="toc-number">2.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.</span> <span class="toc-text">配置</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#jvm-%E4%B9%B1%E7%A0%81"><span class="toc-number">2.2.1.</span> <span class="toc-text">jvm 乱码</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Web-%E9%A1%B9%E7%9B%AE%E5%8F%91%E5%B8%83%E9%85%8D%E7%BD%AE"><span class="toc-number">2.2.2.</span> <span class="toc-text">Web 项目发布配置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#IDEA-%E7%B1%BB%E5%92%8C%E6%96%B9%E6%B3%95%E6%B3%A8%E9%87%8A%E6%A8%A1%E6%9D%BF%E8%AE%BE%E7%BD%AE"><span class="toc-number">2.2.3.</span> <span class="toc-text">IDEA 类和方法注释模板设置</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%BF%80%E6%B4%BB"><span class="toc-number">2.2.4.</span> <span class="toc-text">激活</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%89%E8%A3%85%E7%9A%84%E6%8F%92%E4%BB%B6%E7%9B%AE%E5%BD%95"><span class="toc-number">2.2.5.</span> <span class="toc-text">安装的插件目录</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%9C%8D%E5%8A%A1%E5%99%A8%E9%83%A8%E7%BD%B2"><span class="toc-number">2.3.</span> <span class="toc-text">服务器部署</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%80%E9%94%AE%E9%83%A8%E7%BD%B2%E5%88%B0-Docker"><span class="toc-number">2.3.1.</span> <span class="toc-text">一键部署到 Docker</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9C%AC%E5%9C%B0%E9%83%A8%E7%BD%B2"><span class="toc-number">2.3.2.</span> <span class="toc-text">本地部署</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E9%A1%B9%E7%9B%AE%E5%88%9B%E5%BB%BA"><span class="toc-number">2.3.3.</span> <span class="toc-text">项目创建</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Rest-api"><span class="toc-number">2.3.4.</span> <span class="toc-text">Rest-api</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%90%E5%8D%87%E6%95%88%E7%8E%87"><span class="toc-number">2.4.</span> <span class="toc-text">提升效率</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6"><span class="toc-number">2.4.1.</span> <span class="toc-text">插件</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%85%8D%E7%BD%AE-1"><span class="toc-number">2.4.1.1.</span> <span class="toc-text">配置</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#String-Manipulation"><span class="toc-number">2.4.1.2.</span> <span class="toc-text">String Manipulation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#JRebel"><span class="toc-number">2.4.1.3.</span> <span class="toc-text">JRebel</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EasyCode"><span class="toc-number">2.4.1.4.</span> <span class="toc-text">EasyCode</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#CharAutoReplace"><span class="toc-number">2.4.1.4.1.</span> <span class="toc-text">CharAutoReplace</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Translation"><span class="toc-number">2.4.1.5.</span> <span class="toc-text">Translation</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%B1%BB%E5%92%8C-JSON-%E4%BA%92%E8%BD%AC"><span class="toc-number">2.4.1.6.</span> <span class="toc-text">类和 JSON 互转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GsonFormatPlus"><span class="toc-number">2.4.1.7.</span> <span class="toc-text">GsonFormatPlus</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GenerateAllSetter"><span class="toc-number">2.4.1.8.</span> <span class="toc-text">GenerateAllSetter</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#MyBatisCodeHelperPro"><span class="toc-number">2.4.1.9.</span> <span class="toc-text">MyBatisCodeHelperPro</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Free-MyBatis-plugin%EF%BC%88%E4%B8%8D%E7%BB%B4%E6%8A%A4%EF%BC%89"><span class="toc-number">2.4.1.10.</span> <span class="toc-text">Free MyBatis plugin（不维护）</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Maven-Helper"><span class="toc-number">2.4.1.11.</span> <span class="toc-text">Maven Helper</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#GitToolBox"><span class="toc-number">2.4.1.12.</span> <span class="toc-text">GitToolBox</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#grep-console"><span class="toc-number">2.4.1.13.</span> <span class="toc-text">grep console</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#Rainbow-Brackets"><span class="toc-number">2.4.1.14.</span> <span class="toc-text">Rainbow Brackets</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#AceJump"><span class="toc-number">2.4.1.15.</span> <span class="toc-text">AceJump</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#IeadVim"><span class="toc-number">2.4.1.16.</span> <span class="toc-text">IeadVim</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#RestfulTool"><span class="toc-number">2.4.1.17.</span> <span class="toc-text">RestfulTool</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#idea-%E7%BC%96%E8%AF%91%E6%B2%A1%E6%9C%89-class%EF%BC%8Cmaven-%E7%94%9F%E5%91%BD%E5%91%A8%E6%9C%9F%E6%AD%A3%E5%B8%B8"><span class="toc-number">2.4.2.</span> <span class="toc-text">idea 编译没有 class，maven 生命周期正常</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE"><span class="toc-number">2.4.3.</span> <span class="toc-text">快捷键</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E5%8D%93%E5%BC%80%E5%8F%91"><span class="toc-number">3.</span> <span class="toc-text">安卓开发</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Visual-Studio-Code"><span class="toc-number">4.</span> <span class="toc-text">Visual Studio Code</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Another-Redis-Desktop-Manager"><span class="toc-number">5.</span> <span class="toc-text">Another Redis Desktop Manager</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#DBeaver"><span class="toc-number">6.</span> <span class="toc-text">DBeaver</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Navicat"><span class="toc-number">7.</span> <span class="toc-text">Navicat</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%BF%AB%E6%8D%B7%E9%94%AE-1"><span class="toc-number">7.0.1.</span> <span class="toc-text">快捷键</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E6%9F%A5%E7%9C%8B%E6%95%B0%E6%8D%AE%E6%97%B6%E5%A6%82%E4%BD%95%E5%BF%AB%E9%80%9F%E5%AE%9A%E4%BD%8D%E5%88%B0%E5%AD%97%E6%AE%B5%E5%88%97"><span class="toc-number">7.0.2.</span> <span class="toc-text">查看数据时如何快速定位到字段列</span></a></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#ApiPost7"><span class="toc-number">8.</span> <span class="toc-text">ApiPost7</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Beyond-Compare-4"><span class="toc-number">9.</span> <span class="toc-text">Beyond Compare 4</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%90%91%E6%97%A5%E8%91%B5"><span class="toc-number">10.</span> <span class="toc-text">向日葵</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A9%E7%BF%BC%E4%BA%91%E7%9B%98"><span class="toc-number">11.</span> <span class="toc-text">天翼云盘</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Snipaste"><span class="toc-number">12.</span> <span class="toc-text">Snipaste</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%9B%BE%E5%8E%8B"><span class="toc-number">13.</span> <span class="toc-text">图压</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Obsidian"><span class="toc-number">14.</span> <span class="toc-text">Obsidian</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%AE%98%E6%96%B9%E9%93%BE%E6%8E%A5"><span class="toc-number">14.0.1.</span> <span class="toc-text">官方链接</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6-1"><span class="toc-number">14.0.1.1.</span> <span class="toc-text">插件</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%95%88%E7%8E%87"><span class="toc-number">14.0.1.2.</span> <span class="toc-text">效率</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%9B%BE%E5%BA%8A"><span class="toc-number">14.0.2.</span> <span class="toc-text">图床</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%B5%81%E7%A8%8B"><span class="toc-number">14.0.2.1.</span> <span class="toc-text">流程</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%80%E9%94%AE%E6%8F%90%E4%BA%A4-bat-%E8%84%9A%E6%9C%AC"><span class="toc-number">14.0.2.2.</span> <span class="toc-text">一键提交 bat 脚本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%AD%E6%96%87%E4%B9%B1%E7%A0%81"><span class="toc-number">14.0.2.3.</span> <span class="toc-text">中文乱码</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%A7%A3%E5%86%B3%E5%9B%BD%E5%86%85%E6%8F%92%E4%BB%B6%E5%B8%82%E5%9C%BA%E6%97%A0%E6%B3%95%E4%BD%BF%E7%94%A8%E7%9A%84%E9%97%AE%E9%A2%98"><span class="toc-number">14.0.3.</span> <span class="toc-text">解决国内插件市场无法使用的问题</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5"><span class="toc-number">14.0.4.</span> <span class="toc-text">同步</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E5%88%B0-OneDriver"><span class="toc-number">14.0.4.1.</span> <span class="toc-text">同步到 OneDriver</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E5%88%B0%E5%9D%9A%E6%9E%9C%E4%BA%91"><span class="toc-number">14.0.4.2.</span> <span class="toc-text">同步到坚果云</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E5%88%B0-Git"><span class="toc-number">14.0.4.3.</span> <span class="toc-text">同步到 Git</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%96%B0%E7%9A%84%E5%90%8C%E6%AD%A5%E6%96%B9%E6%A1%88"><span class="toc-number">14.0.4.4.</span> <span class="toc-text">新的同步方案</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E5%BD%95%E6%95%B4%E6%94%B9%E6%96%B9%E6%A1%88"><span class="toc-number">14.0.4.5.</span> <span class="toc-text">目录整改方案</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%81%9A%E5%A5%BD%E6%96%87%E4%BB%B6%E5%A4%B9%E6%98%A0%E5%B0%84"><span class="toc-number">14.0.4.5.1.</span> <span class="toc-text">做好文件夹映射</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E8%BF%9E%E9%80%9A-Anki"><span class="toc-number">14.0.5.</span> <span class="toc-text">连通 Anki</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD"><span class="toc-number">14.0.5.1.</span> <span class="toc-text">下载</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8"><span class="toc-number">14.0.5.2.</span> <span class="toc-text">使用</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#flashcards-obsidian"><span class="toc-number">14.0.5.3.</span> <span class="toc-text">flashcards-obsidian</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#Anki"><span class="toc-number">14.0.6.</span> <span class="toc-text">Anki</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%89%8D%E8%A8%80-1"><span class="toc-number">14.0.6.1.</span> <span class="toc-text">前言</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%8B%E8%BD%BD%E5%92%8C%E5%AE%89%E8%A3%85"><span class="toc-number">14.0.6.2.</span> <span class="toc-text">下载和安装</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%90%8C%E6%AD%A5%E9%80%9F%E5%BA%A6%E9%97%AE%E9%A2%98"><span class="toc-number">14.0.6.3.</span> <span class="toc-text">同步速度问题</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B1%80%E5%9F%9F%E7%BD%91"><span class="toc-number">14.0.6.4.</span> <span class="toc-text">局域网</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%8F%92%E4%BB%B6-2"><span class="toc-number">14.1.</span> <span class="toc-text">插件</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Edge"><span class="toc-number">15.</span> <span class="toc-text">Edge</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#TrayS"><span class="toc-number">16.</span> <span class="toc-text">TrayS</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#memorymaster"><span class="toc-number">17.</span> <span class="toc-text">memorymaster</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#IDM"><span class="toc-number">18.</span> <span class="toc-text">IDM</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tachiyomi-%E6%BC%AB%E7%94%BB"><span class="toc-number">19.</span> <span class="toc-text">tachiyomi 漫画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%96%B5%E4%B8%8A%E6%BC%AB%E7%94%BB"><span class="toc-number">20.</span> <span class="toc-text">喵上漫画</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%BB%B4%E7%AD%94%E6%B8%85%E5%8D%95"><span class="toc-number">21.</span> <span class="toc-text">滴答清单</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%95%99%E7%A8%8B"><span class="toc-number">21.1.</span> <span class="toc-text">教程</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#GTD"><span class="toc-number">21.1.1.</span> <span class="toc-text">GTD</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%AD%E9%85%8D-GTD-%E6%A1%88%E4%BE%8B"><span class="toc-number">21.1.1.1.</span> <span class="toc-text">搭配 GTD 案例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BB%B6%E4%BC%B8"><span class="toc-number">21.1.1.2.</span> <span class="toc-text">延伸</span></a></li></ol></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BD%BF%E7%94%A8-1"><span class="toc-number">21.2.</span> <span class="toc-text">使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%89%88%E6%9C%AC"><span class="toc-number">21.2.0.1.</span> <span class="toc-text">版本</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%89%E6%96%B9%E7%A0%B4%E8%A7%A3%E6%9B%B4%E6%96%B0%E7%BD%91%E7%AB%99"><span class="toc-number">21.2.0.2.</span> <span class="toc-text">三方破解更新网站</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%85%8D%E8%B4%B9%E7%94%A8%E6%88%B7%E9%99%90%E5%88%B6"><span class="toc-number">21.2.0.3.</span> <span class="toc-text">免费用户限制</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#%E5%8A%9F%E8%83%BD-%E4%BD%BF%E7%94%A8"><span class="toc-number">21.2.1.</span> <span class="toc-text">功能&amp;使用</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%BA%94%E8%AF%A5%E6%94%B6%E9%9B%86%E4%BB%80%E4%B9%88%EF%BC%9F"><span class="toc-number">21.2.1.1.</span> <span class="toc-text">应该收集什么？</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%94%B6%E9%9B%86%E7%AE%B1%E4%BB%BB%E5%8A%A1%E7%9A%84%E5%88%9D%E6%AD%A5%E5%A4%84%E7%90%86"><span class="toc-number">21.2.1.2.</span> <span class="toc-text">收集箱任务的初步处理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%88%B0%E6%9C%9F%E9%87%8D%E5%A4%8D-vs-%E5%AE%8C%E6%88%90%E9%87%8D%E5%A4%8D"><span class="toc-number">21.2.1.3.</span> <span class="toc-text">到期重复 vs 完成重复</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E5%9C%BA%E6%99%AF%E4%B8%8B%E9%9C%80%E8%A6%81%E7%94%A8%E5%AE%8C%E6%88%90%E9%87%8D%E5%A4%8D%E5%91%A2"><span class="toc-number">21.2.1.3.1.</span> <span class="toc-text">什么场景下需要用完成重复呢</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%BF%A1%E7%94%A8%E5%8D%A1%E8%BF%98%E6%AC%BE%E7%AD%89%E9%87%8D%E5%A4%8D%E4%BB%BB%E5%8A%A1"><span class="toc-number">21.2.1.3.2.</span> <span class="toc-text">信用卡还款等重复任务</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%AE%A1%E5%88%92%E5%92%8C%E5%A4%8D%E7%9B%98"><span class="toc-number">21.2.1.4.</span> <span class="toc-text">计划和复盘</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BA%BA%E9%99%85%E5%85%B3%E7%B3%BB%E7%AE%A1%E7%90%86"><span class="toc-number">21.2.1.5.</span> <span class="toc-text">人际关系管理</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BC%98%E5%85%88%E7%BA%A7%E4%B9%A0%E6%83%AF"><span class="toc-number">21.2.1.6.</span> <span class="toc-text">优先级习惯</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%95%AA%E8%8C%84%E5%B7%A5%E4%BD%9C%E6%B3%95"><span class="toc-number">21.2.1.7.</span> <span class="toc-text">番茄工作法</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E4%B8%89%E7%B1%BB%E4%BA%8B%E6%83%85%E9%80%82%E5%90%88%E7%95%AA%E8%8C%84"><span class="toc-number">21.2.1.7.1.</span> <span class="toc-text">三类事情适合番茄</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%B0%B4%E6%BB%B4%E8%AE%A1%E5%88%92%E6%B3%95"><span class="toc-number">21.2.1.7.2.</span> <span class="toc-text">水滴计划法</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E9%87%91%E5%AD%97%E5%A1%94%E5%AD%A6%E4%B9%A0%E6%B3%95"><span class="toc-number">21.2.1.7.3.</span> <span class="toc-text">金字塔学习法</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%BC%E5%85%A5"><span class="toc-number">21.2.1.8.</span> <span class="toc-text">导入</span></a></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%9D%E6%9A%AE%E8%AE%A1%E5%88%92"><span class="toc-number">22.</span> <span class="toc-text">朝暮计划</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%B9%9F%E8%AF%95%E7%94%A8%E4%BA%86%E4%B8%8B%E5%85%B6%E4%BB%96%E5%90%8C%E7%B1%BB-app"><span class="toc-number">22.1.</span> <span class="toc-text">也试用了下其他同类 app</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%8A%E6%97%A5%E5%A4%B4%E6%9D%A1"><span class="toc-number">23.</span> <span class="toc-text">今日头条</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%91%B8%E9%B1%BC-kik"><span class="toc-number">24.</span> <span class="toc-text">摸鱼 kik</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%B0%8F%E7%BA%A2%E4%B9%A6"><span class="toc-number">25.</span> <span class="toc-text">小红书</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E8%B1%86%E7%93%A3"><span class="toc-number">26.</span> <span class="toc-text">豆瓣</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%85%B7%E5%AE%89"><span class="toc-number">27.</span> <span class="toc-text">酷安</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9F%A5%E4%B9%8E"><span class="toc-number">28.</span> <span class="toc-text">知乎</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9C%80%E5%8F%B3"><span class="toc-number">29.</span> <span class="toc-text">最右</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%93%94%E5%93%A9%E5%93%94%E5%93%A9-bilibili"><span class="toc-number">30.</span> <span class="toc-text">哔哩哔哩&#x2F;bilibili</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#58-%E5%90%8C%E5%9F%8E"><span class="toc-number">31.</span> <span class="toc-text">58 同城</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E9%98%85%E8%AF%BB"><span class="toc-number">32.</span> <span class="toc-text">阅读</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%A4%A7%E4%BC%97%E7%82%B9%E8%AF%84"><span class="toc-number">33.</span> <span class="toc-text">大众点评</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%80%E4%B9%88%E5%80%BC%E5%BE%97%E4%B9%B0"><span class="toc-number">34.</span> <span class="toc-text">什么值得买</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BA%AC%E7%B2%89"><span class="toc-number">35.</span> <span class="toc-text">京粉</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E7%9C%81%E9%92%B1%E5%BF%AB%E6%8A%A5"><span class="toc-number">36.</span> <span class="toc-text">省钱快报</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%BE%AE%E5%8D%9A"><span class="toc-number">37.</span> <span class="toc-text">微博</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%9D%8E%E8%B7%B3%E8%B7%B3-MissLee"><span class="toc-number">38.</span> <span class="toc-text">李跳跳 &#x2F; MissLee</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#GKD-%E6%90%9E%E5%BF%AB%E7%82%B9"><span class="toc-number">38.1.</span> <span class="toc-text">GKD 搞快点</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%BC%80%E5%B1%8F%E8%B7%B3%E8%BF%87"><span class="toc-number">38.2.</span> <span class="toc-text">开屏跳过</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#TapClick"><span class="toc-number">38.3.</span> <span class="toc-text">TapClick</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#rethinkdns"><span class="toc-number">39.</span> <span class="toc-text">rethinkdns</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#SKIP"><span class="toc-number">40.</span> <span class="toc-text">SKIP</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#KeePass"><span class="toc-number">41.</span> <span class="toc-text">KeePass</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#Bitwarden"><span class="toc-number">41.1.</span> <span class="toc-text">Bitwarden</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#tg"><span class="toc-number">42.</span> <span class="toc-text">tg</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Cyberduck"><span class="toc-number">43.</span> <span class="toc-text">Cyberduck</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FinalShell"><span class="toc-number">44.</span> <span class="toc-text">FinalShell</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#FileZilla"><span class="toc-number">45.</span> <span class="toc-text">FileZilla</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#pichoro"><span class="toc-number">46.</span> <span class="toc-text">pichoro</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PicGo"><span class="toc-number">47.</span> <span class="toc-text">PicGo</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#PicList"><span class="toc-number">48.</span> <span class="toc-text">PicList</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%85%B6%E4%BB%96"><span class="toc-number">49.</span> <span class="toc-text">其他</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231229062330-416f6fc3.html" title="NewPost">NewPost</a><time datetime="2023-12-29T06:23:30.000Z" title="发表于 2023-12-29 14:23:30">2023-12-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231222053433-b84b57db.html" title="Html">Html</a><time datetime="2023-12-22T05:34:33.000Z" title="发表于 2023-12-22 13:34:33">2023-12-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231215080353-36687561.html" title="关于音乐">关于音乐</a><time datetime="2023-12-15T08:03:53.000Z" title="发表于 2023-12-15 16:03:53">2023-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20231211023548-74516b02.html" title="office"><img src="https://vip.helloimg.com/images/2023/12/15/o7AvhR.md.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="office"/></a><div class="content"><a class="title" href="/posts/20231211023548-74516b02.html" title="office">office</a><time datetime="2023-12-11T02:35:48.000Z" title="发表于 2023-12-11 10:35:48">2023-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231207051738-3fb16ec5.html" title="人大金仓">人大金仓</a><time datetime="2023-12-07T05:17:38.000Z" title="发表于 2023-12-07 13:17:38">2023-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By CJ</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><span class="scroll-percent"></span><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.2/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><div class="aplayer no-destroy" data-id="2024518101" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-mini="true"> </div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.17.1/algoliasearch-lite.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.56.1/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div></body></html>

@@ -1,0 +1,467 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>vue | CJ's Blog</title><meta name="author" content="CJ"><meta name="copyright" content="CJ"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="记录Vue相关的一些文档&#x2F;案例">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vue">
+<meta property="og:url" content="https://cjchn.github.io/posts/20231018090328-c0add594.html">
+<meta property="og:site_name" content="CJ&#39;s Blog">
+<meta property="og:description" content="记录Vue相关的一些文档&#x2F;案例">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://vip.helloimg.com/images/2023/12/15/o7LTkK.png">
+<meta property="article:published_time" content="2023-10-18T09:03:28.000Z">
+<meta property="article:modified_time" content="2024-01-04T08:19:42.765Z">
+<meta property="article:author" content="CJ">
+<meta property="article:tag" content="技术">
+<meta property="article:tag" content="专题">
+<meta property="article:tag" content="前端">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://vip.helloimg.com/images/2023/12/15/o7LTkK.png"><link rel="shortcut icon" href="https://imgcdn.319226.xyz/202401041503387.png"><link rel="canonical" href="https://cjchn.github.io/posts/20231018090328-c0add594.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.css" media="print" onload="this.media='all'"><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.min.css" media="print" onload="this.media='all'"><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: {"appId":"51DB2F26GB","apiKey":"1de06e184485e0844182c52de8afda82","indexName":"cjchn.github.io","hits":{"per_page":10},"languages":{"input_placeholder":"搜索文章","hits_empty":"找不到您查询的内容：${query}","hits_stats":"找到 ${hits} 条结果，用时 ${time} 毫秒"}},
+  localSearch: undefined,
+  translate: undefined,
+  noticeOutdate: undefined,
+  highlight: {"plugin":"highlighjs","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":400},
+  copy: {
+    success: '复制成功',
+    error: '复制错误',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: true,
+    post: true
+  },
+  runtime: '天',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'fancybox',
+  Snackbar: {"chs_to_cht":"你已切换为繁体","cht_to_chs":"你已切换为简体","day_to_night":"你已切换为深色模式","night_to_day":"你已切换为浅色模式","bgLight":"#49b1f5","bgDark":"#2d3035","position":"bottom-left"},
+  source: {
+    justifiedGallery: {
+      js: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.js',
+      css: 'https://cdnjs.cloudflare.com/ajax/libs/flickr-justified-gallery/2.1.2/fjGallery.min.css'
+    }
+  },
+  isPhotoFigcaption: false,
+  islazyload: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: true,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'vue',
+  isPost: true,
+  isHome: false,
+  isHighlightShrink: false,
+  isToc: true,
+  postUpdate: '2024-01-04 16:19:42'
+}</script><noscript><style type="text/css">
+  #nav {
+    opacity: 1
+  }
+  .justified-gallery img {
+    opacity: 1
+  }
+
+  #recent-posts time,
+  #post-meta time {
+    display: inline !important
+  }
+</style></noscript><script>(win=>{
+    win.saveToLocal = {
+      set: function setWithExpiry(key, value, ttl) {
+        if (ttl === 0) return
+        const now = new Date()
+        const expiryDay = ttl * 86400000
+        const item = {
+          value: value,
+          expiry: now.getTime() + expiryDay,
+        }
+        localStorage.setItem(key, JSON.stringify(item))
+      },
+
+      get: function getWithExpiry(key) {
+        const itemStr = localStorage.getItem(key)
+
+        if (!itemStr) {
+          return undefined
+        }
+        const item = JSON.parse(itemStr)
+        const now = new Date()
+
+        if (now.getTime() > item.expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return item.value
+      }
+    }
+  
+    win.getScript = url => new Promise((resolve, reject) => {
+      const script = document.createElement('script')
+      script.src = url
+      script.async = true
+      script.onerror = reject
+      script.onload = script.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        script.onload = script.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(script)
+    })
+  
+    win.getCSS = (url,id = false) => new Promise((resolve, reject) => {
+      const link = document.createElement('link')
+      link.rel = 'stylesheet'
+      link.href = url
+      if (id) link.id = id
+      link.onerror = reject
+      link.onload = link.onreadystatechange = function() {
+        const loadState = this.readyState
+        if (loadState && loadState !== 'loaded' && loadState !== 'complete') return
+        link.onload = link.onreadystatechange = null
+        resolve()
+      }
+      document.head.appendChild(link)
+    })
+  
+      win.activateDarkMode = function () {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      win.activateLightMode = function () {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+      const t = saveToLocal.get('theme')
+    
+          if (t === 'dark') activateDarkMode()
+          else if (t === 'light') activateLightMode()
+        
+    const detectApple = () => {
+      if(/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)){
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+    })(window)</script><meta name="generator" content="Hexo 6.3.0"></head><body><div id="web_bg"></div><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img is-center"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="onerror=null;src='/img/friend_404.gif'" alt="avatar"/></div><div class="sidebar-site-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><hr class="custom-hr"/><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header" style="background-image: url('https://vip.helloimg.com/images/2023/12/15/o7LTkK.png')"><nav id="nav"><span id="blog-info"><a href="/" title="CJ's Blog"><span class="site-name">CJ's Blog</span></a></span><div id="menus"><div id="search-button"><a class="site-page social-icon search" href="javascript:void(0);"><i class="fas fa-search fa-fw"></i><span> 搜索</span></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> 首页</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> 时间轴</span></a></div><div class="menus_item"><a class="site-page" href="/tags/"><i class="fa-fw fas fa-tags"></i><span> 标签</span></a></div><div class="menus_item"><a class="site-page" href="/categories/"><i class="fa-fw fas fa-folder-open"></i><span> 分类</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://dh.echs.top/cjcn.html"><i class="fa-fw fa-solid fa-location-arrow"></i><span> 导航</span></a></div><div class="menus_item"><a class="site-page" target="_blank" rel="noopener" href="https://status.319226.xyz/"><i class="fa-fw fa-brands fa-watchman-monitoring"></i><span> 监测</span></a></div></div><div id="toggle-menu"><a class="site-page" href="javascript:void(0);"><i class="fas fa-bars fa-fw"></i></a></div></div></nav><div id="post-info"><h1 class="post-title">vue</h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2023-10-18T09:03:28.000Z" title="发表于 2023-10-18 17:03:28">2023-10-18</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2024-01-04T08:19:42.765Z" title="更新于 2024-01-04 16:19:42">2024-01-04</time></span><span class="post-meta-categories"><span class="post-meta-separator">|</span><i class="fas fa-inbox fa-fw post-meta-icon"></i><a class="post-meta-categories" href="/categories/%E5%B7%A5%E4%BD%9C/">工作</a></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-wordcount"><i class="far fa-file-word fa-fw post-meta-icon"></i><span class="post-meta-label">字数总计:</span><span class="word-count">3.3k</span><span class="post-meta-separator">|</span><i class="far fa-clock fa-fw post-meta-icon"></i><span class="post-meta-label">阅读时长:</span><span>14分钟</span></span><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title="vue"><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">阅读量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="post-content" id="article-container"><p>我曾想过，这个到底该写点什么。文档吗，整理起来费时且没意义，毕竟网络都有，所有开源受众广的都有 API，找找贴个链接就是了。那么该记录点啥呢。如果说随着年龄的增长，真正能够沉淀下来的就是踩的坑，就是各类接触过的工具类&#x2F;demo，就是网络上找不到的&#x2F;说不清楚的一些内容。</p>
+<p>而这些，就是记录的意义。方便快速查到解决方案，方便再次犯同样的错误，方便再次遇到同类型的业务不用重复造轮子。有这些时间，多去做些创造性的工作不好吗。</p>
+<p>当然，因为类型多种多样，我现在还不知道该以什么样的方式组织笔记会更好点。这个，就只有慢慢探索了，应该没有笔记试一蹴而就的吧，都是后面慢慢优化。而现在，踏出第一步才是最重要的。</p>
+<h1 id="TL-DR"><a href="#TL-DR" class="headerlink" title="TL;DR"></a>TL;DR</h1><h2 id="浏览器存储"><a href="#浏览器存储" class="headerlink" title="浏览器存储"></a>浏览器存储</h2><p>cookie 、sessionStorage 、localStorage</p>
+<table>
+<thead>
+<tr>
+<th align="left"></th>
+<th align="left">cookie</th>
+<th align="left">sessionStorage</th>
+<th align="left">localStorage</th>
+</tr>
+</thead>
+<tbody><tr>
+<td align="left">存储空间</td>
+<td align="left">4 kb</td>
+<td align="left">5M</td>
+<td align="left">5M+</td>
+</tr>
+<tr>
+<td align="left">有效期</td>
+<td align="left">关闭游览器销毁。<div>设置失效时间的 cookie。 </div></td>
+<td align="left">页面会话结束时会被清除（关闭游览器、窗口或者标签页销毁）</td>
+<td align="left">不手动清除一直保留</td>
+</tr>
+<tr>
+<td align="left">作用域</td>
+<td align="left">在所有同源窗口之间共享</td>
+<td align="left">不在不同游览器窗口（标签页）共享</td>
+<td align="left">在所有同源窗口之间共享</td>
+</tr>
+<tr>
+<td align="left"></td>
+<td align="left">http 请求中可以携带 cookie</td>
+<td align="left"></td>
+<td align="left"></td>
+</tr>
+</tbody></table>
+<h3 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h3><h4 id="存取操作"><a href="#存取操作" class="headerlink" title="存取操作"></a>存取操作</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span>  = <span class="string">&#x27;username=Darren&#x27;</span>;</span><br><span class="line"></span><br><span class="line"><span class="comment">//使用方法：setCookie(&#x27;username&#x27;,&#x27;Darren&#x27;,30)</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setCookie</span>(<span class="params">c_name, value, expiredays</span>)&#123;</span><br><span class="line">    <span class="keyword">var</span> exdate=<span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">    <span class="comment">// exdate.setHours(exdate.getHours() + expiredays);</span></span><br><span class="line">    exdate.<span class="title function_">setDate</span>(exdate.<span class="title function_">getDate</span>() + expiredays);</span><br><span class="line">    <span class="variable language_">document</span>.<span class="property">cookie</span>=c_name+ <span class="string">&quot;=&quot;</span> + <span class="built_in">escape</span>(value) + ((expiredays==<span class="literal">null</span>) ? <span class="string">&quot;&quot;</span> : <span class="string">&quot;;expires=&quot;</span>+exdate.<span class="title function_">toGMTString</span>());</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getCookie</span>(<span class="params">c_name</span>)&#123;</span><br><span class="line">　　　　<span class="keyword">if</span> (<span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="property">length</span>&gt;<span class="number">0</span>)&#123;　　<span class="comment">//先查询cookie是否为空，为空就return &quot;&quot;</span></span><br><span class="line">　　　　　　c_start=<span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">indexOf</span>(c_name + <span class="string">&quot;=&quot;</span>)　　<span class="comment">//通过String对象的indexOf()来检查这个cookie是否存在，不存在就为 -1　　</span></span><br><span class="line">　　　　　　<span class="keyword">if</span> (c_start!=-<span class="number">1</span>)&#123;</span><br><span class="line">　　　　　　　　c_start=c_start + c_name.<span class="property">length</span>+<span class="number">1</span>　　<span class="comment">//最后这个+1其实就是表示&quot;=&quot;号啦，这样就获取到了cookie值的开始位置</span></span><br><span class="line">　　　　　　　　c_end=<span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">indexOf</span>(<span class="string">&quot;;&quot;</span>,c_start)　　<span class="comment">//其实我刚看见indexOf()第二个参数的时候猛然有点晕，后来想起来表示指定的开始索引的位置...这句是为了得到值的结束位置。因为需要考虑是否是最后一项，所以通过&quot;;&quot;号是否存在来判断</span></span><br><span class="line">　　　　　　　　<span class="keyword">if</span> (c_end==-<span class="number">1</span>) c_end=<span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="property">length</span>　　</span><br><span class="line">　　　　　　　　<span class="keyword">return</span> <span class="built_in">unescape</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>.<span class="title function_">substring</span>(c_start,c_end))　　<span class="comment">//通过substring()得到了值。想了解unescape()得先知道escape()是做什么的，都是很重要的基础，想了解的可以搜索下，在文章结尾处也会进行讲解cookie编码细节</span></span><br><span class="line">　　　　　　&#125;</span><br><span class="line">　　　　&#125;</span><br><span class="line">　　　　<span class="keyword">return</span> <span class="string">&quot;&quot;</span></span><br><span class="line">　　&#125;</span><br></pre></td></tr></table></figure>
+
+<h5 id="编码细节"><a href="#编码细节" class="headerlink" title="编码细节"></a>编码细节</h5><p>在输入 cookie 信息时不能包含空格，分号，逗号等特殊符号，而在一般情况下，cookie 信息的存储都是采用未编码的方式。所以，在设置 cookie 信息以前要先使用 escape()函数将 cookie 值信息进行编码，在获取到 cookie 值得时候再使用 unescape()函数把值进行转换回来。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = name + <span class="string">&quot;=&quot;</span>+ <span class="built_in">escape</span> (value);</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> cookie = <span class="built_in">unescape</span>(<span class="variable language_">document</span>.<span class="property">cookie</span>);</span><br></pre></td></tr></table></figure>
+
+<h5 id="路径概念"><a href="#路径概念" class="headerlink" title="路径概念"></a>路径概念</h5><p>在 “<a target="_blank" rel="noopener" href="http://www.jb51.net/Darren_code/%E2%80%9D">http://www.jb51.net/Darren_code/”</a> 这个页面创建一个 cookie，那么在”&#x2F;Darren_code&#x2F;”这个路径下的页面如： “<a target="_blank" rel="noopener" href="http://www.jb51.net/Darren_code/archive/2011/11/07/Cookie.html%E2%80%9D%E8%BF%99%E4%B8%AA%E9%A1%B5%E9%9D%A2%E9%BB%98">http://www.jb51.net/Darren_code/archive/2011/11/07/Cookie.html”这个页面默</a> 认就能取到 cookie 信息。</p>
+<p>可在默认情况下， “<a target="_blank" rel="noopener" href="http://www.jb51.net”或者/">http://www.jb51.net”或者</a> “<a target="_blank" rel="noopener" href="http://www.jb51.net/xxxx/%E2%80%9D">http://www.jb51.net/xxxx/”</a> 就不可以访问这个 cookie</p>
+<p>设置根目录，这样不管是哪个子页面创建的 cookie，所有的页面都可以访问到了</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&quot;name=Darren;path=/&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h5 id="域概念"><a href="#域概念" class="headerlink" title="域概念"></a>域概念</h5><p>例如 ”<a target="_blank" rel="noopener" href="http://www.qq.com”/">www.qq.com”</a> 与 “sports.qq.com” 公用一个关联的域名”qq.com”，我们如果想让 “sports.qq.com” 下的 cookie 被 ”<a target="_blank" rel="noopener" href="http://www.qq.com”/">www.qq.com”</a> 访问，我们就需要用到 cookie 的 domain 属性，并且需要把 path 属性设置为 “&#x2F;”。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&quot;username=Darren;path=/;domain=qq.com&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h6 id="安全性"><a href="#安全性" class="headerlink" title="安全性"></a>安全性</h6><p>如果一个 cookie 的属性为 secure，那么它与服务器之间就通过 HTTPS 或者其它安全协议传递数据。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&quot;username=Darren;secure&quot;</span></span><br></pre></td></tr></table></figure>
+
+<p>把 cookie 设置为 secure，只保证 cookie 与服务器之间的数据传输过程加密，而保存在本地的 cookie 文件并不加密。如果想让本地 cookie 也加密，得自己加密数据。</p>
+<h5 id="设置-cookie-的有效期"><a href="#设置-cookie-的有效期" class="headerlink" title="设置 cookie 的有效期"></a>设置 cookie 的有效期</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 通过new生成一个Date的实例，得到当前的时间；</span></span><br><span class="line"><span class="comment">// getDate()方法得到当前本地月份中的某一天，接着加上30就是我希望这个cookie能过在本地保存30天；</span></span><br><span class="line"><span class="comment">// 接着通过setDate()方法来设置时间；</span></span><br><span class="line"><span class="comment">// 最后 用toGMTString()方法把Date对象转换为字符串，并返回结果</span></span><br><span class="line"><span class="keyword">var</span> _date = <span class="keyword">new</span> <span class="title class_">Date</span>();</span><br><span class="line">_date.<span class="title function_">setDate</span>(_date.<span class="title function_">getDate</span>()+<span class="number">30</span>);</span><br><span class="line">_date.<span class="title function_">toGMTString</span>();</span><br><span class="line"></span><br><span class="line"><span class="comment">// date值为GMT(格林威治时间)格式的日期型字符串</span></span><br><span class="line"><span class="variable language_">document</span>.<span class="property">cookie</span> = <span class="string">&quot;name=value;expires=date&quot;</span>;</span><br></pre></td></tr></table></figure>
+
+<h4 id="工具类"><a href="#工具类" class="headerlink" title="工具类"></a>工具类</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/*设置Cookie*/</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">setCookie</span>(<span class="params">c_name, value, expiredays, path, domain, secure</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> exdate = <span class="keyword">new</span> <span class="title class_">Date</span>(); <span class="comment">//获取当前时间</span></span><br><span class="line">  exdate.<span class="title function_">setDate</span>(exdate.<span class="title function_">getDate</span>() + expiredays); <span class="comment">//过期时间</span></span><br><span class="line">  <span class="variable language_">document</span>.<span class="property">cookie</span> =</span><br><span class="line">    c_name +</span><br><span class="line">    <span class="string">&quot;=&quot;</span> + <span class="comment">//cookie名称</span></span><br><span class="line">    <span class="built_in">escape</span>(value) + <span class="comment">//将cookie值进行编码</span></span><br><span class="line">    (expiredays == <span class="literal">null</span> ? <span class="string">&quot;&quot;</span> : <span class="string">&quot;;expires=&quot;</span> + exdate.<span class="title function_">toGMTString</span>()) + <span class="comment">//设置过期时间</span></span><br><span class="line">    (path == <span class="literal">null</span> ? <span class="string">&quot;/&quot;</span> : <span class="string">&quot;;path=&quot;</span> + path) + <span class="comment">//设置访问路径</span></span><br><span class="line">    (domain == <span class="literal">null</span> ? <span class="string">&quot;&quot;</span> : <span class="string">&quot;;domain=&quot;</span> + domain) + <span class="comment">//设置访问域</span></span><br><span class="line">    (secure == <span class="literal">null</span> ? <span class="string">&quot;&quot;</span> : <span class="string">&quot;;secure=&quot;</span> + secure); <span class="comment">//设置是否加密</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">setCookie</span>(<span class="string">&quot;test&quot;</span>, <span class="string">&quot;name=sheng;sex=men;lancer=dullbear&quot;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="title function_">setCookie</span>(<span class="string">&quot;bb&quot;</span>, <span class="string">&quot;name=sheng;sex=men&quot;</span>, <span class="number">30</span>);</span><br><span class="line"><span class="comment">/*获取Cookie*/</span></span><br><span class="line"><span class="keyword">function</span> <span class="title function_">getCookie</span>(<span class="params">c_name, index</span>) &#123;</span><br><span class="line">  <span class="keyword">var</span> cookies = <span class="variable language_">document</span>.<span class="property">cookie</span>; <span class="comment">//获取cookie值</span></span><br><span class="line">  <span class="keyword">var</span> cookieLen = cookies.<span class="property">length</span>; <span class="comment">//获取cookie长度</span></span><br><span class="line">  <span class="keyword">if</span> (cookieLen &gt; <span class="number">0</span>) &#123;</span><br><span class="line">    <span class="comment">//cookie不为空时</span></span><br><span class="line">    <span class="keyword">var</span> c_start = cookies.<span class="title function_">indexOf</span>(c_name + <span class="string">&quot;=&quot;</span>); <span class="comment">//查找需要cookie值在cookie中序号</span></span><br><span class="line">    <span class="keyword">if</span> (c_start &gt; -<span class="number">1</span>) &#123;</span><br><span class="line">      <span class="comment">//cookie值存在时</span></span><br><span class="line">      c_start += c_name.<span class="property">length</span> + <span class="number">1</span>; <span class="comment">//获取cookie值开始序列号</span></span><br><span class="line">      <span class="keyword">var</span> c_end = cookies.<span class="title function_">indexOf</span>(<span class="string">&quot;;&quot;</span>, c_start); <span class="comment">//获取cookie值结束序列号</span></span><br><span class="line">      <span class="keyword">if</span> (c_end == -<span class="number">1</span>) &#123;</span><br><span class="line">        <span class="comment">//当cookie是最后一个时</span></span><br><span class="line">        c_end = cookieLen; <span class="comment">//设置cookie值结束序列号为cookie长度</span></span><br><span class="line">      &#125;</span><br><span class="line">      <span class="keyword">var</span> cookieStr = <span class="built_in">unescape</span>(cookies.<span class="title function_">substring</span>(c_start, c_end)); <span class="comment">//获取解码cookie值</span></span><br><span class="line">      <span class="keyword">var</span> cookieObj = cookieStr.<span class="title function_">split</span>(<span class="string">&quot;;&quot;</span>); <span class="comment">//分割cookie值</span></span><br><span class="line">      index = index == <span class="literal">null</span> ? <span class="number">0</span> : index; <span class="comment">//判断index是否传值</span></span><br><span class="line">      <span class="keyword">var</span> goalObj = cookieObj[index]; <span class="comment">//索引数组</span></span><br><span class="line">      <span class="keyword">var</span> goalStr = goalObj.<span class="title function_">split</span>(<span class="string">&quot;=&quot;</span>);</span><br><span class="line">      <span class="keyword">var</span> getcook = goalStr[<span class="number">1</span>]; <span class="comment">//获取需要取的cookie值</span></span><br><span class="line">      <span class="keyword">return</span> getcook;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">    <span class="variable language_">console</span>.<span class="title function_">log</span>(<span class="string">&quot;页面没有cookie&quot;</span>);</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="title function_">alert</span>(<span class="title function_">getCookie</span>(<span class="string">&quot;test&quot;</span>, <span class="number">0</span>)); <span class="comment">//打印查询cookie值</span></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h3 id="sessionStorage"><a href="#sessionStorage" class="headerlink" title="sessionStorage"></a>sessionStorage</h3><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 保存数据到sessionStorage</span></span><br><span class="line"><span class="variable language_">sessionStorage</span>.<span class="title function_">setItem</span>(<span class="string">&#x27;key&#x27;</span>, <span class="string">&#x27;value&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从sessionStorage获取数据</span></span><br><span class="line"><span class="keyword">var</span> data = <span class="variable language_">sessionStorage</span>.<span class="title function_">getItem</span>(<span class="string">&#x27;key&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从sessionStorage删除保存的数据</span></span><br><span class="line"><span class="variable language_">sessionStorage</span>.<span class="title function_">removeItem</span>(<span class="string">&#x27;key&#x27;</span>);</span><br><span class="line"></span><br><span class="line"><span class="comment">// 从sessionStorage删除所有保存的数据</span></span><br><span class="line"><span class="variable language_">sessionStorage</span>.<span class="title function_">clear</span>();</span><br></pre></td></tr></table></figure>
+
+<h3 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h3><table>
+<thead>
+<tr>
+<th>方法名称</th>
+<th>作用</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>clear</td>
+<td>清空 localStorage 上存储的数据</td>
+</tr>
+<tr>
+<td>getItem</td>
+<td>读取数据</td>
+</tr>
+<tr>
+<td>hasOwnProperty</td>
+<td>检查 localStorage 上是否保存了变量 x，需要传入 x</td>
+</tr>
+<tr>
+<td>key</td>
+<td>读取第 i 个数据的名字或称为键值(从 0 开始计数)</td>
+</tr>
+<tr>
+<td>length</td>
+<td>localStorage 存储变量的个数</td>
+</tr>
+<tr>
+<td>propertyIsEnumerable</td>
+<td>用来检测属性是否属于某个对象的</td>
+</tr>
+<tr>
+<td>removeItem</td>
+<td>删除某个具体变量</td>
+</tr>
+<tr>
+<td>setItem</td>
+<td>存储数据</td>
+</tr>
+<tr>
+<td>toLocaleString</td>
+<td>将（数组）转为本地字符串</td>
+</tr>
+<tr>
+<td>valueOf</td>
+<td>获取所有存储的数据</td>
+</tr>
+</tbody></table>
+<p>场景：通过 js 类 JSON 转字符串和转回，可以实现页面切换数据保留。有个业务就是 h5 页面跳转后再返回原页面数据丢失，通过 localStorage 实现了原来的条件和列表数据都保留。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 存</span></span><br><span class="line"><span class="keyword">let</span> json = <span class="title class_">JSON</span>.<span class="title function_">stringify</span>(&#123;</span><br><span class="line">        <span class="attr">list</span>: <span class="variable language_">this</span>.<span class="property">list</span>,</span><br><span class="line">        <span class="attr">query</span>:<span class="variable language_">this</span>.<span class="property">query</span></span><br><span class="line">      &#125;)</span><br><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">setItem</span>(<span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">name</span> + <span class="string">&#x27;_data&#x27;</span>, json)</span><br><span class="line"></span><br><span class="line"><span class="comment">// 取</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">getItem</span>(<span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">name</span> + <span class="string">&#x27;_data&#x27;</span>)</span><br><span class="line"><span class="comment">// 清理</span></span><br><span class="line"><span class="variable language_">window</span>.<span class="property">localStorage</span>.<span class="title function_">removeItem</span>(<span class="variable language_">this</span>.<span class="property">$route</span>.<span class="property">name</span> + <span class="string">&#x27;_data&#x27;</span>)</span><br></pre></td></tr></table></figure>
+
+<h2 id="路由-router"><a href="#路由-router" class="headerlink" title="路由 $router"></a>路由 $router</h2><h3 id="router-和-route-的区别"><a href="#router-和-route-的区别" class="headerlink" title="$router 和 $route 的区别"></a>$router 和 $route 的区别</h3><blockquote>
+<p>$router 是 vue-router 实例，所有和路由相关的东西都包含在$router 中，包括$route,想要跳转路由可以通过 push，replace 等方法。</p>
+<p>$route 只是跟当前路由有关的数据，比如 path，query，params 之类的</p>
+</blockquote>
+<h3 id="router-back"><a href="#router-back" class="headerlink" title="$router.back()"></a>$router.back()</h3><p>原页表表单中的内容会保留</p>
+<h4 id="用法示例"><a href="#用法示例" class="headerlink" title="用法示例"></a>用法示例</h4><ul>
+<li><code>this.$router.back()</code>：后退</li>
+<li><code>this.$router.back(0)</code>  刷新</li>
+<li><code>this.$router.back(1)</code>  前进</li>
+<li><code>history.back()</code>  后退</li>
+<li><code>history.back(0)</code>  刷新</li>
+<li><code>history.back(1)</code>  前进</li>
+</ul>
+<h4 id="携带参数"><a href="#携带参数" class="headerlink" title="携带参数"></a>携带参数</h4><p>借助框架的钩子 beforeRouteEnter 获取内容，存储的值是在 js 中</p>
+<p>返回前的页面</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">function xx() &#123;</span><br><span class="line">	this.$route.params.user = &quot;123&quot;;</span><br><span class="line">	this.$router.back();</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<p>返回到的上一个界面接收参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line">&lt;script&gt;</span><br><span class="line">// 返回前页面的 url</span><br><span class="line">let previousRouterName = &quot;&quot;;</span><br><span class="line">// 参数</span><br><span class="line">let selectUser = &quot;&quot;;</span><br><span class="line"></span><br><span class="line">export default &#123;</span><br><span class="line">	components: &#123;&#125;,</span><br><span class="line">	data() &#123;</span><br><span class="line">	    return &#123;</span><br><span class="line">	    &#125;;</span><br><span class="line">	  &#125;,</span><br><span class="line">	 beforeRouteEnter(to, from, next) &#123;</span><br><span class="line">	    previousRouterName = from.name;</span><br><span class="line">	    if (from.name === &quot;transportationTransferList&quot;) &#123;</span><br><span class="line">	      selectUser = from.params.user;</span><br><span class="line">	    &#125;</span><br><span class="line">	    next();</span><br><span class="line">	&#125;,</span><br><span class="line">	methods: &#123;</span><br><span class="line">		suchMethod() &#123;</span><br><span class="line">			if(previousRouterName) &#123;</span><br><span class="line">				console.log(selectUser)</span><br><span class="line">				// 业务代码</span><br><span class="line">			&#125;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h3 id="router-go"><a href="#router-go" class="headerlink" title="$router.go()"></a>$router.go()</h3><p>原页面表单中的内容会丢失</p>
+<h4 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h4><ul>
+<li><code>this.$router.go(-1)</code>:后退+刷新；</li>
+<li><code>this.$router.go(0)</code>:刷新；</li>
+<li><code>this.$router.go(1)</code>:前进；</li>
+<li><code>history.go(-1)</code>:后退+刷新；</li>
+<li><code>history.go(1)</code>:前进；</li>
+</ul>
+<blockquote>
+<p>刷新当前页面 还有 <code>window.location.reload()</code></p>
+</blockquote>
+<h3 id="router-replace"><a href="#router-replace" class="headerlink" title="$router.replace()"></a>$router.replace()</h3><p>不会在浏览器的历史记录里面添加信息</p>
+<h4 id="普通跳转"><a href="#普通跳转" class="headerlink" title="普通跳转"></a>普通跳转</h4><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 声明式</span><br><span class="line">&lt;router-link :to=&quot;...&quot; replace&gt;</span><br><span class="line"></span><br><span class="line">// 编程式</span><br><span class="line">this.$router.replace(&#x27;/test&#x27;)</span><br></pre></td></tr></table></figure>
+
+<h4 id="带参数跳转"><a href="#带参数跳转" class="headerlink" title="带参数跳转"></a>带参数跳转</h4><h5 id="name-params-方式"><a href="#name-params-方式" class="headerlink" title="name - params 方式"></a>name - params 方式</h5><p>params 方法相当于 post 请求，数据不会显示在地址栏中；</p>
+<p>用 params 传递数据时 replace 里面只能是 name:’xx’，否则即使可以跳转页面，也没有传递的数据；</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">this.$router.replace(&#123;</span><br><span class="line">  name:&#x27;xx&#x27;,</span><br><span class="line">  params:&#123;</span><br><span class="line">    username:this.userName,</span><br><span class="line">    password:this.password</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>获取数据</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$route.params.username</span><br></pre></td></tr></table></figure>
+
+<h5 id="path-query-方式"><a href="#path-query-方式" class="headerlink" title="path - query 方式"></a>path - query 方式</h5><p>query 请求相当于 get 请求，数据会显示在地址栏中</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">this.$router.replace(&#123;</span><br><span class="line">  path:&#x27;/xx&#x27;,</span><br><span class="line">  query:&#123;</span><br><span class="line">    username:this.userName,</span><br><span class="line">    password:this.password</span><br><span class="line">  &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>获取参数</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">this.$route.query.username</span><br></pre></td></tr></table></figure>
+
+<h3 id="router-push"><a href="#router-push" class="headerlink" title="$router.push()"></a>$router.push()</h3><p>会在浏览器历史纪录里面添加一条记录，通过 router.push 跳转的页面能够返回上一页</p>
+<p><img src="https://tgph.319226.xyz/file/3ad4497a9b2e8c26ac495.jpg"></p>
+<h5 id="普通跳转-1"><a href="#普通跳转-1" class="headerlink" title="普通跳转"></a>普通跳转</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">// 声明式</span><br><span class="line">&lt;router-link to=&quot;/test&quot;&gt;go home&lt;/router-link&gt;</span><br><span class="line"></span><br><span class="line">// 编程式</span><br><span class="line">this.$router.push(&#123;path: &#x27;/test&#x27;&#125;)</span><br></pre></td></tr></table></figure>
+
+<h5 id="带参数跳转-1"><a href="#带参数跳转-1" class="headerlink" title="带参数跳转"></a>带参数跳转</h5><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">// path = &#x27;/test&#x27;</span><br><span class="line">this.$router.push(&#123;path: `$&#123;path&#125;?a=1`&#125;)</span><br><span class="line"></span><br><span class="line">this.$router.push(&#123;path: path, query:&#123;a:123&#125;&#125;)</span><br></pre></td></tr></table></figure>
+
+<p>有个比较坑的是，路由里边，meta 配置 <code>keepAlive: true</code> 会导致跳转第一次不会刷新数据，要注意，遇到过两次了</p>
+<h1 id="代码工具"><a href="#代码工具" class="headerlink" title="代码工具"></a>代码工具</h1><h2 id="行合并"><a href="#行合并" class="headerlink" title="行合并"></a>行合并</h2><p>表头跨行合并 ElementUI 本身<a target="_blank" rel="noopener" href="https://element.eleme.cn/#/zh-CN/component/table">官方文档</a>已经描述，参照样例即可</p>
+<p>多行合并记录下</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table :header-cell-style=&quot;handerMethod&quot;&gt;</span><br><span class="line">	// el-table-column 不能用fix，否则失效</span><br><span class="line">&lt;/el-table&gt;</span><br><span class="line"></span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	methods: &#123;</span><br><span class="line">		handerMethod(&#123; row, column, rowIndex, columnIndex &#125;) &#123;  </span><br><span class="line">			// 行列数组实际从0开始排</span><br><span class="line">		  const colArr = [1, 2, 3];  </span><br><span class="line">		  // 第1,2,3列</span><br><span class="line">		  if (colArr.includes(columnIndex)) &#123;  </span><br><span class="line">			  // 第0行</span><br><span class="line">			if (rowIndex === 0) &#123;  </span><br><span class="line">			  // 隐藏</span><br><span class="line">			  return &#123; display: &quot;none&quot; &#125;;  </span><br><span class="line">			&#125;  </span><br><span class="line">		  &#125;  </span><br><span class="line">		  if ((columnIndex == 0) &amp; (rowIndex == 0)) &#123;  </span><br><span class="line">			// 把第0列第0行的单元格横向延伸，占用4格</span><br><span class="line">			this.$nextTick(() =&gt; &#123;  </span><br><span class="line">			  document.querySelector(`.$&#123;column.id&#125;`).setAttribute(&quot;colspan&quot;, &quot;4&quot;);  </span><br><span class="line">			&#125;);  </span><br><span class="line">		  &#125;  </span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<p>还可以通过 column.label 来</p>
+<figure class="highlight js"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> (column.<span class="property">label</span> == <span class="string">&quot;年龄&quot;</span>) &#123;</span><br><span class="line">   <span class="keyword">return</span> &#123; <span class="attr">display</span>: <span class="string">&quot;none&quot;</span> &#125;;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">if</span> (column.<span class="property">label</span> == <span class="string">&quot;家乡&quot;</span>) &#123;</span><br><span class="line">   <span class="keyword">return</span> &#123; <span class="attr">display</span>: <span class="string">&quot;none&quot;</span> &#125;;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">if</span> (column.<span class="property">label</span> == <span class="string">&quot;基本信息（姓名、年龄、家乡）&quot;</span>) &#123;</span><br><span class="line">   <span class="variable language_">this</span>.$nextTick(<span class="function">() =&gt;</span> &#123;</span><br><span class="line">     <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">`.<span class="subst">$&#123;column.id&#125;</span>`</span>).<span class="title function_">setAttribute</span>(<span class="string">&quot;colspan&quot;</span>, <span class="string">&quot;3&quot;</span>);</span><br><span class="line">   &#125;);</span><br><span class="line">   <span class="keyword">return</span> &#123; <span class="attr">background</span>: <span class="string">&quot;pink&quot;</span> &#125;;</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h2 id="列合并"><a href="#列合并" class="headerlink" title="列合并"></a>列合并</h2><p>列合并需要注意</p>
+<ul>
+<li>数据来源需要提前排序，否则如果连续的数据中间出现其他数据，会出现层级错误（犯过这个错）</li>
+</ul>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br></pre></td><td class="code"><pre><span class="line">&lt;el-table :span-method=&quot;objectSpanMethod&quot;/&gt;</span><br><span class="line"></span><br><span class="line">&lt;script&gt;</span><br><span class="line">export default &#123;</span><br><span class="line">	data() &#123;  </span><br><span class="line">	  return &#123;</span><br><span class="line">		  map: []</span><br><span class="line">	  &#125;</span><br><span class="line">	&#125;</span><br><span class="line">	methods: &#123;</span><br><span class="line">		getList() &#123;</span><br><span class="line">			res2 = []</span><br><span class="line">			// res2 是获取到的数据</span><br><span class="line">			var obj = &#123;&#125;;</span><br><span class="line">			res2.forEach((val, key) =&gt; &#123;</span><br><span class="line">			// area_name 是合并的字段，step出现的次数，start出现的位置（单纯用字段内容无法区分，其他列同样能匹配到，因此 start 是必需的(开发时在这里卡了好久)）</span><br><span class="line">			  if (!obj[val.area_name]) &#123;</span><br><span class="line">			    obj[val.area_name] = &#123;</span><br><span class="line">			      start: key,</span><br><span class="line">			      step: 1</span><br><span class="line">			    &#125;;</span><br><span class="line">			  &#125; else &#123;</span><br><span class="line">			    obj[val.area_name].step++;</span><br><span class="line">			  &#125;</span><br><span class="line">			&#125;);</span><br><span class="line">			_this.map = obj;</span><br><span class="line">			_this.list = res2</span><br><span class="line">		&#125;,</span><br><span class="line">		objectSpanMethod(&#123; row, column, rowIndex, columnIndex &#125;) &#123;</span><br><span class="line">		  var rowspan = 1;</span><br><span class="line">		  var colspan = 1;</span><br><span class="line">		  if (columnIndex === 0) &#123;</span><br><span class="line">		    if (this.map[row.area_name].start === rowIndex) &#123;</span><br><span class="line">		      rowspan = this.map[row.area_name].step;</span><br><span class="line">		      colspan = 1;</span><br><span class="line">		    &#125; else &#123;</span><br><span class="line">		      rowspan = 0;</span><br><span class="line">		      colspan = 0;</span><br><span class="line">		    &#125;</span><br><span class="line">		  &#125;</span><br><span class="line">		  return &#123;</span><br><span class="line">		    rowspan: rowspan,</span><br><span class="line">		    colspan: colspan</span><br><span class="line">		  &#125;;</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;</span><br><span class="line">&lt;/script&gt;</span><br></pre></td></tr></table></figure>
+
+<h2 id="页面导出"><a href="#页面导出" class="headerlink" title="页面导出"></a>页面导出</h2><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// &quot;xlsx&quot;: &quot;0.14.1&quot; ,&quot;file-saver&quot;: &quot;2.0.1&quot;</span></span><br><span class="line"><span class="keyword">import</span> <span class="variable constant_">XLSX</span> <span class="keyword">from</span> <span class="string">&quot;xlsx&quot;</span>;  </span><br><span class="line"><span class="keyword">import</span> <span class="title class_">FileSaver</span> <span class="keyword">from</span> <span class="string">&quot;file-saver&quot;</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> () &#123;</span><br><span class="line">        <span class="comment">// this.printDate 打印时间 </span></span><br><span class="line">          <span class="variable language_">this</span>.<span class="property">printDate</span> = <span class="variable language_">this</span>.<span class="property">$utils</span>.<span class="title function_">dateFormat</span>(<span class="keyword">new</span> <span class="title class_">Date</span>(), <span class="string">&#x27;yyyy-mm-dd hh:mi:ss&#x27;</span>)</span><br><span class="line">          <span class="comment">// 获取table对象，vue 的 &lt;el-table id=&quot;tableList&quot;&gt;..&lt;/el-table&gt;</span></span><br><span class="line">          <span class="keyword">const</span> obj = <span class="variable language_">document</span>.<span class="title function_">querySelector</span>(<span class="string">&quot;#tableList&quot;</span>)</span><br><span class="line">          <span class="comment">// 去掉隐藏的内容，这里是 &lt;th style=&quot;display:none;&quot;&gt; 标签，其他的动态改</span></span><br><span class="line">          <span class="keyword">const</span> hideList = obj.<span class="title function_">querySelectorAll</span>(<span class="string">&#x27;th[style=&quot;display: none;&quot;]&#x27;</span>)</span><br><span class="line">          <span class="keyword">if</span> (hideList.<span class="property">length</span> &gt; <span class="number">0</span>) &#123;</span><br><span class="line">            <span class="keyword">for</span> (<span class="keyword">let</span> i = <span class="number">0</span>; i &lt; hideList.<span class="property">length</span>; i++) &#123;</span><br><span class="line">              hideList[i].<span class="title function_">remove</span>()</span><br><span class="line">            &#125;</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="comment">// log 可以打印出获取到的列表对象，找table对象用上面的方法可以动态修改打印内容</span></span><br><span class="line">          <span class="comment">// console.log(obj)</span></span><br><span class="line">          <span class="keyword">var</span> workBook = <span class="variable constant_">XLSX</span>.<span class="property">utils</span>.<span class="title function_">table_to_book</span>(obj, &#123; <span class="attr">raw</span>: <span class="literal">true</span> &#125;);</span><br><span class="line">          <span class="keyword">var</span> write = <span class="variable constant_">XLSX</span>.<span class="title function_">write</span>(workBook, &#123;</span><br><span class="line">            <span class="attr">bookType</span>: <span class="string">&quot;xlsx&quot;</span>,</span><br><span class="line">            <span class="attr">bookSST</span>: <span class="literal">true</span>,</span><br><span class="line">            <span class="attr">type</span>: <span class="string">&quot;array&quot;</span></span><br><span class="line">          &#125;);</span><br><span class="line">          <span class="keyword">try</span> &#123;</span><br><span class="line">            <span class="title class_">FileSaver</span>.<span class="title function_">saveAs</span>(</span><br><span class="line">              <span class="keyword">new</span> <span class="title class_">Blob</span>([write], &#123; <span class="attr">type</span>: <span class="string">&quot;application/octet-stream&quot;</span> &#125;),</span><br><span class="line">              <span class="string">&quot;xx统计表.xlsx&quot;</span></span><br><span class="line">            );</span><br><span class="line">          &#125; <span class="keyword">catch</span> (e) &#123;</span><br><span class="line">            <span class="variable language_">console</span>.<span class="title function_">log</span>(e, write);</span><br><span class="line">          &#125;</span><br><span class="line">          <span class="keyword">break</span>;</span><br><span class="line">      &#125;</span><br></pre></td></tr></table></figure>
+
+
+<h1 id="Axios-使用"><a href="#Axios-使用" class="headerlink" title="Axios 使用"></a>Axios 使用</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install axios</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">import axios from &quot;axios&quot;;</span><br><span class="line"></span><br><span class="line">axios</span><br><span class="line">  .get(&quot;/api/data/winTogether/service&quot;)</span><br><span class="line">  .then(response =&gt; &#123;</span><br><span class="line">    console.log(&quot;request..&quot;);</span><br><span class="line">    this.service = response.data.service;</span><br><span class="line">  &#125;)</span><br><span class="line">  .catch(error =&gt; &#123;</span><br><span class="line">    console.log(&quot;fail....&quot;);</span><br><span class="line">  &#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+<h1 id="搭配-Mock-js"><a href="#搭配-Mock-js" class="headerlink" title="搭配 Mock.js"></a>搭配 Mock.js</h1><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">npm install mockjs</span><br></pre></td></tr></table></figure>
+
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">import Mock from &quot;mockjs&quot;;</span><br><span class="line">// 注意这里的 url 需要与请求的接口保持一致</span><br><span class="line">Mock.mock(&quot;/api/data/winTogether/service&quot;, &#123;</span><br><span class="line">  service: [</span><br><span class="line">    &#123;</span><br><span class="line">      subtitle: &quot;xxxx网格站加盟&quot;,</span><br><span class="line">      desc: &quot;通过自有或租赁的仓库进行分拣商品&quot;</span><br><span class="line">    &#125;</span><br><span class="line">  ]</span><br><span class="line">&#125;);</span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta">文章作者: </span><span class="post-copyright-info"><a href="https://cjchn.github.io">CJ</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta">文章链接: </span><span class="post-copyright-info"><a href="https://cjchn.github.io/posts/20231018090328-c0add594.html">https://cjchn.github.io/posts/20231018090328-c0add594.html</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta">版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来自 <a href="https://cjchn.github.io" target="_blank">CJ's Blog</a>！</span></div></div><div class="tag_share"><div class="post-meta__tag-list"><a class="post-meta__tags" href="/tags/%E6%8A%80%E6%9C%AF/">技术</a><a class="post-meta__tags" href="/tags/%E4%B8%93%E9%A2%98/">专题</a><a class="post-meta__tags" href="/tags/%E5%89%8D%E7%AB%AF/">前端</a></div><div class="post_share"></div></div><nav class="pagination-post" id="pagination"><div class="prev-post pull-left"><a href="/posts/20231019032459-fec99276.html" title="消息队列"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7Lm9z.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of previous post"><div class="pagination-info"><div class="label">上一篇</div><div class="prev_info">消息队列</div></div></a></div><div class="next-post pull-right"><a href="/posts/20231009051621-2f57a694.html" title="正则表达式"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7L0NQ.jpg" onerror="onerror=null;src='/img/404.jpg'" alt="cover of next post"><div class="pagination-info"><div class="label">下一篇</div><div class="next_info">正则表达式</div></div></a></div></nav><div class="relatedPosts"><div class="headline"><i class="fas fa-thumbs-up fa-fw"></i><span>相关推荐</span></div><div class="relatedPosts-list"><div><a href="/posts/20231019032459-fec99276.html" title="消息队列"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7Lm9z.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-19</div><div class="title">消息队列</div></div></a></div><div><a href="/posts/20231024114948-3eb5a9f1.html" title="ES"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7LRxv.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-24</div><div class="title">ES</div></div></a></div><div><a href="/posts/20231009051621-2f57a694.html" title="正则表达式"><img class="cover" src="https://vip.helloimg.com/images/2023/12/15/o7L0NQ.jpg" alt="cover"><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-09</div><div class="title">正则表达式</div></div></a></div><div><a href="/posts/20231024115607-8a15ea5f.html" title="缓存"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-24</div><div class="title">缓存</div></div></a></div><div><a href="/posts/20230920063041-a6ee4416.html" title="常用软件探究"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-09-20</div><div class="title">常用软件探究</div></div></a></div><div><a href="/posts/20231019034827-40769f33.html" title="面试"><div class="cover" style="background: var(--default-bg-color)"></div><div class="content is-center"><div class="date"><i class="far fa-calendar-alt fa-fw"></i> 2023-10-19</div><div class="title">面试</div></div></a></div></div></div></div><div class="aside-content" id="aside-content"><div class="card-widget card-info"><div class="is-center"><div class="avatar-img"><img src="https://imgcdn.319226.xyz/202401041503387.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info__name">CJ</div><div class="author-info__description">保持正念，相信自己会越来越好</div></div><div class="card-info-data site-data is-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">50</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">10</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">4</div></a></div><div class="card-info-social-icons is-center"><a class="social-icon" href="http://wpa.qq.com/msgrd?v=3&amp;uin=2675851908&amp;site=qq&amp;menu=yes" target="_blank" title="QQ"><i class="fab fa-qq" style="color: #24292e;"></i></a><a class="social-icon" href="https://github.com/cjchn" target="_blank" title="Github"><i class="fab fa-github" style="color: #24292e;"></i></a><a class="social-icon" href="https://space.bilibili.com/302998641" target="_blank" title="视频"><i class="fab fa-youtube" style="color: #24292e;"></i></a><a class="social-icon" href="https://tgph.319226.xyz/" target="_blank" title="图床"><i class="fa-solid fa-image" style="color: #24292e;"></i></a><a class="social-icon" href="https://onedrive.319226.xyz/" target="_blank" title="云盘"><i class="fa-solid fa-cloud" style="color: #24292e;"></i></a></div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#TL-DR"><span class="toc-number">1.</span> <span class="toc-text">TL;DR</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E6%B5%8F%E8%A7%88%E5%99%A8%E5%AD%98%E5%82%A8"><span class="toc-number">1.1.</span> <span class="toc-text">浏览器存储</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#cookie"><span class="toc-number">1.1.1.</span> <span class="toc-text">cookie</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AD%98%E5%8F%96%E6%93%8D%E4%BD%9C"><span class="toc-number">1.1.1.1.</span> <span class="toc-text">存取操作</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E7%BC%96%E7%A0%81%E7%BB%86%E8%8A%82"><span class="toc-number">1.1.1.1.1.</span> <span class="toc-text">编码细节</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%B7%AF%E5%BE%84%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.1.1.2.</span> <span class="toc-text">路径概念</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%9F%9F%E6%A6%82%E5%BF%B5"><span class="toc-number">1.1.1.1.3.</span> <span class="toc-text">域概念</span></a><ol class="toc-child"><li class="toc-item toc-level-6"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E6%80%A7"><span class="toc-number">1.1.1.1.3.1.</span> <span class="toc-text">安全性</span></a></li></ol></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E8%AE%BE%E7%BD%AE-cookie-%E7%9A%84%E6%9C%89%E6%95%88%E6%9C%9F"><span class="toc-number">1.1.1.1.4.</span> <span class="toc-text">设置 cookie 的有效期</span></a></li></ol></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B7%A5%E5%85%B7%E7%B1%BB"><span class="toc-number">1.1.1.2.</span> <span class="toc-text">工具类</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#sessionStorage"><span class="toc-number">1.1.2.</span> <span class="toc-text">sessionStorage</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#localStorage"><span class="toc-number">1.1.3.</span> <span class="toc-text">localStorage</span></a></li></ol></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%B7%AF%E7%94%B1-router"><span class="toc-number">1.2.</span> <span class="toc-text">路由 $router</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#router-%E5%92%8C-route-%E7%9A%84%E5%8C%BA%E5%88%AB"><span class="toc-number">1.2.1.</span> <span class="toc-text">$router 和 $route 的区别</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router-back"><span class="toc-number">1.2.2.</span> <span class="toc-text">$router.back()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%94%A8%E6%B3%95%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.2.1.</span> <span class="toc-text">用法示例</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%90%BA%E5%B8%A6%E5%8F%82%E6%95%B0"><span class="toc-number">1.2.2.2.</span> <span class="toc-text">携带参数</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router-go"><span class="toc-number">1.2.3.</span> <span class="toc-text">$router.go()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%A4%BA%E4%BE%8B"><span class="toc-number">1.2.3.1.</span> <span class="toc-text">示例</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router-replace"><span class="toc-number">1.2.4.</span> <span class="toc-text">$router.replace()</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E8%B7%B3%E8%BD%AC"><span class="toc-number">1.2.4.1.</span> <span class="toc-text">普通跳转</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E8%B7%B3%E8%BD%AC"><span class="toc-number">1.2.4.2.</span> <span class="toc-text">带参数跳转</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#name-params-%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.4.2.1.</span> <span class="toc-text">name - params 方式</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#path-query-%E6%96%B9%E5%BC%8F"><span class="toc-number">1.2.4.2.2.</span> <span class="toc-text">path - query 方式</span></a></li></ol></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#router-push"><span class="toc-number">1.2.5.</span> <span class="toc-text">$router.push()</span></a><ol class="toc-child"><li class="toc-item toc-level-5"><a class="toc-link" href="#%E6%99%AE%E9%80%9A%E8%B7%B3%E8%BD%AC-1"><span class="toc-number">1.2.5.0.1.</span> <span class="toc-text">普通跳转</span></a></li><li class="toc-item toc-level-5"><a class="toc-link" href="#%E5%B8%A6%E5%8F%82%E6%95%B0%E8%B7%B3%E8%BD%AC-1"><span class="toc-number">1.2.5.0.2.</span> <span class="toc-text">带参数跳转</span></a></li></ol></li></ol></li></ol></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E4%BB%A3%E7%A0%81%E5%B7%A5%E5%85%B7"><span class="toc-number">2.</span> <span class="toc-text">代码工具</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E8%A1%8C%E5%90%88%E5%B9%B6"><span class="toc-number">2.1.</span> <span class="toc-text">行合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E5%88%97%E5%90%88%E5%B9%B6"><span class="toc-number">2.2.</span> <span class="toc-text">列合并</span></a></li><li class="toc-item toc-level-2"><a class="toc-link" href="#%E9%A1%B5%E9%9D%A2%E5%AF%BC%E5%87%BA"><span class="toc-number">2.3.</span> <span class="toc-text">页面导出</span></a></li></ol></li><li class="toc-item toc-level-1"><a class="toc-link" href="#Axios-%E4%BD%BF%E7%94%A8"><span class="toc-number">3.</span> <span class="toc-text">Axios 使用</span></a></li><li class="toc-item toc-level-1"><a class="toc-link" href="#%E6%90%AD%E9%85%8D-Mock-js"><span class="toc-number">4.</span> <span class="toc-text">搭配 Mock.js</span></a></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231229062330-416f6fc3.html" title="NewPost">NewPost</a><time datetime="2023-12-29T06:23:30.000Z" title="发表于 2023-12-29 14:23:30">2023-12-29</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231222053433-b84b57db.html" title="Html">Html</a><time datetime="2023-12-22T05:34:33.000Z" title="发表于 2023-12-22 13:34:33">2023-12-22</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231215080353-36687561.html" title="关于音乐">关于音乐</a><time datetime="2023-12-15T08:03:53.000Z" title="发表于 2023-12-15 16:03:53">2023-12-15</time></div></div><div class="aside-list-item"><a class="thumbnail" href="/posts/20231211023548-74516b02.html" title="office"><img src="https://vip.helloimg.com/images/2023/12/15/o7AvhR.md.png" onerror="this.onerror=null;this.src='/img/404.jpg'" alt="office"/></a><div class="content"><a class="title" href="/posts/20231211023548-74516b02.html" title="office">office</a><time datetime="2023-12-11T02:35:48.000Z" title="发表于 2023-12-11 10:35:48">2023-12-11</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/posts/20231207051738-3fb16ec5.html" title="人大金仓">人大金仓</a><time datetime="2023-12-07T05:17:38.000Z" title="发表于 2023-12-07 13:17:38">2023-12-07</time></div></div></div></div></div></div></main><footer id="footer"><div id="footer-wrap"><div class="copyright">&copy;2023 - 2024 By CJ</div><div class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly</a></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="浅色和深色模式转换"><i class="fas fa-adjust"></i></button></div><div id="rightside-config-show"><button id="rightside_config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button><button id="go-down" type="button" title="直达底部" onclick="btf.scrollToDest(document.body.scrollHeight, 500)"><span class="scroll-percent"></span><i class="fas fa-arrow-down"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/fancyapps-ui/5.0.19/fancybox/fancybox.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instant.page/5.2.0/instantpage.min.js" type="module"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/node-snackbar/0.1.16/snackbar.min.js"></script><script>function panguFn () {
+  if (typeof pangu === 'object') pangu.autoSpacingPage()
+  else {
+    getScript('https://cdnjs.cloudflare.com/ajax/libs/pangu/4.0.7/pangu.min.js')
+      .then(() => {
+        pangu.autoSpacingPage()
+      })
+  }
+}
+
+function panguInit () {
+  if (true){
+    GLOBAL_CONFIG_SITE.isPost && panguFn()
+  } else {
+    panguFn()
+  }
+}
+
+document.addEventListener('DOMContentLoaded', panguInit)</script><div class="js-pjax"><script>(() => {
+  const $mermaid = document.querySelectorAll('#article-container .mermaid-wrap')
+  if ($mermaid.length === 0) return
+  const runMermaid = () => {
+    window.loadMermaid = true
+    const theme = document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'default'
+
+    Array.from($mermaid).forEach((item, index) => {
+      const mermaidSrc = item.firstElementChild
+      const mermaidThemeConfig = '%%{init:{ \'theme\':\'' + theme + '\'}}%%\n'
+      const mermaidID = 'mermaid-' + index
+      const mermaidDefinition = mermaidThemeConfig + mermaidSrc.textContent
+
+      const renderFn = mermaid.render(mermaidID, mermaidDefinition)
+
+      const renderV10 = () => {
+        renderFn.then(({svg}) => {
+          mermaidSrc.insertAdjacentHTML('afterend', svg)
+        })
+      }
+
+      const renderV9 = svg => {
+        mermaidSrc.insertAdjacentHTML('afterend', svg)
+      }
+
+      typeof renderFn === 'string' ? renderV9(renderFn) : renderV10()
+    })
+  }
+
+  const loadMermaid = () => {
+    window.loadMermaid ? runMermaid() : getScript('https://cdnjs.cloudflare.com/ajax/libs/mermaid/10.2.2/mermaid.min.js').then(runMermaid)
+  }
+
+  btf.addModeChange('mermaid', runMermaid)
+
+  window.pjax ? loadMermaid() : document.addEventListener('DOMContentLoaded', loadMermaid)
+})()</script></div><div class="aplayer no-destroy" data-id="2024518101" data-server="netease" data-type="playlist" data-fixed="true" data-autoplay="false" data-mini="true"> </div><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.css" media="print" onload="this.media='all'"><script src="https://cdnjs.cloudflare.com/ajax/libs/aplayer/1.10.1/APlayer.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/butterfly-extsrc/1.1.3/metingjs/dist/Meting.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script>let pjaxSelectors = ["head > title","#config-diff","#body-wrap","#rightside-config-hide","#rightside-config-show",".js-pjax"]
+
+var pjax = new Pjax({
+  elements: 'a:not([target="_blank"]):not([href="/music/"]):not([href="/no-pjax/"])',
+  selectors: pjaxSelectors,
+  cacheBust: false,
+  analytics: false,
+  scrollRestoration: false
+})
+
+document.addEventListener('pjax:send', function () {
+
+  // removeEventListener scroll 
+  window.tocScrollFn && window.removeEventListener('scroll', window.tocScrollFn)
+  window.scrollCollect && window.removeEventListener('scroll', scrollCollect)
+
+  document.getElementById('rightside').style.cssText = "opacity: ''; transform: ''"
+  
+  if (window.aplayers) {
+    for (let i = 0; i < window.aplayers.length; i++) {
+      if (!window.aplayers[i].options.fixed) {
+        window.aplayers[i].destroy()
+      }
+    }
+  }
+
+  typeof typed === 'object' && typed.destroy()
+
+  //reset readmode
+  const $bodyClassList = document.body.classList
+  $bodyClassList.contains('read-mode') && $bodyClassList.remove('read-mode')
+
+  typeof disqusjs === 'object' && disqusjs.destroy()
+})
+
+document.addEventListener('pjax:complete', function () {
+  window.refreshFn()
+
+  document.querySelectorAll('script[data-pjax]').forEach(item => {
+    const newScript = document.createElement('script')
+    const content = item.text || item.textContent || item.innerHTML || ""
+    Array.from(item.attributes).forEach(attr => newScript.setAttribute(attr.name, attr.value))
+    newScript.appendChild(document.createTextNode(content))
+    item.parentNode.replaceChild(newScript, item)
+  })
+
+  GLOBAL_CONFIG.islazyload && window.lazyLoadInstance.update()
+
+  typeof panguInit === 'function' && panguInit()
+
+  // google analytics
+  typeof gtag === 'function' && gtag('config', '', {'page_path': window.location.pathname});
+
+  // baidu analytics
+  typeof _hmt === 'object' && _hmt.push(['_trackPageview',window.location.pathname]);
+
+  typeof loadMeting === 'function' && document.getElementsByClassName('aplayer').length && loadMeting()
+
+  // prismjs
+  typeof Prism === 'object' && Prism.highlightAll()
+})
+
+document.addEventListener('pjax:error', (e) => {
+  if (e.request.status === 404) {
+    pjax.loadUrl('/404.html')
+  }
+})</script><script async data-pjax src="//npm.elemecdn.com/penndu@1.0.0/bsz.js"></script><div id="algolia-search"><div class="search-dialog"><nav class="search-nav"><span class="search-dialog-title">搜索</span><button class="search-close-button"><i class="fas fa-times"></i></button></nav><div class="search-wrap"><div id="algolia-search-input"></div><hr/><div id="algolia-search-results"><div id="algolia-hits"></div><div id="algolia-pagination"></div><div id="algolia-info"><div class="algolia-stats"></div><div class="algolia-poweredBy"></div></div></div></div></div><div id="search-mask"></div><script src="https://cdnjs.cloudflare.com/ajax/libs/algoliasearch/4.17.1/algoliasearch-lite.umd.min.js"></script><script src="https://cdnjs.cloudflare.com/ajax/libs/instantsearch.js/4.56.1/instantsearch.production.min.js"></script><script src="/js/search/algolia.js"></script></div></div></body></html>
